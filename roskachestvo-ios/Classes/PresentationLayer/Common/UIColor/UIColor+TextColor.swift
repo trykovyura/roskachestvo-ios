@@ -32,6 +32,9 @@ extension UIColor {
             static var athens2: UIColor {
                 return UIColor.ApplicationPalete.Gray.athens2
             }
+            static var athensGray: UIColor {
+                return UIColor.ApplicationPalete.Gray.athensGray
+            }
             static var doveGray: UIColor {
                 return UIColor.ApplicationPalete.Gray.doveGray
             }

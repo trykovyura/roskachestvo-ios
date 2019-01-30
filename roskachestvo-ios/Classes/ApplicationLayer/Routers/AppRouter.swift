@@ -44,6 +44,8 @@ final class AppRouter {
     func openMainViewController() {
 
         let tabBarController = ESTabBarController()
+        tabBarController.tabBar.barTintColor = UIColor.TextColor.Gray.athensGray
+        tabBarController.tabBar.isTranslucent = false
         let v1 = UINavigationController(rootViewController: UIViewController())
         let v2 = UINavigationController(rootViewController: UIViewController())
         let v3 = UINavigationController(rootViewController: UIViewController())
@@ -52,7 +54,7 @@ final class AppRouter {
 
         v1.tabBarItem = ESTabBarItem(TabBarBasicContentView(), title: "Главная", image: UIImage(named: "MainTab"), selectedImage: UIImage(named: "MainTab"))
         v2.tabBarItem = ESTabBarItem(TabBarBasicContentView(), title: "Поиск", image: UIImage(named: "SearchTab"), selectedImage: UIImage(named: "SearchTab"))
-        v3.tabBarItem = ESTabBarItem(TabBarBasicContentView(), title: nil, image: UIImage(named: "ScanTab"), selectedImage: UIImage(named: "ScanTab"))
+        v3.tabBarItem = ESTabBarItem(TabBarCentralContentView(), title: nil, image: UIImage(named: "ScanTabFull"), selectedImage: UIImage(named: "ScanTabFull"))
         v4.tabBarItem = ESTabBarItem(TabBarBasicContentView(), title: "История", image: UIImage(named: "HistoryTab"), selectedImage: UIImage(named: "HistoryTab"))
         v5.tabBarItem = ESTabBarItem(TabBarBasicContentView(), title: "О нас", image: UIImage(named: "AboutTab"), selectedImage: UIImage(named: "AboutTab"))
 

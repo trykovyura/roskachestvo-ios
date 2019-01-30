@@ -25,6 +25,9 @@ extension UIColor {
             static var athens2: UIColor {
                 return #colorLiteral(red: 0.9019607843, green: 0.9098039216, blue: 0.9215686275, alpha: 1) //athens2 E6E8EB
             }
+            static var athensGray: UIColor {
+                return #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9843137255, alpha: 1) //athensGray FAFAFB
+            }
             static var ghost: UIColor {
                 return #colorLiteral(red: 0.7843137255, green: 0.8, blue: 0.8274509804, alpha: 1) //ghost C8CCD3
             }
