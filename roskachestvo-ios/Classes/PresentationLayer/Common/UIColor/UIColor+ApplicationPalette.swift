@@ -43,6 +43,9 @@ extension UIColor {
             static var scorpion: UIColor {
                 return #colorLiteral(red: 0.3529411765, green: 0.3529411765, blue: 0.3529411765, alpha: 1) //Scorpion 5A5A5A
             }
+            static var gallery: UIColor {
+                return #colorLiteral(red: 0.9254901961, green: 0.9254901961, blue: 0.9254901961, alpha: 1) //gallery ECECEC
+            }
         }
 
         enum Green {

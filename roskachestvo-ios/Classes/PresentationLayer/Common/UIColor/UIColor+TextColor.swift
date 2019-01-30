@@ -50,6 +50,9 @@ extension UIColor {
             static var scorpion: UIColor {
                 return UIColor.ApplicationPalete.Gray.scorpion
             }
+            static var gallery: UIColor {
+                return UIColor.ApplicationPalete.Gray.gallery
+            }
         }
 
         enum Green {
