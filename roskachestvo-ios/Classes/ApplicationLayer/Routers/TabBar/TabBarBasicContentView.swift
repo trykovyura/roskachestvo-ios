@@ -18,4 +18,9 @@ class TabBarBasicContentView: ESTabBarItemContentView {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override func updateLayout() {
+        super.updateLayout()
+        titleLabel.font = UIFont.FontPreset.subheadline
+        titleLabel.sizeToFit()
+    }
 }

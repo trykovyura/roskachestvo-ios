@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		29ADDAA42201A3850013F5E6 /* roskachestvo_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ADDAA32201A3850013F5E6 /* roskachestvo_iosTests.swift */; };
 		B18B304303996D981C08D138 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3CB3176704F66A9B9855 /* AppDelegate.swift */; };
+		B18B3076BD83EBC68A980DDE /* ProximaNovaBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B18B334BD74DF4BE40E965E6 /* ProximaNovaBold.otf */; };
 		B18B307AADECA60BC275E53E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18B3AA17DE0A14F0D3BA928 /* LaunchScreen.storyboard */; };
 		B18B327B12BE658B14A42CF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18B3EAF2059516C6D4FDD20 /* Main.storyboard */; };
 		B18B332161B33D8B4C17CA9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B18B3349F8E3BC1D10EDA206 /* Assets.xcassets */; };
 		B18B34FE66DB02160836D9E9 /* TabBarCentralContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3D79F3F45047B3212E8E /* TabBarCentralContentView.swift */; };
+		B18B37DB720F3D7FC54FAEC3 /* UIFont+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3CEF49597B85B25402F0 /* UIFont+Custom.swift */; };
 		B18B389CED0765AC4CB82A2E /* UIColor+TextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B33EC6B32EA505CBFB43D /* UIColor+TextColor.swift */; };
 		B18B38AAB7F06511C77121BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B31BFE35DB9A365ED9DA1 /* ViewController.swift */; };
 		B18B3E33E83A802720D0A1E9 /* TabBarBasicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3D754E1CFF47F5E53AC6 /* TabBarBasicContentView.swift */; };
@@ -44,10 +46,12 @@
 		B18B3115CCC49D47A9A39F14 /* AppRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		B18B31BFE35DB9A365ED9DA1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B18B3349F8E3BC1D10EDA206 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B18B334BD74DF4BE40E965E6 /* ProximaNovaBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file.otf; path = ProximaNovaBold.otf; sourceTree = "<group>"; };
 		B18B33EC6B32EA505CBFB43D /* UIColor+TextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+TextColor.swift"; sourceTree = "<group>"; };
 		B18B3AA17DE0A14F0D3BA928 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B18B3B0EAF1998B339C6587C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		B18B3CB3176704F66A9B9855 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B18B3CEF49597B85B25402F0 /* UIFont+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Custom.swift"; sourceTree = "<group>"; };
 		B18B3D754E1CFF47F5E53AC6 /* TabBarBasicContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarBasicContentView.swift; sourceTree = "<group>"; };
 		B18B3D79F3F45047B3212E8E /* TabBarCentralContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCentralContentView.swift; sourceTree = "<group>"; };
 		B18B3EAF2059516C6D4FDD20 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				B18B3E1052985F7DB7257FCC /* Images */,
+				B18B324D9786C96B8F30B7A4 /* Fonts */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -167,6 +172,14 @@
 				B18B3EAF2059516C6D4FDD20 /* Main.storyboard */,
 			);
 			path = UserStories;
+			sourceTree = "<group>";
+		};
+		B18B324D9786C96B8F30B7A4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B18B334BD74DF4BE40E965E6 /* ProximaNovaBold.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		B18B348E0518A28ADB94A04F /* BusinessLogicLayer */ = {
@@ -236,8 +249,17 @@
 			isa = PBXGroup;
 			children = (
 				B18B3AB87D1F79C78A87CE7E /* UIColor */,
+				B18B3A9152B7FA43FC76C7DB /* UIFont */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		B18B3A9152B7FA43FC76C7DB /* UIFont */ = {
+			isa = PBXGroup;
+			children = (
+				B18B3CEF49597B85B25402F0 /* UIFont+Custom.swift */,
+			);
+			path = UIFont;
 			sourceTree = "<group>";
 		};
 		B18B3AB87D1F79C78A87CE7E /* UIColor */ = {
@@ -382,6 +404,7 @@
 				B18B332161B33D8B4C17CA9E /* Assets.xcassets in Resources */,
 				B18B307AADECA60BC275E53E /* LaunchScreen.storyboard in Resources */,
 				B18B327B12BE658B14A42CF4 /* Main.storyboard in Resources */,
+				B18B3076BD83EBC68A980DDE /* ProximaNovaBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +500,7 @@
 				B18B3E33E83A802720D0A1E9 /* TabBarBasicContentView.swift in Sources */,
 				B18B389CED0765AC4CB82A2E /* UIColor+TextColor.swift in Sources */,
 				B18B34FE66DB02160836D9E9 /* TabBarCentralContentView.swift in Sources */,
+				B18B37DB720F3D7FC54FAEC3 /* UIFont+Custom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
