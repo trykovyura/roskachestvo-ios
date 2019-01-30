@@ -52,7 +52,6 @@ xcuserdata/
 
 ### CocoaPods ###
 /Pods
-Podfile.lock
 
 ### AppCode ###
 .idea

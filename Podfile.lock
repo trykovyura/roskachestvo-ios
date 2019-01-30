@@ -1,0 +1,24 @@
+PODS:
+  - ESTabBarController-swift (2.6.4)
+  - Reveal-SDK (18)
+  - SwiftLint (0.25.1)
+
+DEPENDENCIES:
+  - ESTabBarController-swift (~> 2.6.4)
+  - Reveal-SDK (~> 18)
+  - SwiftLint (~> 0.25.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ESTabBarController-swift
+    - Reveal-SDK
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  ESTabBarController-swift: 58cca4ab7de980657d99a02181c1ff310983e975
+  Reveal-SDK: cce79388da3fd0bbb6ae19d769b906cfc3a33a89
+  SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
+
+PODFILE CHECKSUM: 964e6971cd472e50d5b9d6d0082ceef4f89b97f3
+
+COCOAPODS: 1.5.3
