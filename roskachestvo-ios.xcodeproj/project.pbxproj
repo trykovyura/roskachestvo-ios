@@ -12,7 +12,10 @@
 		B18B307AADECA60BC275E53E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18B3AA17DE0A14F0D3BA928 /* LaunchScreen.storyboard */; };
 		B18B327B12BE658B14A42CF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18B3EAF2059516C6D4FDD20 /* Main.storyboard */; };
 		B18B332161B33D8B4C17CA9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B18B3349F8E3BC1D10EDA206 /* Assets.xcassets */; };
+		B18B389CED0765AC4CB82A2E /* UIColor+TextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B33EC6B32EA505CBFB43D /* UIColor+TextColor.swift */; };
 		B18B38AAB7F06511C77121BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B31BFE35DB9A365ED9DA1 /* ViewController.swift */; };
+		B18B3E33E83A802720D0A1E9 /* TabBarBasicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3D754E1CFF47F5E53AC6 /* TabBarBasicContentView.swift */; };
+		B18B3F3D7142C03938A9ADB9 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3115CCC49D47A9A39F14 /* AppRouter.swift */; };
 		B18B3F3DE5DAEC0E5BB18FC1 /* UIColor+ApplicationPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3072F541D6FEFD4ED429 /* UIColor+ApplicationPalette.swift */; };
 		B4BECCC574B2D1D0AC4A593B /* Pods_roskachestvo_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DEF8405CF471BF6D746750 /* Pods_roskachestvo_iosTests.framework */; };
 		F8D389909685059C6374CA46 /* Pods_roskachestvo_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959B803F68DB8D2CCFCB03E9 /* Pods_roskachestvo_ios.framework */; };
@@ -37,11 +40,14 @@
 		959B803F68DB8D2CCFCB03E9 /* Pods_roskachestvo_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_roskachestvo_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF4BAC2715046A73DA1724A /* Pods-roskachestvo-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roskachestvo-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-roskachestvo-ios/Pods-roskachestvo-ios.release.xcconfig"; sourceTree = "<group>"; };
 		B18B3072F541D6FEFD4ED429 /* UIColor+ApplicationPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ApplicationPalette.swift"; sourceTree = "<group>"; };
+		B18B3115CCC49D47A9A39F14 /* AppRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		B18B31BFE35DB9A365ED9DA1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B18B3349F8E3BC1D10EDA206 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B18B33EC6B32EA505CBFB43D /* UIColor+TextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+TextColor.swift"; sourceTree = "<group>"; };
 		B18B3AA17DE0A14F0D3BA928 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B18B3B0EAF1998B339C6587C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		B18B3CB3176704F66A9B9855 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B18B3D754E1CFF47F5E53AC6 /* TabBarBasicContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarBasicContentView.swift; sourceTree = "<group>"; };
 		B18B3EAF2059516C6D4FDD20 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B4B9C46480AFE7B4580D99E9 /* Pods-roskachestvo-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roskachestvo-iosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-roskachestvo-iosTests/Pods-roskachestvo-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		BB3E44FBDF588E2839B1993A /* Pods-roskachestvo-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roskachestvo-iosTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-roskachestvo-iosTests/Pods-roskachestvo-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +133,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B18B304DA07C56AB89FBDDA0 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				B18B3D754E1CFF47F5E53AC6 /* TabBarBasicContentView.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		B18B30A71091130AC7FF12EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +173,15 @@
 			path = BusinessLogicLayer;
 			sourceTree = "<group>";
 		};
+		B18B34966A96194E16A92871 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				B18B3115CCC49D47A9A39F14 /* AppRouter.swift */,
+				B18B304DA07C56AB89FBDDA0 /* TabBar */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
 		B18B35639F490C0EB23CF987 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				B18B37B89DD95B2C2B89A5E2 /* LaunchSystem */,
+				B18B34966A96194E16A92871 /* Routers */,
 			);
 			path = ApplicationLayer;
 			sourceTree = "<group>";
@@ -217,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				B18B3072F541D6FEFD4ED429 /* UIColor+ApplicationPalette.swift */,
+				B18B33EC6B32EA505CBFB43D /* UIColor+TextColor.swift */,
 			);
 			path = UIColor;
 			sourceTree = "<group>";
@@ -445,6 +470,9 @@
 				B18B304303996D981C08D138 /* AppDelegate.swift in Sources */,
 				B18B38AAB7F06511C77121BF /* ViewController.swift in Sources */,
 				B18B3F3DE5DAEC0E5BB18FC1 /* UIColor+ApplicationPalette.swift in Sources */,
+				B18B3F3D7142C03938A9ADB9 /* AppRouter.swift in Sources */,
+				B18B3E33E83A802720D0A1E9 /* TabBarBasicContentView.swift in Sources */,
+				B18B389CED0765AC4CB82A2E /* UIColor+TextColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
