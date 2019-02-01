@@ -24,7 +24,7 @@ PODS:
   - RxAtomic (4.4.0)
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
-  - SwiftLint (0.25.1)
+  - SwiftLint (0.30.1)
   - Swinject (2.5.0)
   - Unbox (3.0.0)
   - ViperMcFlurry (1.5.2)
@@ -35,7 +35,7 @@ DEPENDENCIES:
   - Moya-ModelMapper/RxSwift (~> 8.0.0)
   - Moya/RxSwift (~> 12.0.1)
   - Reveal-SDK (~> 18)
-  - SwiftLint (~> 0.25.1)
+  - SwiftLint (~> 0.30.1)
   - Swinject (~> 2.5.0)
   - Unbox (~> 3.0.0)
   - ViperMcFlurry (~> 1.5.2)
@@ -68,12 +68,12 @@ SPEC CHECKSUMS:
   Reveal-SDK: cce79388da3fd0bbb6ae19d769b906cfc3a33a89
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
-  SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
+  SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
   Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
   Unbox: 9ed33b2a31f7a8a049f54b94d40c4a52a28c4d9d
   ViperMcFlurry: 701bc3ad8d188b1f1e157ec0ddf4e77184de88b5
   Wrap: 918fdb5157e4f701f9503b2633752d6f94616f84
 
-PODFILE CHECKSUM: 29053a24201ea121fd62d43a96a7dfa1ea608434
+PODFILE CHECKSUM: 380c7ba71985c110b916a5f0c4fcd8f260c29df1
 
 COCOAPODS: 1.5.3

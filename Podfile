@@ -7,7 +7,7 @@ target 'roskachestvo-ios' do
 
   # Pods for roskachestvo-ios
   pod 'Reveal-SDK', '~> 18', :configurations => ['Debug']
-  pod 'SwiftLint', '~> 0.25.1'
+  pod 'SwiftLint', '~> 0.30.1'
   pod 'ESTabBarController-swift', '~> 2.6.4'
 
   # DI
