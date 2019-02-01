@@ -1,24 +1,79 @@
 PODS:
+  - Alamofire (4.8.1)
   - ESTabBarController-swift (2.6.4)
+  - ModelMapper (9.0.1):
+    - ModelMapper/Core (= 9.0.1)
+  - ModelMapper/Core (9.0.1)
+  - Moya (12.0.1):
+    - Moya/Core (= 12.0.1)
+  - Moya-ModelMapper/Core (8.0.0):
+    - ModelMapper
+    - Moya (~> 12.0)
+  - Moya-ModelMapper/RxSwift (8.0.0):
+    - Moya-ModelMapper/Core
+    - Moya/RxSwift (~> 12.0)
+    - RxSwift
+  - Moya/Core (12.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.0)
+  - Moya/RxSwift (12.0.1):
+    - Moya/Core
+    - RxSwift (~> 4.0)
+  - Result (4.1.0)
   - Reveal-SDK (18)
+  - RxAtomic (4.4.0)
+  - RxSwift (4.4.0):
+    - RxAtomic (~> 4.4)
   - SwiftLint (0.25.1)
+  - Swinject (2.5.0)
+  - Unbox (3.0.0)
+  - ViperMcFlurry (1.5.2)
+  - Wrap (3.0.0)
 
 DEPENDENCIES:
   - ESTabBarController-swift (~> 2.6.4)
+  - Moya-ModelMapper/RxSwift (~> 8.0.0)
+  - Moya/RxSwift (~> 12.0.1)
   - Reveal-SDK (~> 18)
   - SwiftLint (~> 0.25.1)
+  - Swinject (~> 2.5.0)
+  - Unbox (~> 3.0.0)
+  - ViperMcFlurry (~> 1.5.2)
+  - Wrap (~> 3.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - ESTabBarController-swift
+    - ModelMapper
+    - Moya
+    - Moya-ModelMapper
+    - Result
     - Reveal-SDK
+    - RxAtomic
+    - RxSwift
     - SwiftLint
+    - Swinject
+    - Unbox
+    - ViperMcFlurry
+    - Wrap
 
 SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   ESTabBarController-swift: 58cca4ab7de980657d99a02181c1ff310983e975
+  ModelMapper: 89a61430a75e6265040dc9555ab1feddeb25b986
+  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
+  Moya-ModelMapper: 9032a62301f6489405d56b7bb4e1f54944638fe3
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   Reveal-SDK: cce79388da3fd0bbb6ae19d769b906cfc3a33a89
+  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
+  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
+  Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
+  Unbox: 9ed33b2a31f7a8a049f54b94d40c4a52a28c4d9d
+  ViperMcFlurry: 701bc3ad8d188b1f1e157ec0ddf4e77184de88b5
+  Wrap: 918fdb5157e4f701f9503b2633752d6f94616f84
 
-PODFILE CHECKSUM: 964e6971cd472e50d5b9d6d0082ceef4f89b97f3
+PODFILE CHECKSUM: 29053a24201ea121fd62d43a96a7dfa1ea608434
 
 COCOAPODS: 1.5.3

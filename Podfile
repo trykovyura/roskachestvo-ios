@@ -10,6 +10,16 @@ target 'roskachestvo-ios' do
   pod 'SwiftLint', '~> 0.25.1'
   pod 'ESTabBarController-swift', '~> 2.6.4'
 
+  # DI
+  pod 'ViperMcFlurry', '~> 1.5.2'
+  pod 'Swinject', '~> 2.5.0'
+
+  # Network
+  pod 'Moya/RxSwift', '~> 12.0.1'
+  pod 'Moya-ModelMapper/RxSwift', '~> 8.0.0'
+  pod 'Wrap', '~> 3.0.0'
+  pod 'Unbox', '~> 3.0.0'
+
   target 'roskachestvo-iosTests' do
     inherit! :search_paths
     # Pods for testing
