@@ -329,6 +329,7 @@
 				29ADDA882201A3830013F5E6 /* Frameworks */,
 				29ADDA892201A3830013F5E6 /* Resources */,
 				2F656C4CA39EC155BEE7AF6B /* [CP] Embed Pods Frameworks */,
+				9E8735C022048E5200FBE40C /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -441,6 +442,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-roskachestvo-ios/Pods-roskachestvo-ios-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9E8735C022048E5200FBE40C /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --strict\nelse\necho \"error: SwiftLint does not exist, download it from https://github.com/realm/SwiftLint\"\nexit 1\nfi\n\n";
 		};
 		AAB41BC2B0AF23E2B8FD791A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

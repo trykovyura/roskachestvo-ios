@@ -55,11 +55,16 @@ final class AppRouter {
         let v4 = UINavigationController(rootViewController: UIViewController())
         let v5 = UINavigationController(rootViewController: UIViewController())
 
-        v1.tabBarItem = ESTabBarItem(TabBarBasicContentView(), title: "Главная", image: UIImage(named: "MainTab"), selectedImage: UIImage(named: "MainTab"))
-        v2.tabBarItem = ESTabBarItem(TabBarBasicContentView(), title: "Поиск", image: UIImage(named: "SearchTab"), selectedImage: UIImage(named: "SearchTab"))
-        v3.tabBarItem = ESTabBarItem(TabBarCentralContentView(), title: nil, image: UIImage(named: "ScanTabFull"), selectedImage: UIImage(named: "ScanTabFull"))
-        v4.tabBarItem = ESTabBarItem(TabBarBasicContentView(), title: "История", image: UIImage(named: "HistoryTab"), selectedImage: UIImage(named: "HistoryTab"))
-        v5.tabBarItem = ESTabBarItem(TabBarBasicContentView(), title: "О нас", image: UIImage(named: "AboutTab"), selectedImage: UIImage(named: "AboutTab"))
+        v1.tabBarItem = ESTabBarItem(TabBarBasicContentView(),
+                title: "Главная", image: UIImage(named: "MainTab"), selectedImage: UIImage(named: "MainTab"))
+        v2.tabBarItem = ESTabBarItem(TabBarBasicContentView(),
+                title: "Поиск", image: UIImage(named: "SearchTab"), selectedImage: UIImage(named: "SearchTab"))
+        v3.tabBarItem = ESTabBarItem(TabBarCentralContentView(),
+                title: nil, image: UIImage(named: "ScanTabFull"), selectedImage: UIImage(named: "ScanTabFull"))
+        v4.tabBarItem = ESTabBarItem(TabBarBasicContentView(),
+                title: "История", image: UIImage(named: "HistoryTab"), selectedImage: UIImage(named: "HistoryTab"))
+        v5.tabBarItem = ESTabBarItem(TabBarBasicContentView(),
+                title: "О нас", image: UIImage(named: "AboutTab"), selectedImage: UIImage(named: "AboutTab"))
 
         tabBarController.viewControllers = [v1, v2, v3, v4, v5]
         mainWindow?.rootViewController = tabBarController

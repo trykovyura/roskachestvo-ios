@@ -22,68 +22,74 @@ class TabBarBasicContentView: ESTabBarItemContentView {
     }
 
     // Это пришлось сделать из за шрифта - кожанные ублюдки не позаботились
+    //swiftlint:disable:next function_body_length cyclomatic_complexity
     override func updateLayout() {
-        let w = self.bounds.size.width
-        let h = self.bounds.size.height
+        let width = self.bounds.size.width
+        let height = self.bounds.size.height
 
         imageView.isHidden = (imageView.image == nil)
         titleLabel.isHidden = (titleLabel.text == nil)
 
         if self.itemContentMode == .alwaysTemplate {
-            var s: CGFloat = 0.0 // image size
+            var size: CGFloat = 0.0 // image size
             var isLandscape = false
             if let keyWindow = UIApplication.shared.keyWindow {
                 isLandscape = keyWindow.bounds.width > keyWindow.bounds.height
             }
             let isWide = isLandscape || traitCollection.horizontalSizeClass == .regular // is landscape or regular
             if #available(iOS 11.0, *), isWide {
-                s = UIScreen.main.scale == 3.0 ? 23.0 : 20.0
+                size = UIScreen.main.scale == 3.0 ? 23.0 : 20.0
             } else {
-                s = 23.0
+                size = 23.0
             }
 
             if !imageView.isHidden && !titleLabel.isHidden {
                 titleLabel.font = tabBarFont
                 titleLabel.sizeToFit()
                 if #available(iOS 11.0, *), isWide {
-                    titleLabel.frame = CGRect.init(x: (w - titleLabel.bounds.size.width) / 2.0 + (UIScreen.main.scale == 3.0 ? 14.25 : 12.25),
-                            y: (h - titleLabel.bounds.size.height) / 2.0,
+                    titleLabel.frame = CGRect.init(x: (width - titleLabel.bounds.size.width) /
+                            2.0 + (UIScreen.main.scale == 3.0 ? 14.25 : 12.25),
+                            y: (height - titleLabel.bounds.size.height) / 2.0,
                             width: titleLabel.bounds.size.width,
                             height: titleLabel.bounds.size.height)
-                    imageView.frame = CGRect.init(x: titleLabel.frame.origin.x - s - (UIScreen.main.scale == 3.0 ? 6.0 : 5.0),
-                            y: (h - s) / 2.0,
-                            width: s,
-                            height: s)
+                    imageView.frame = CGRect.init(x: titleLabel.frame.origin.x - size -
+                            (UIScreen.main.scale == 3.0 ? 6.0 : 5.0),
+                            y: (height - size) / 2.0,
+                            width: size,
+                            height: size)
                 } else {
-                    titleLabel.frame = CGRect.init(x: (w - titleLabel.bounds.size.width) / 2.0,
-                            y: h - titleLabel.bounds.size.height - 1.0,
+                    titleLabel.frame = CGRect.init(x: (width - titleLabel.bounds.size.width) / 2.0,
+                            y: height - titleLabel.bounds.size.height - 1.0,
                             width: titleLabel.bounds.size.width,
                             height: titleLabel.bounds.size.height)
-                    imageView.frame = CGRect.init(x: (w - s) / 2.0,
-                            y: (h - s) / 2.0 - 6.0,
-                            width: s,
-                            height: s)
+                    imageView.frame = CGRect.init(x: (width - size) / 2.0,
+                            y: (height - size) / 2.0 - 6.0,
+                            width: size,
+                            height: size)
                 }
             } else if !imageView.isHidden {
-                imageView.frame = CGRect.init(x: (w - s) / 2.0,
-                        y: (h - s) / 2.0,
-                        width: s,
-                        height: s)
+                imageView.frame = CGRect.init(x: (width - size) / 2.0,
+                        y: (height - size) / 2.0,
+                        width: size,
+                        height: size)
             } else if !titleLabel.isHidden {
                 titleLabel.font = tabBarFont
                 titleLabel.sizeToFit()
-                titleLabel.frame = CGRect.init(x: (w - titleLabel.bounds.size.width) / 2.0,
-                        y: (h - titleLabel.bounds.size.height) / 2.0,
+                titleLabel.frame = CGRect.init(x: (width - titleLabel.bounds.size.width) / 2.0,
+                        y: (height - titleLabel.bounds.size.height) / 2.0,
                         width: titleLabel.bounds.size.width,
                         height: titleLabel.bounds.size.height)
             }
 
-            if let _ = badgeView.superview {
+            if badgeView.superview != nil {
                 let size = badgeView.sizeThatFits(self.frame.size)
                 if #available(iOS 11.0, *), isWide {
-                    badgeView.frame = CGRect.init(origin: CGPoint.init(x: imageView.frame.midX - 3 + badgeOffset.horizontal, y: imageView.frame.midY + 3 + badgeOffset.vertical), size: size)
+                    let cgPoint = CGPoint.init(x: imageView.frame.midX - 3 + badgeOffset.horizontal,
+                            y: imageView.frame.midY + 3 + badgeOffset.vertical)
+                    badgeView.frame = CGRect.init(origin: cgPoint, size: size)
                 } else {
-                    badgeView.frame = CGRect.init(origin: CGPoint.init(x: w / 2.0 + badgeOffset.horizontal, y: h / 2.0 + badgeOffset.vertical), size: size)
+                    badgeView.frame = CGRect.init(origin: CGPoint.init(x: width / 2.0 + badgeOffset.horizontal,
+                            y: height / 2.0 + badgeOffset.vertical), size: size)
                 }
                 badgeView.setNeedsLayout()
             }
@@ -92,25 +98,26 @@ class TabBarBasicContentView: ESTabBarItemContentView {
             if !imageView.isHidden && !titleLabel.isHidden {
                 titleLabel.sizeToFit()
                 imageView.sizeToFit()
-                titleLabel.frame = CGRect.init(x: (w - titleLabel.bounds.size.width) / 2.0,
-                        y: h - titleLabel.bounds.size.height - 1.0,
+                titleLabel.frame = CGRect.init(x: (width - titleLabel.bounds.size.width) / 2.0,
+                        y: height - titleLabel.bounds.size.height - 1.0,
                         width: titleLabel.bounds.size.width,
                         height: titleLabel.bounds.size.height)
-                imageView.frame = CGRect.init(x: (w - imageView.bounds.size.width) / 2.0,
-                        y: (h - imageView.bounds.size.height) / 2.0 - 6.0,
+                imageView.frame = CGRect.init(x: (width - imageView.bounds.size.width) / 2.0,
+                        y: (height - imageView.bounds.size.height) / 2.0 - 6.0,
                         width: imageView.bounds.size.width,
                         height: imageView.bounds.size.height)
             } else if !imageView.isHidden {
                 imageView.sizeToFit()
-                imageView.center = CGPoint.init(x: w / 2.0, y: h / 2.0)
+                imageView.center = CGPoint.init(x: width / 2.0, y: height / 2.0)
             } else if !titleLabel.isHidden {
                 titleLabel.sizeToFit()
-                titleLabel.center = CGPoint.init(x: w / 2.0, y: h / 2.0)
+                titleLabel.center = CGPoint.init(x: width / 2.0, y: height / 2.0)
             }
 
-            if let _ = badgeView.superview {
+            if badgeView.superview != nil {
                 let size = badgeView.sizeThatFits(self.frame.size)
-                badgeView.frame = CGRect.init(origin: CGPoint.init(x: w / 2.0 + badgeOffset.horizontal, y: h / 2.0 + badgeOffset.vertical), size: size)
+                badgeView.frame = CGRect.init(origin: CGPoint.init(x: width / 2.0 + badgeOffset.horizontal,
+                        y: height / 2.0 + badgeOffset.vertical), size: size)
                 badgeView.setNeedsLayout()
             }
         }
