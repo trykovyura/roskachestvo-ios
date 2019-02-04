@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let bounds = UIScreen.main.bounds
         self.window = UIWindow(frame: bounds)
+        MainAssembler.sharedInstance.setup()
         router = AppRouter(with: self.window)
         router?.openMainViewController()
         return true
