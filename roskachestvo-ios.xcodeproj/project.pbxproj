@@ -21,12 +21,19 @@
 		B18B3F3D7142C03938A9ADB9 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3115CCC49D47A9A39F14 /* AppRouter.swift */; };
 		B18B3F3DE5DAEC0E5BB18FC1 /* UIColor+ApplicationPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3072F541D6FEFD4ED429 /* UIColor+ApplicationPalette.swift */; };
 		B4BECCC574B2D1D0AC4A593B /* Pods_roskachestvo_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DEF8405CF471BF6D746750 /* Pods_roskachestvo_iosTests.framework */; };
+		CC7132588690BE128E38A6D6 /* SearchProductPlainObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC713CC88B3AC7552DEC76A4 /* SearchProductPlainObject.swift */; };
 		CC71373A33ECEDD5A5F47A64 /* ResearchNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC713AB796C750B48AD30487 /* ResearchNetworkService.swift */; };
 		CC7137E52687B685336BDC2A /* ServiceAssemblies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC71330A5594EA3E9A3D28C8 /* ServiceAssemblies.swift */; };
+		CC7138FAD8CFD3CD5E2AF7C0 /* RSKScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC71345AB3F91806C8225C99 /* RSKScheduler.swift */; };
+		CC713A35F214146DCEE8CF59 /* ProductPropertyPlainObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC713209B8B392FCB098E07C /* ProductPropertyPlainObject.swift */; };
+		CC713B249A64712CCC15D7B3 /* ImagePlainObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7137B0F114BDEC6AAF19E7 /* ImagePlainObject.swift */; };
 		CC713C4082EE25973CFF818D /* RoskachestvoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC713B6149A06CC3C990B8F7 /* RoskachestvoAPI.swift */; };
+		CC713CCDB87F82C93EA028D4 /* ProductIndicatorPlainObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC713B756FECEA970A936CA9 /* ProductIndicatorPlainObject.swift */; };
+		CC713D130D0012258CEAC57D /* ProductPlainObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC713881A538BF70E11678BD /* ProductPlainObject.swift */; };
 		CC713D900EC040E40A1CF968 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7135D68B17D96CE48369D5 /* NetworkClient.swift */; };
 		CC713DCBCCFCB1BE64718362 /* MainAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC713C3851F82DF0A7714605 /* MainAssembler.swift */; };
 		CC713DCECBCD98A67E32D716 /* MoyaNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7136AE82257C4B5BD831C2 /* MoyaNetworkClient.swift */; };
+		CC713E9C8523888BE996DECB /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7139685CC97FB3435304FA /* ProductType.swift */; };
 		CC713F69D686FCBD9E64ADCF /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC71317B73A271C900BFDA07 /* NetworkAssembly.swift */; };
 		F8D389909685059C6374CA46 /* Pods_roskachestvo_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959B803F68DB8D2CCFCB03E9 /* Pods_roskachestvo_ios.framework */; };
 /* End PBXBuildFile section */
@@ -65,12 +72,19 @@
 		B4B9C46480AFE7B4580D99E9 /* Pods-roskachestvo-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roskachestvo-iosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-roskachestvo-iosTests/Pods-roskachestvo-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		BB3E44FBDF588E2839B1993A /* Pods-roskachestvo-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roskachestvo-iosTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-roskachestvo-iosTests/Pods-roskachestvo-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CC71317B73A271C900BFDA07 /* NetworkAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
+		CC713209B8B392FCB098E07C /* ProductPropertyPlainObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductPropertyPlainObject.swift; sourceTree = "<group>"; };
 		CC71330A5594EA3E9A3D28C8 /* ServiceAssemblies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceAssemblies.swift; sourceTree = "<group>"; };
+		CC71345AB3F91806C8225C99 /* RSKScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSKScheduler.swift; sourceTree = "<group>"; };
 		CC7135D68B17D96CE48369D5 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		CC7136AE82257C4B5BD831C2 /* MoyaNetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaNetworkClient.swift; sourceTree = "<group>"; };
+		CC7137B0F114BDEC6AAF19E7 /* ImagePlainObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePlainObject.swift; sourceTree = "<group>"; };
+		CC713881A538BF70E11678BD /* ProductPlainObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductPlainObject.swift; sourceTree = "<group>"; };
+		CC7139685CC97FB3435304FA /* ProductType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
 		CC713AB796C750B48AD30487 /* ResearchNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResearchNetworkService.swift; sourceTree = "<group>"; };
 		CC713B6149A06CC3C990B8F7 /* RoskachestvoAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoskachestvoAPI.swift; sourceTree = "<group>"; };
+		CC713B756FECEA970A936CA9 /* ProductIndicatorPlainObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductIndicatorPlainObject.swift; sourceTree = "<group>"; };
 		CC713C3851F82DF0A7714605 /* MainAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAssembler.swift; sourceTree = "<group>"; };
+		CC713CC88B3AC7552DEC76A4 /* SearchProductPlainObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchProductPlainObject.swift; sourceTree = "<group>"; };
 		F9DEF8405CF471BF6D746750 /* Pods_roskachestvo_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_roskachestvo_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -231,13 +245,6 @@
 			path = AppDelegates;
 			sourceTree = "<group>";
 		};
-		B18B378212B73123B258EF86 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		B18B37B89DD95B2C2B89A5E2 /* LaunchSystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,10 +301,10 @@
 			isa = PBXGroup;
 			children = (
 				B18B35DA430DA9EB18291D94 /* ApplicationLayer */,
-				B18B378212B73123B258EF86 /* Models */,
 				B18B3AD4AE317D5F2DEF7ABA /* PresentationLayer */,
 				CC71312CD8AC686F34E324A6 /* CoreLayer */,
 				CC7136BD8266A1DFE3C5426B /* BusinessLogicLayer */,
+				CC713BD981F35593D664FB10 /* Models */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -339,6 +346,7 @@
 			children = (
 				CC713A3144FADBFEA52FD6AE /* CoreComponents */,
 				CC7130FC07657146D09C9A86 /* Assemblies */,
+				CC7132F015FBA5D03F6586E5 /* Common */,
 			);
 			path = CoreLayer;
 			sourceTree = "<group>";
@@ -357,6 +365,14 @@
 				CC7135D68B17D96CE48369D5 /* NetworkClient.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CC7132F015FBA5D03F6586E5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CC713ABD4E844EF2AC71DF65 /* Scheduler */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		CC7133D0E1DC12C6CBB1EA3C /* ConcreteClasses */ = {
@@ -381,6 +397,26 @@
 				CC7136AE82257C4B5BD831C2 /* MoyaNetworkClient.swift */,
 			);
 			path = MoyaNetworkClient;
+			sourceTree = "<group>";
+		};
+		CC71361658FF6CADBD6F6CC1 /* PlainObjects */ = {
+			isa = PBXGroup;
+			children = (
+				CC713CC88B3AC7552DEC76A4 /* SearchProductPlainObject.swift */,
+				CC713881A538BF70E11678BD /* ProductPlainObject.swift */,
+				CC713209B8B392FCB098E07C /* ProductPropertyPlainObject.swift */,
+				CC713B756FECEA970A936CA9 /* ProductIndicatorPlainObject.swift */,
+				CC7137B0F114BDEC6AAF19E7 /* ImagePlainObject.swift */,
+			);
+			path = PlainObjects;
+			sourceTree = "<group>";
+		};
+		CC713621B4BF91DDDC76F85F /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				CC7139685CC97FB3435304FA /* ProductType.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		CC7136A73DE203A188EFEDDA /* NetworkRequests */ = {
@@ -423,6 +459,23 @@
 				CC71330A5594EA3E9A3D28C8 /* ServiceAssemblies.swift */,
 			);
 			path = ServiceAssemblies;
+			sourceTree = "<group>";
+		};
+		CC713ABD4E844EF2AC71DF65 /* Scheduler */ = {
+			isa = PBXGroup;
+			children = (
+				CC71345AB3F91806C8225C99 /* RSKScheduler.swift */,
+			);
+			path = Scheduler;
+			sourceTree = "<group>";
+		};
+		CC713BD981F35593D664FB10 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CC71361658FF6CADBD6F6CC1 /* PlainObjects */,
+				CC713621B4BF91DDDC76F85F /* Enums */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		CC713D0E46A740D2569E696A /* NetworkClients */ = {
@@ -668,6 +721,13 @@
 				CC713F69D686FCBD9E64ADCF /* NetworkAssembly.swift in Sources */,
 				CC7137E52687B685336BDC2A /* ServiceAssemblies.swift in Sources */,
 				CC71373A33ECEDD5A5F47A64 /* ResearchNetworkService.swift in Sources */,
+				CC7132588690BE128E38A6D6 /* SearchProductPlainObject.swift in Sources */,
+				CC7138FAD8CFD3CD5E2AF7C0 /* RSKScheduler.swift in Sources */,
+				CC713D130D0012258CEAC57D /* ProductPlainObject.swift in Sources */,
+				CC713E9C8523888BE996DECB /* ProductType.swift in Sources */,
+				CC713A35F214146DCEE8CF59 /* ProductPropertyPlainObject.swift in Sources */,
+				CC713CCDB87F82C93EA028D4 /* ProductIndicatorPlainObject.swift in Sources */,
+				CC713B249A64712CCC15D7B3 /* ImagePlainObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

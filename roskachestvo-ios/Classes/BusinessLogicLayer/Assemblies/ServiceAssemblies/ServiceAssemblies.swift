@@ -12,8 +12,8 @@ class ServiceAssemblies: Assembly {
     }
 
     private func registerNetworkService(container: Container) {
-        container.register(ResearchNetworkServiceType.self) { _ in
-            ResearchNetworkService()
+        container.register(ResearchNetworkServiceType.self) { resolver in
+            ResearchNetworkService(networkClient: resolver.resolve(NetworkClient.self)!)
         }.inObjectScope(.transient)
     }
 }

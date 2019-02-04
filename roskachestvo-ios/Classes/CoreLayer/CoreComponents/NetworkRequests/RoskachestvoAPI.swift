@@ -7,7 +7,7 @@ import Moya
 
 enum RoskachestvoAPI {
     case searchProduct(code: String)
-    case product(id: Int)
+    case product(id: String)
     case getProducts
     case getCategories
     case getResearches
