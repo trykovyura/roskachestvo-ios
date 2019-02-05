@@ -8,11 +8,11 @@ import Moya
 enum RoskachestvoAPI {
     case searchProduct(code: String)
     case product(id: String)
-    case getProducts
-    case getCategories
-    case getResearches
-    case research(id: Int)
+    case products
+    case categories
     case researches
+    case research(id: String)
+    case categoriesWithResearches
 }
 
 extension RoskachestvoAPI: TargetType {
@@ -32,15 +32,15 @@ extension RoskachestvoAPI: TargetType {
             return "/getproduct/\(code)"
         case .product(let id):
             return "/product/\(id)"
-        case .getProducts:
+        case .products:
             return "/getproducts"
-        case .getCategories:
+        case .categories:
             return "/getcategories"
-        case .getResearches:
+        case .researches:
             return "/getresearches"
         case .research(let id):
             return "/research/\(id)"
-        case .researches:
+        case .categoriesWithResearches:
             return "/researches"
         }
 

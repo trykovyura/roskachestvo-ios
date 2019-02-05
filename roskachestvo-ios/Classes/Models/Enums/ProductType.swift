@@ -7,5 +7,8 @@ import Foundation
 
 enum ProductType: String {
     case withviolation
+    case quality
+    case withsign
+    case highquality
     case unknown
 }

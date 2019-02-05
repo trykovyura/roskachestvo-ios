@@ -18,4 +18,19 @@ struct ProductPlainObject: Mappable {
     let pros: [String]
     let cons: [String]
     let image: ImagePlainObject
+
+    init(map: Mapper) throws {
+        name = try map.from("name")
+        status = try map.from("status")
+        producer = try map.from("producer")
+        trademark = try map.from("trademark")
+        url = try map.from("url")
+        researchResults = try map.from("research_results")
+        violations = try map.from("violations")
+        properties = try map.from("properties")
+        indicators = try map.from("indicators")
+        pros = try map.from("+")
+        cons = try map.from("-")
+        image = try map.from("image")
+    }
 }

@@ -11,6 +11,6 @@ struct ProductPropertyPlainObject: Mappable {
 
     init(map: Mapper) throws {
         self.name = try map.from("name")
-        self.value = try map.value("name")
+        self.value = try map.from("value")
     }
 }
