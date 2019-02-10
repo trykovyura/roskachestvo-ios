@@ -24,6 +24,7 @@ class MainFeedSectionController: ListBindingSectionController<MainFeedSectionVie
             return viewModels
         }
         viewModels.append(object.viewModel)
+        viewModels.append(contentsOf: object.researches)
         return viewModels
     }
 

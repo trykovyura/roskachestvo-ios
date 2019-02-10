@@ -23,7 +23,10 @@ class MainFeedDataDisplayManager: NSObject {
          viewModels.append(contentsOf: categories.map { category in
              let viewModel = MainFeedCellViewModel(id: "id", name: category.name,
                      image: category.researches.first?.image.src)
-             return MainFeedSectionViewModel(viewModel: viewModel)
+             let researches = category.researches.map { research in
+                 ResearchCellViewModel(id: research.id, name: research.name, image: research.image.src)
+             }
+             return MainFeedSectionViewModel(viewModel: viewModel, researches: researches)
          })
      }
 }
