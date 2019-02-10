@@ -49,6 +49,14 @@ final class AppRouter {
         tabBarController.tabBar.backgroundImage = R.image.background()
         let viewController = R.storyboard.mainFeed().instantiateInitialViewController()!
         let v1 = UINavigationController(rootViewController: viewController)
+        v1.navigationBar.hideBottomHairline()
+        v1.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        v1.navigationBar.shadowImage = UIImage()
+        v1.navigationBar.isTranslucent = true
+        UINavigationBar.appearance().tintColor = R.color.viridianGreen()
+        UINavigationBar.appearance().titleTextAttributes =
+                [NSAttributedString.Key.foregroundColor: R.color.viridianGreen(),
+                 NSAttributedString.Key.font: R.font.backpackBold(size: 15)]
         let v2 = UINavigationController(rootViewController: UIViewController())
         let v3 = UINavigationController(rootViewController: UIViewController())
         let v4 = UINavigationController(rootViewController: UIViewController())

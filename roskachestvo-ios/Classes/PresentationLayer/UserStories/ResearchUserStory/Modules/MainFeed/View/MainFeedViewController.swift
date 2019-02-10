@@ -43,15 +43,17 @@ class MainFeedViewController: UIViewController, MainFeedViewInput {
         view.addSubview(collectionView)
         adapter.collectionView = collectionView
         configureViewConstraints()
+        navigationItem.title = "Исследования"
+        view.backgroundColor = R.color.athensGray()
     }
 
     func configureViewConstraints() {
         collectionView.snp.makeConstraints { (make) in
             if #available(iOS 11.0, *) {
-                make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+                make.top.equalToSuperview()
                 make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             } else {
-                make.top.equalTo(self.topLayoutGuide.snp.bottom)
+                make.top.equalToSuperview()
                 make.bottom.equalTo(self.bottomLayoutGuide.snp.top)
             }
             make.left.equalToSuperview()
