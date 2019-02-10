@@ -46,7 +46,7 @@ final class AppRouter {
         let tabBarController = ESTabBarController()
         tabBarController.tabBar.barTintColor = UIColor.TextColor.Gray.athensGray
         tabBarController.tabBar.isTranslucent = true
-        tabBarController.tabBar.backgroundImage = UIImage(named: "Background")
+        tabBarController.tabBar.backgroundImage = R.image.background()
         let viewController = UIViewController()
         viewController.view.backgroundColor = UIColor.TextColor.Gray.athens
         let v1 = UINavigationController(rootViewController: viewController)
@@ -56,15 +56,15 @@ final class AppRouter {
         let v5 = UINavigationController(rootViewController: UIViewController())
 
         v1.tabBarItem = ESTabBarItem(TabBarBasicContentView(),
-                title: "Главная", image: UIImage(named: "MainTab"), selectedImage: UIImage(named: "MainTab"))
+                title: "Главная", image: R.image.mainTab(), selectedImage: R.image.mainTab())
         v2.tabBarItem = ESTabBarItem(TabBarBasicContentView(),
-                title: "Поиск", image: UIImage(named: "SearchTab"), selectedImage: UIImage(named: "SearchTab"))
+                title: "Поиск", image: R.image.searchTab(), selectedImage: R.image.searchTab())
         v3.tabBarItem = ESTabBarItem(TabBarCentralContentView(),
-                title: nil, image: UIImage(named: "ScanTabFull"), selectedImage: UIImage(named: "ScanTabFull"))
+                title: nil, image: R.image.scanTabFull(), selectedImage: R.image.scanTabFull())
         v4.tabBarItem = ESTabBarItem(TabBarBasicContentView(),
-                title: "История", image: UIImage(named: "HistoryTab"), selectedImage: UIImage(named: "HistoryTab"))
+                title: "История", image: R.image.historyTab(), selectedImage: R.image.historyTab())
         v5.tabBarItem = ESTabBarItem(TabBarBasicContentView(),
-                title: "О нас", image: UIImage(named: "AboutTab"), selectedImage: UIImage(named: "AboutTab"))
+                title: "О нас", image: R.image.aboutTab(), selectedImage: R.image.aboutTab())
 
         tabBarController.viewControllers = [v1, v2, v3, v4, v5]
         mainWindow?.rootViewController = tabBarController

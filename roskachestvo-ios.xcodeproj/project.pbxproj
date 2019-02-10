@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		294EFFD222101B61005F197B /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EFFD122101B61005F197B /* R.generated.swift */; };
 		29ADDAA42201A3850013F5E6 /* roskachestvo_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ADDAA32201A3850013F5E6 /* roskachestvo_iosTests.swift */; };
 		B18B304303996D981C08D138 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3CB3176704F66A9B9855 /* AppDelegate.swift */; };
 		B18B3076BD83EBC68A980DDE /* ProximaNovaBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B18B334BD74DF4BE40E965E6 /* ProximaNovaBold.otf */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		0B13DE74A005F69D7C761B26 /* Pods-roskachestvo-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roskachestvo-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-roskachestvo-ios/Pods-roskachestvo-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		294EFFD122101B61005F197B /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		29ADDA8B2201A3830013F5E6 /* roskachestvo-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "roskachestvo-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29ADDA9F2201A3850013F5E6 /* roskachestvo-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "roskachestvo-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29ADDAA32201A3850013F5E6 /* roskachestvo_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roskachestvo_iosTests.swift; sourceTree = "<group>"; };
@@ -122,6 +124,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		294EFFD022101B28005F197B /* Rswift */ = {
+			isa = PBXGroup;
+			children = (
+				294EFFD122101B61005F197B /* R.generated.swift */,
+			);
+			path = Rswift;
+			sourceTree = "<group>";
+		};
 		2951E55131ADC81C5529ACBB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +203,7 @@
 		B18B30A71091130AC7FF12EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				294EFFD022101B28005F197B /* Rswift */,
 				B18B3E1052985F7DB7257FCC /* Images */,
 				B18B324D9786C96B8F30B7A4 /* Fonts */,
 			);
@@ -532,6 +543,7 @@
 			buildConfigurationList = 29ADDAA82201A3850013F5E6 /* Build configuration list for PBXNativeTarget "roskachestvo-ios" */;
 			buildPhases = (
 				AAB41BC2B0AF23E2B8FD791A /* [CP] Check Pods Manifest.lock */,
+				294EFFCF22101A57005F197B /* R.swift */,
 				29ADDA872201A3830013F5E6 /* Sources */,
 				29ADDA882201A3830013F5E6 /* Frameworks */,
 				29ADDA892201A3830013F5E6 /* Resources */,
@@ -628,6 +640,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		294EFFCF22101A57005F197B /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$SRCROOT/roskachestvo-ios/Resources/Rswift/R.generated.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/roskachestvo-ios/Resources/Rswift/R.generated.swift\"\n";
+		};
 		2F656C4CA39EC155BEE7AF6B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -640,6 +672,7 @@
 				"${BUILT_PRODUCTS_DIR}/ModelMapper/Mapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya-ModelMapper/Moya_ModelMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${PODS_ROOT}/Reveal-SDK/RevealServer-18/iOS/RevealServer.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
@@ -656,6 +689,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_ModelMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
@@ -729,6 +763,7 @@
 			files = (
 				B18B304303996D981C08D138 /* AppDelegate.swift in Sources */,
 				B18B38AAB7F06511C77121BF /* ViewController.swift in Sources */,
+				294EFFD222101B61005F197B /* R.generated.swift in Sources */,
 				B18B3F3DE5DAEC0E5BB18FC1 /* UIColor+ApplicationPalette.swift in Sources */,
 				B18B3F3D7142C03938A9ADB9 /* AppRouter.swift in Sources */,
 				B18B3E33E83A802720D0A1E9 /* TabBarBasicContentView.swift in Sources */,

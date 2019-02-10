@@ -19,6 +19,9 @@ PODS:
   - Moya/RxSwift (12.0.1):
     - Moya/Core
     - RxSwift (~> 4.0)
+  - R.swift (5.0.1):
+    - R.swift.Library (~> 5.0.0)
+  - R.swift.Library (5.0.0)
   - Result (4.1.0)
   - Reveal-SDK (18)
   - RxAtomic (4.4.0)
@@ -34,6 +37,7 @@ DEPENDENCIES:
   - ESTabBarController-swift (~> 2.6.4)
   - Moya-ModelMapper/RxSwift (~> 8.0.0)
   - Moya/RxSwift (~> 12.0.1)
+  - R.swift
   - Reveal-SDK (~> 18)
   - SwiftLint (~> 0.30.1)
   - Swinject (~> 2.5.0)
@@ -48,6 +52,8 @@ SPEC REPOS:
     - ModelMapper
     - Moya
     - Moya-ModelMapper
+    - R.swift
+    - R.swift.Library
     - Result
     - Reveal-SDK
     - RxAtomic
@@ -64,6 +70,8 @@ SPEC CHECKSUMS:
   ModelMapper: 89a61430a75e6265040dc9555ab1feddeb25b986
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   Moya-ModelMapper: 9032a62301f6489405d56b7bb4e1f54944638fe3
+  R.swift: a8e1a7e7f38441282fbcb7a3c266076eb38b77ba
+  R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   Reveal-SDK: cce79388da3fd0bbb6ae19d769b906cfc3a33a89
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
@@ -74,6 +82,6 @@ SPEC CHECKSUMS:
   ViperMcFlurry: 701bc3ad8d188b1f1e157ec0ddf4e77184de88b5
   Wrap: 918fdb5157e4f701f9503b2633752d6f94616f84
 
-PODFILE CHECKSUM: 380c7ba71985c110b916a5f0c4fcd8f260c29df1
+PODFILE CHECKSUM: f9dfea070ae2f513202750afff37a9f10879daaf
 
 COCOAPODS: 1.5.3

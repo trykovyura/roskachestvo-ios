@@ -9,6 +9,7 @@ target 'roskachestvo-ios' do
   pod 'Reveal-SDK', '~> 18', :configurations => ['Debug']
   pod 'SwiftLint', '~> 0.30.1'
   pod 'ESTabBarController-swift', '~> 2.6.4'
+  pod 'R.swift'
 
   # DI
   pod 'ViperMcFlurry', '~> 1.5.2'
