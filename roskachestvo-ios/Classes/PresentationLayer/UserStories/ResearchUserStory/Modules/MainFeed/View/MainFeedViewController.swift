@@ -18,7 +18,7 @@ class MainFeedViewController: UIViewController, MainFeedViewInput {
     lazy var collectionView: UICollectionView = {
         let collectionViewLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        collectionView.backgroundColor = R.color.athensGray()
+        collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -32,6 +32,15 @@ class MainFeedViewController: UIViewController, MainFeedViewInput {
         return listAdapter
     }()
 
+    lazy var topView: UIView = {
+        let view = LTView()
+        view.horizontalGradient = true
+        view.firstColor = R.color.ghost1()!
+        view.secondColor = R.color.ghost2()!
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +49,7 @@ class MainFeedViewController: UIViewController, MainFeedViewInput {
 
     // MARK: MainFeedViewInput
     func setupInitialState() {
+        view.addSubview(topView)
         view.addSubview(collectionView)
         adapter.collectionView = collectionView
         configureViewConstraints()
@@ -48,6 +58,12 @@ class MainFeedViewController: UIViewController, MainFeedViewInput {
     }
 
     func configureViewConstraints() {
+        topView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(170)
+        }
         collectionView.snp.makeConstraints { (make) in
             if #available(iOS 11.0, *) {
                 make.top.equalToSuperview()
@@ -56,8 +72,8 @@ class MainFeedViewController: UIViewController, MainFeedViewInput {
                 make.top.equalToSuperview()
                 make.bottom.equalTo(self.bottomLayoutGuide.snp.top)
             }
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
+            make.leading.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().offset(-10)
         }
      }
 

@@ -43,6 +43,7 @@
 		B18B3A634E4A51D37AC8948C /* Backpack-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B18B339419865226E87E4C4F /* Backpack-Light.otf */; };
 		B18B3B3454EE5AF1630722B4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B368D8A120879BA2B9ADB /* ViewModel.swift */; };
 		B18B3B594B91D29CC8CBD1E8 /* Backpack-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B18B31F1F891FEA5C6038C12 /* Backpack-Regular.otf */; };
+		B18B3B796D03DA550DEA3184 /* LTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B349252AAD9FE34D1F3C6 /* LTView.swift */; };
 		B18B3E33E83A802720D0A1E9 /* TabBarBasicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3D754E1CFF47F5E53AC6 /* TabBarBasicContentView.swift */; };
 		B18B3F3D7142C03938A9ADB9 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3115CCC49D47A9A39F14 /* AppRouter.swift */; };
 		B18B3F3DE5DAEC0E5BB18FC1 /* UIColor+ApplicationPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3072F541D6FEFD4ED429 /* UIColor+ApplicationPalette.swift */; };
@@ -113,6 +114,7 @@
 		B18B334BD74DF4BE40E965E6 /* ProximaNovaBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file.otf; path = ProximaNovaBold.otf; sourceTree = "<group>"; };
 		B18B339419865226E87E4C4F /* Backpack-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file.otf; path = "Backpack-Light.otf"; sourceTree = "<group>"; };
 		B18B33EC6B32EA505CBFB43D /* UIColor+TextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+TextColor.swift"; sourceTree = "<group>"; };
+		B18B349252AAD9FE34D1F3C6 /* LTView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTView.swift; sourceTree = "<group>"; };
 		B18B3514AE5FFCB1C0730DCD /* MainFeed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainFeed.storyboard; sourceTree = "<group>"; };
 		B18B35A8DA64620F2ECFD68C /* Backpack-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file.otf; path = "Backpack-Bold.otf"; sourceTree = "<group>"; };
 		B18B368D8A120879BA2B9ADB /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				B18B381FDF965C85E9EE9FB7 /* UINavigationView+Custom.swift */,
+				B18B349252AAD9FE34D1F3C6 /* LTView.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -1013,6 +1016,7 @@
 				B18B3665BDDC446B066F23D0 /* ResearchCellViewModel.swift in Sources */,
 				B18B33524411DBA17960070F /* ResearchCell.swift in Sources */,
 				B18B33637BE1ACF407BD6966 /* UINavigationView+Custom.swift in Sources */,
+				B18B3B796D03DA550DEA3184 /* LTView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
