@@ -44,6 +44,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>ProximaNovaBold.otf</string>
+		<string>Backpack-Bold.otf</string>
+		<string>Backpack-Light.otf</string>
+		<string>Backpack-Regular.otf</string>
 	</array>
 </dict>
 </plist>

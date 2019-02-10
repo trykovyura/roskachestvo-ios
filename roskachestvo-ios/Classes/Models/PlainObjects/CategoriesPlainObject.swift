@@ -6,7 +6,7 @@
 import Mapper
 
 struct CategoriesPlainObject: Mappable {
-    let id: String
+    let id: Int
     let name: String
     let time: Int64
     let researches: [ResearchesPlainObject]
@@ -14,7 +14,7 @@ struct CategoriesPlainObject: Mappable {
     init(map: Mapper) throws {
         id = try map.from("id")
         name = try map.from("name")
-        time = try map.from("time")
+        time = try map.from("utime")
         researches = try map.from("researches")
     }
 }

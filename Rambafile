@@ -1,5 +1,5 @@
 ### Headers settings
-company:
+company: trykov.ru
 
 ### Xcode project settings
 project_name: roskachestvo-ios
@@ -13,7 +13,7 @@ project_target: roskachestvo-ios
 project_file_path: roskachestvo-ios/Classes/PresentationLayer/UserStories/ResearchUserStory/Modules
 
 # The Xcode group path to new modules
-project_group_path: roskachestvo/Classes/PresentationLayer/UserStories/ResearchUserStory/Modules
+project_group_path: roskachestvo-ios/Classes/PresentationLayer/UserStories/ResearchUserStory/Modules
 
 ### Dependencies settings section
 podfile_path: Podfile

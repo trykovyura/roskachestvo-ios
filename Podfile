@@ -21,6 +21,11 @@ target 'roskachestvo-ios' do
   pod 'Wrap', '~> 3.0.0'
   pod 'Unbox', '~> 3.0.0'
 
+  #UI
+  pod 'SnapKit'
+  pod 'IGListKit'
+  pod 'Kingfisher'
+
   target 'roskachestvo-iosTests' do
     inherit! :search_paths
     # Pods for testing

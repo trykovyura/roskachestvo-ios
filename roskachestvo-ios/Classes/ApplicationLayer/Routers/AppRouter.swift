@@ -47,8 +47,7 @@ final class AppRouter {
         tabBarController.tabBar.barTintColor = UIColor.TextColor.Gray.athensGray
         tabBarController.tabBar.isTranslucent = true
         tabBarController.tabBar.backgroundImage = R.image.background()
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = UIColor.TextColor.Gray.athens
+        let viewController = R.storyboard.mainFeed().instantiateInitialViewController()!
         let v1 = UINavigationController(rootViewController: viewController)
         let v2 = UINavigationController(rootViewController: UIViewController())
         let v3 = UINavigationController(rootViewController: UIViewController())
