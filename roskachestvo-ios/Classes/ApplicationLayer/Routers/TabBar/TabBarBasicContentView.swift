@@ -40,7 +40,7 @@ class TabBarBasicContentView: ESTabBarItemContentView {
             if #available(iOS 11.0, *), isWide {
                 size = UIScreen.main.scale == 3.0 ? 23.0 : 20.0
             } else {
-                size = 23.0
+                size = 20.0
             }
 
             if !imageView.isHidden && !titleLabel.isHidden {
