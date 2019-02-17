@@ -11,6 +11,7 @@
 		1388E5B61DFE43AD6ACD255E /* ResearchDetailsModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5258BDD210BDBE879DA71 /* ResearchDetailsModuleOutput.swift */; };
 		278320AF374D11E85C0E84A9 /* ResearchDetailsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F5C7ACFDA9774FD062A59A /* ResearchDetailsConfigurator.swift */; };
 		28A99FA8FE5B8DB89CD7ED51 /* MainFeedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B569826C81DB6F92B4F231EF /* MainFeedCellViewModel.swift */; };
+		2946539D221973B9005DF4D4 /* ResearchDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2946539C221973B9005DF4D4 /* ResearchDetails.storyboard */; };
 		294EFFD222101B61005F197B /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EFFD122101B61005F197B /* R.generated.swift */; };
 		294EFFD5221027F0005F197B /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 294EFFD4221027F0005F197B /* Color.xcassets */; };
 		29ADDAA42201A3850013F5E6 /* roskachestvo_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ADDAA32201A3850013F5E6 /* roskachestvo_iosTests.swift */; };
@@ -52,7 +53,6 @@
 		B18B37DB720F3D7FC54FAEC3 /* UIFont+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3CEF49597B85B25402F0 /* UIFont+Custom.swift */; };
 		B18B389CED0765AC4CB82A2E /* UIColor+TextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B33EC6B32EA505CBFB43D /* UIColor+TextColor.swift */; };
 		B18B3A634E4A51D37AC8948C /* Backpack-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B18B339419865226E87E4C4F /* Backpack-Light.otf */; };
-		B18B3B11E57482D8518B720E /* ResearchDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18B3BEEA7C23FAD62DC7995 /* ResearchDetails.storyboard */; };
 		B18B3B3454EE5AF1630722B4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B368D8A120879BA2B9ADB /* ViewModel.swift */; };
 		B18B3B594B91D29CC8CBD1E8 /* Backpack-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B18B31F1F891FEA5C6038C12 /* Backpack-Regular.otf */; };
 		B18B3B796D03DA550DEA3184 /* LTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B349252AAD9FE34D1F3C6 /* LTView.swift */; };
@@ -107,6 +107,7 @@
 		0D1664F06F194C1C21B1913B /* ResearchDetailsCellViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ResearchDetailsCellViewModel.swift; sourceTree = "<group>"; };
 		15F5258BDD210BDBE879DA71 /* ResearchDetailsModuleOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ResearchDetailsModuleOutput.swift; sourceTree = "<group>"; };
 		274734367C189FFF4C0C84AE /* ResearchDetailsCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ResearchDetailsCell.swift; sourceTree = "<group>"; };
+		2946539C221973B9005DF4D4 /* ResearchDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ResearchDetails.storyboard; sourceTree = "<group>"; };
 		294EFFD122101B61005F197B /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		294EFFD4221027F0005F197B /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		29ADDA8B2201A3830013F5E6 /* roskachestvo-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "roskachestvo-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,7 +153,6 @@
 		B18B381FDF965C85E9EE9FB7 /* UINavigationView+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationView+Custom.swift"; sourceTree = "<group>"; };
 		B18B3AA17DE0A14F0D3BA928 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B18B3B0EAF1998B339C6587C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
-		B18B3BEEA7C23FAD62DC7995 /* ResearchDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResearchDetails.storyboard; sourceTree = "<group>"; };
 		B18B3CB3176704F66A9B9855 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B18B3CEF49597B85B25402F0 /* UIFont+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Custom.swift"; sourceTree = "<group>"; };
 		B18B3D754E1CFF47F5E53AC6 /* TabBarBasicContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarBasicContentView.swift; sourceTree = "<group>"; };
@@ -223,7 +223,6 @@
 				F648EE7A2F51E1F5939CA662 /* ResearchDetailsInteractorOutput.swift */,
 				5209915CCCA0231FCF2D9CA1 /* ResearchDetailsInteractor.swift */,
 			);
-			name = Interactor;
 			path = Interactor;
 			sourceTree = "<group>";
 		};
@@ -232,7 +231,6 @@
 			children = (
 				85D5D9B69E52CEA9A619FC6D /* ResearchDetailsDataDisplayManager.swift */,
 			);
-			name = DataDisplayManagers;
 			path = DataDisplayManagers;
 			sourceTree = "<group>";
 		};
@@ -253,7 +251,6 @@
 				DF039EB9661C79329EA84CAC /* ResearchDetailsPresenter.swift */,
 				15F5258BDD210BDBE879DA71 /* ResearchDetailsModuleOutput.swift */,
 			);
-			name = Presenter;
 			path = Presenter;
 			sourceTree = "<group>";
 		};
@@ -337,7 +334,6 @@
 				F4F5C7ACFDA9774FD062A59A /* ResearchDetailsConfigurator.swift */,
 				8CB9FE9E46333E1C20007CC0 /* ResearchDetailsInitializer.swift */,
 			);
-			name = Configurator;
 			path = Configurator;
 			sourceTree = "<group>";
 		};
@@ -362,7 +358,6 @@
 				48DB1F7935CC52E996ED2E31 /* Router */,
 				2D2D9D232DF59EC3AFA9C796 /* Configurator */,
 			);
-			name = ResearchDetails;
 			path = ResearchDetails;
 			sourceTree = "<group>";
 		};
@@ -372,7 +367,6 @@
 				8CF453211E9F6205A1469856 /* ResearchDetailsRouterInput.swift */,
 				37D1F42100A93B30CE567F63 /* ResearchDetailsRouter.swift */,
 			);
-			name = Router;
 			path = Router;
 			sourceTree = "<group>";
 		};
@@ -412,7 +406,6 @@
 				D8A9716B4353C0812A01E02D /* CellViewModels */,
 				93BF5BF8F4EBF64CBBCF3404 /* Cells */,
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -421,7 +414,6 @@
 			children = (
 				8AD4B465CE6EBF2127CFDC5C /* ResearchDetailsSectionViewModel.swift */,
 			);
-			name = SectionViewModels;
 			path = SectionViewModels;
 			sourceTree = "<group>";
 		};
@@ -439,7 +431,6 @@
 			children = (
 				274734367C189FFF4C0C84AE /* ResearchDetailsCell.swift */,
 			);
-			name = Cells;
 			path = Cells;
 			sourceTree = "<group>";
 		};
@@ -485,8 +476,8 @@
 		B18B3104B7DD63A4ABC7BB99 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				2946539C221973B9005DF4D4 /* ResearchDetails.storyboard */,
 				B18B3514AE5FFCB1C0730DCD /* MainFeed.storyboard */,
-				B18B3BEEA7C23FAD62DC7995 /* ResearchDetails.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -854,7 +845,6 @@
 			children = (
 				0D1664F06F194C1C21B1913B /* ResearchDetailsCellViewModel.swift */,
 			);
-			name = CellViewModels;
 			path = CellViewModels;
 			sourceTree = "<group>";
 		};
@@ -871,7 +861,6 @@
 			children = (
 				37DB079149356990F5410D1F /* ResearchDetailsSectionController.swift */,
 			);
-			name = SectionControllers;
 			path = SectionControllers;
 			sourceTree = "<group>";
 		};
@@ -976,12 +965,12 @@
 				B18B307AADECA60BC275E53E /* LaunchScreen.storyboard in Resources */,
 				294EFFD5221027F0005F197B /* Color.xcassets in Resources */,
 				B18B327B12BE658B14A42CF4 /* Main.storyboard in Resources */,
+				2946539D221973B9005DF4D4 /* ResearchDetails.storyboard in Resources */,
 				B18B3076BD83EBC68A980DDE /* ProximaNovaBold.otf in Resources */,
 				B18B35B2D8FF356B204CBA00 /* MainFeed.storyboard in Resources */,
 				B18B32FCBDC14A83522EB12A /* Backpack-Bold.otf in Resources */,
 				B18B3A634E4A51D37AC8948C /* Backpack-Light.otf in Resources */,
 				B18B3B594B91D29CC8CBD1E8 /* Backpack-Regular.otf in Resources */,
-				B18B3B11E57482D8518B720E /* ResearchDetails.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

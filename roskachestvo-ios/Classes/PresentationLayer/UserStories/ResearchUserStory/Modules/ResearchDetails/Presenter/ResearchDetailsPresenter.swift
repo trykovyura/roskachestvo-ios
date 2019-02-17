@@ -16,6 +16,8 @@ class ResearchDetailsPresenter: NSObject, ResearchDetailsModuleInput {
     var router: ResearchDetailsRouterInput
     weak var moduleOutput: ResearchDetailsModuleOutput?
 
+    var researchId: String = ""
+
     init(view: ResearchDetailsViewInput, interactor: ResearchDetailsInteractorInput,
          router: ResearchDetailsRouterInput) {
         self.view = view
@@ -24,7 +26,7 @@ class ResearchDetailsPresenter: NSObject, ResearchDetailsModuleInput {
     }
 
     func configure(with researchId: String) {
-
+        self.researchId = researchId
     }
 }
 
@@ -32,12 +34,19 @@ extension ResearchDetailsPresenter: ResearchDetailsViewOutput {
 
     func didTriggerViewReady() {
         view?.setupInitialState()
+        interactor.researchDetails(with: researchId)
     }
 
 }
 
 extension ResearchDetailsPresenter: ResearchDetailsInteractorOutput {
+    func didObtainResearchDetails(research: ResearchPlainObject) {
+        view?.configure(with: research)
+    }
 
+    func didFailObtainResearchDetails() {
+
+    }
 }
 
 extension ResearchDetailsPresenter {

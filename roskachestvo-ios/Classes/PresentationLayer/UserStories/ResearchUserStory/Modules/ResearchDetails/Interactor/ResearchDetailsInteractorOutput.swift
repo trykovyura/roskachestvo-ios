@@ -9,5 +9,6 @@
 import Foundation
 
 protocol ResearchDetailsInteractorOutput: class {
-
+    func didObtainResearchDetails(research: ResearchPlainObject)
+    func didFailObtainResearchDetails()
 }

@@ -23,6 +23,7 @@ class ResearchDetailsModuleConfigurator {
         let presenter = ResearchDetailsPresenter(view: viewController, interactor: interactor, router: router)
 
         interactor.output = presenter
+        interactor.researchNetworkService = MainAssembler.sharedInstance.resolve(ResearchNetworkServiceType.self)
 
         viewController.output = presenter
         viewController.moduleInput = presenter

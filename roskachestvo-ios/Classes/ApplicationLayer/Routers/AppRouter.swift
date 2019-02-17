@@ -55,8 +55,8 @@ final class AppRouter {
         v1.navigationBar.isTranslucent = true
         UINavigationBar.appearance().tintColor = R.color.viridianGreen()
         UINavigationBar.appearance().titleTextAttributes =
-                [NSAttributedString.Key.foregroundColor: R.color.viridianGreen(),
-                 NSAttributedString.Key.font: R.font.backpackBold(size: 15)]
+            [NSAttributedString.Key.foregroundColor: R.color.viridianGreen()!,
+             NSAttributedString.Key.font: R.font.backpackBold(size: 15)!]
         let v2 = UINavigationController(rootViewController: UIViewController())
         let v3 = UINavigationController(rootViewController: UIViewController())
         let v4 = UINavigationController(rootViewController: UIViewController())

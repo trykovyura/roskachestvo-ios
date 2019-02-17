@@ -6,8 +6,25 @@
 //  Copyright © 2019 trykov.ru. All rights reserved.
 //
 
+import RxSwift
+
 class ResearchDetailsInteractor: ResearchDetailsInteractorInput {
 
     weak var output: ResearchDetailsInteractorOutput!
 
+    var researchNetworkService: ResearchNetworkServiceType!
+
+    let disposeBag = DisposeBag()
+
+    func researchDetails(with researchId: String) {
+        researchNetworkService.research(id: researchId)
+                .observeOn(MainScheduler.instance)
+                .subscribe(
+                        onNext: { [weak self] research in
+                            self?.output.didObtainResearchDetails(research: research)
+                        }, onError: { [weak self] _ in
+                            self?.output.didFailObtainResearchDetails()
+                        })
+                .disposed(by: disposeBag)
+    }
 }

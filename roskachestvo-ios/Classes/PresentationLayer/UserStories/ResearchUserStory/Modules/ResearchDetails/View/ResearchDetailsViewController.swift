@@ -25,8 +25,8 @@ class ResearchDetailsViewController: UIViewController, ResearchDetailsViewInput 
     /// Abstract manager for building main elements
     lazy var adapter: ListAdapter = { [unowned self] in
         let listAdapter: ListAdapter = ListAdapter(updater: ListAdapterUpdater(),
-                    viewController: self,
-                    workingRangeSize: 3)
+                viewController: self,
+                workingRangeSize: 3)
         listAdapter.dataSource = self.dataDisplayManager
         return listAdapter
     }()
@@ -56,7 +56,12 @@ class ResearchDetailsViewController: UIViewController, ResearchDetailsViewInput 
             make.left.equalToSuperview()
             make.right.equalToSuperview()
         }
-     }
+    }
+
+    func configure(with research: ResearchPlainObject) {
+        dataDisplayManager.configure(research: research)
+        adapter.performUpdates(animated: true)
+    }
 }
 
 extension ResearchDetailsViewController: ResearchDetailsDataDisplayManagerOutput {

@@ -8,7 +8,7 @@
 
 import IGListKit
 
-protocol MainFeedDataDisplayManagerOutput: class, MainFeedSectionControllerOutput {
+protocol MainFeedDataDisplayManagerOutput: MainFeedSectionControllerOutput {
 
 }
 

@@ -18,8 +18,7 @@ class MainFeedRouter: MainFeedRouterInput {
 
     func openResearchDetails(with id: String) {
         let segueId: String = R.segue.mainFeedViewController.openResearchDetailsSegue.identifier
-        transitionHandler!.openModule?(usingSegue: segueId).thenChain {
-            (moduleInput) -> RamblerViperModuleOutput? in
+        transitionHandler?.openModule!(usingSegue: segueId).thenChain { (moduleInput) -> RamblerViperModuleOutput? in
 
             guard let moduleInput = moduleInput as? ResearchDetailsModuleInput else {
                 fatalError("Invalid module type \(ResearchDetailsModuleInput.self)")

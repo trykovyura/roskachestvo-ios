@@ -18,9 +18,9 @@ class ResearchDetailsDataDisplayManager: NSObject {
 
      weak var delegate: ResearchDetailsDataDisplayManagerOutput?
 
-     func configure() {
+     func configure(research: ResearchPlainObject) {
          viewModels.removeAll()
-         let viewModel = ResearchDetailsCellViewModel(id: "id", name: "name")
+         let viewModel = ResearchDetailsCellViewModel(id: "id", name: research.anons)
          viewModels.append(ResearchDetailsSectionViewModel(viewModel: viewModel))
      }
 }

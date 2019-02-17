@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ResearchDetailsInteractorInput {
-
+    func researchDetails(with researchId: String)
 }
