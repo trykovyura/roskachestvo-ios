@@ -8,7 +8,7 @@
 
 import IGListKit
 
-protocol ResearchDetailsDataDisplayManagerOutput: class {
+protocol ResearchDetailsDataDisplayManagerOutput: ResearchDetailsSectionControllerOutput {
 
 }
 
@@ -37,7 +37,7 @@ extension ResearchDetailsDataDisplayManager: ListAdapterDataSource {
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         switch object {
         case is ResearchDetailsSectionViewModel:
-            return ResearchDetailsSectionController()
+            return ResearchDetailsSectionController(output: delegate)
         default:
             fatalError()
         }

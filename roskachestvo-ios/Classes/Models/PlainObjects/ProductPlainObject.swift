@@ -8,8 +8,8 @@ import Mapper
 struct ProductPlainObject: Mappable {
     let name: String
     let status: ProductType
-    let producer: String
-    let trademark: String
+    let producer: String?
+    let trademark: String?
     let url: String
     let researchResults: String
     let violations: String?
@@ -21,12 +21,12 @@ struct ProductPlainObject: Mappable {
 
     init(map: Mapper) throws {
         name = try map.from("name")
-        status = try map.from("status")
-        producer = try map.from("producer")
-        trademark = try map.from("trademark")
+        status =  map.optionalFrom("status") ?? .unknown
+        producer = map.optionalFrom("producer")
+        trademark = map.optionalFrom("trademark")
         url = try map.from("url")
         researchResults = try map.from("research_results")
-        violations = try map.from("violations")
+        violations = map.optionalFrom("violations")
         properties = try map.from("properties")
         indicators = try map.from("indicators")
         pros = try map.from("+")

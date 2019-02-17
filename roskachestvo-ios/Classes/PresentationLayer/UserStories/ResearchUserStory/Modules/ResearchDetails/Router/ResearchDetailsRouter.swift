@@ -15,4 +15,16 @@ class ResearchDetailsRouter: ResearchDetailsRouterInput {
     init(transitionHandler: RamblerViperModuleTransitionHandlerProtocol) {
         self.transitionHandler = transitionHandler
     }
+
+    func openProductDetails(with id: String) {
+        let segueId: String = R.segue.researchDetailsViewController.openProductDetailsSegue.identifier
+        transitionHandler?.openModule!(usingSegue: segueId).thenChain { (moduleInput) -> RamblerViperModuleOutput? in
+
+            guard let moduleInput = moduleInput as? ProductDetailsModuleInput else {
+                fatalError("Invalid module type \(ProductDetailsModuleInput.self)")
+            }
+            moduleInput.configure(with: id)
+            return nil
+        }
+    }
 }

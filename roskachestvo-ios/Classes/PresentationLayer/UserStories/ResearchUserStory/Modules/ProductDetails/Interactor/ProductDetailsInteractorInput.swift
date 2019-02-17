@@ -1,5 +1,5 @@
 //
-//  ResearchDetailsResearchDetailsRouterInput.swift
+//  ProductDetailsProductDetailsInteractorInput.swift
 //  roskachestvo-ios
 //
 //  Created by trykov on 17/02/2019.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ResearchDetailsRouterInput {
-    func openProductDetails(with id: String)
+protocol ProductDetailsInteractorInput {
+    func productDetails(with productId: String)
 }

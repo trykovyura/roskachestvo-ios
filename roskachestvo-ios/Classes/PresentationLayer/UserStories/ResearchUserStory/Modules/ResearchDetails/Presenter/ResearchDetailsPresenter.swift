@@ -37,6 +37,9 @@ extension ResearchDetailsPresenter: ResearchDetailsViewOutput {
         interactor.researchDetails(with: researchId)
     }
 
+    func didTriggerProduct(with id: String) {
+        router.openProductDetails(with: id)
+    }
 }
 
 extension ResearchDetailsPresenter: ResearchDetailsInteractorOutput {

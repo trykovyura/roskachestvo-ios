@@ -1,5 +1,5 @@
 //
-//  ResearchDetailsResearchDetailsSectionController.swift
+//  ProductDetailsProductDetailsSectionController.swift
 //  roskachestvo-ios
 //
 //  Created by trykov on 17/02/2019.
@@ -8,31 +8,22 @@
 
 import IGListKit
 
-protocol ResearchDetailsSectionControllerOutput: class {
-    func didSelectProduct(with id: String)
-}
-
-class ResearchDetailsSectionController: ListBindingSectionController<ResearchDetailsSectionViewModel>,
+class ProductDetailsSectionController: ListBindingSectionController<ProductDetailsSectionViewModel>,
                                                        ListBindingSectionControllerDataSource {
 
-    weak var output: ResearchDetailsSectionControllerOutput?
-
-    init(output: ResearchDetailsSectionControllerOutput?) {
+    override init() {
         super.init()
-        self.output = output
         dataSource = self
-        selectionDelegate = self
         inset = UIEdgeInsets(top: 10, left: 4, bottom: 10, right: 4)
     }
 
     func sectionController(_ sectionController: ListBindingSectionController<ListDiffable>,
                            viewModelsFor object: Any) -> [ListDiffable] {
         var viewModels = [ListDiffable]()
-        guard let object = object as? ResearchDetailsSectionViewModel else {
+        guard let object = object as? ProductDetailsSectionViewModel else {
             return viewModels
         }
         viewModels.append(object.viewModel)
-        viewModels.append(contentsOf: object.products)
         return viewModels
     }
 
@@ -53,8 +44,6 @@ class ResearchDetailsSectionController: ListBindingSectionController<ResearchDet
         let width = obtainSectionWidth()
         let height: CGFloat
         switch viewModel {
-        case let vm as ResearchDetailsCellViewModel:
-            height = vm.name.textHeight(width: width, customFont: R.font.backpackBold(size: 15)!)
         default:
             if let viewModel = viewModel as? ViewModel, let cellHeight = viewModel.defaultHeight {
                 height = cellHeight
@@ -63,16 +52,5 @@ class ResearchDetailsSectionController: ListBindingSectionController<ResearchDet
             }
         }
         return CGSize(width: width, height: height)
-    }
-}
-
-extension ResearchDetailsSectionController: ListBindingSectionControllerSelectionDelegate {
-
-    func sectionController(_ sectionController: ListBindingSectionController<ListDiffable>,
-                           didSelectItemAt index: Int, viewModel: Any) {
-        guard let product = viewModel as? ProductCellViewModel else {
-            return
-        }
-        output?.didSelectProduct(with: product.id)
     }
 }

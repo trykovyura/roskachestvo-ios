@@ -1,12 +1,12 @@
 //
-//  ResearchDetailsResearchDetailsViewOutput.swift
+//  ProductDetailsProductDetailsViewOutput.swift
 //  roskachestvo-ios
 //
 //  Created by trykov on 17/02/2019.
 //  Copyright © 2019 trykov.ru. All rights reserved.
 //
 
-protocol ResearchDetailsViewOutput {
+protocol ProductDetailsViewOutput {
 
     /**
         @author trykov
@@ -14,5 +14,4 @@ protocol ResearchDetailsViewOutput {
     */
 
     func didTriggerViewReady()
-    func didTriggerProduct(with id: String)
 }

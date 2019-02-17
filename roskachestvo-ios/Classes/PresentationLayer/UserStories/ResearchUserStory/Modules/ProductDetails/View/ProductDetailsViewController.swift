@@ -1,5 +1,5 @@
 //
-//  ResearchDetailsResearchDetailsViewController.swift
+//  ProductDetailsProductDetailsViewController.swift
 //  roskachestvo-ios
 //
 //  Created by trykov on 17/02/2019.
@@ -10,10 +10,10 @@ import UIKit
 import SnapKit
 import IGListKit
 
-class ResearchDetailsViewController: UIViewController, ResearchDetailsViewInput {
+class ProductDetailsViewController: UIViewController, ProductDetailsViewInput {
 
-    var output: ResearchDetailsViewOutput!
-    var dataDisplayManager: ResearchDetailsDataDisplayManager!
+    var output: ProductDetailsViewOutput!
+    var dataDisplayManager: ProductDetailsDataDisplayManager!
 
     lazy var collectionView: UICollectionView = {
         let collectionViewLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -38,7 +38,7 @@ class ResearchDetailsViewController: UIViewController, ResearchDetailsViewInput 
         output.didTriggerViewReady()
     }
 
-    // MARK: ResearchDetailsViewInput
+    // MARK: ProductDetailsViewInput
     func setupInitialState() {
         view.addSubview(collectionView)
         adapter.collectionView = collectionView
@@ -59,15 +59,12 @@ class ResearchDetailsViewController: UIViewController, ResearchDetailsViewInput 
         }
     }
 
-    func configure(with research: ResearchPlainObject) {
-        navigationController?.title = research.name
-        dataDisplayManager.configure(research: research)
+    func configure(with product: ProductPlainObject) {
+        dataDisplayManager.configure(product: product)
         adapter.performUpdates(animated: true)
     }
 }
 
-extension ResearchDetailsViewController: ResearchDetailsDataDisplayManagerOutput {
-    func didSelectProduct(with id: String) {
-        output.didTriggerProduct(with: id)
-    }
+extension ProductDetailsViewController: ProductDetailsDataDisplayManagerOutput {
+
 }

@@ -20,6 +20,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ocM-la-PON"/>
                     </view>
+                    <connections>
+                        <segue destination="oM4-5Z-llu" kind="show" identifier="openProductDetailsSegue" id="bUz-Fg-Zxv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f0D-eH-3NG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="Wlh-J1-Z04" customClass="ResearchDetailsModuleInitializer" customModule="roskachestvo_ios" customModuleProvider="target">
@@ -29,6 +32,14 @@
                 </customObject>
             </objects>
             <point key="canvasLocation" x="122" y="30"/>
+        </scene>
+        <!--ProductDetails-->
+        <scene sceneID="SjE-Le-ejQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ProductDetails" id="oM4-5Z-llu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iec-Av-gFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="601" y="-4"/>
         </scene>
     </scenes>
 </document>
