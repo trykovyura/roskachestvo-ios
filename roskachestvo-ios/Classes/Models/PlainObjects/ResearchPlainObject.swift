@@ -12,7 +12,7 @@ struct ResearchPlainObject: Mappable {
     let anons: String
     let productIds: [String]
     let image: ImagePlainObject
-    let statistics: ResearchStatisticPlainObject
+    let statistics: ResearchStatisticPlainObject?
     let products: [ProductsPlainObject]
 
     init(map: Mapper) throws {
@@ -22,7 +22,7 @@ struct ResearchPlainObject: Mappable {
         anons = try map.from("anons")
         productIds = try map.from("products")
         image = try map.from("image")
-        statistics = try map.from("statistics")
+        statistics = map.optionalFrom("statistics")
         products = try map.from("products_info")
     }
 }

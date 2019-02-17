@@ -18,6 +18,7 @@ class ResearchDetailsViewController: UIViewController, ResearchDetailsViewInput 
     lazy var collectionView: UICollectionView = {
         let collectionViewLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        collectionView.backgroundColor = .white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -59,6 +60,7 @@ class ResearchDetailsViewController: UIViewController, ResearchDetailsViewInput 
     }
 
     func configure(with research: ResearchPlainObject) {
+        navigationController?.title = research.name
         dataDisplayManager.configure(research: research)
         adapter.performUpdates(animated: true)
     }

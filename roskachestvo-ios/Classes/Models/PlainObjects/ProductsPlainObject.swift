@@ -9,21 +9,21 @@ struct ProductsPlainObject: Mappable {
 
     let status: ProductType
     let barcode: String?
-    let trademark: String
+    let trademark: String?
     let id: String
     let name: String
-    let producer: String
+    let producer: String?
     let category: String
     let url: String
     let image: ImagePlainObject
 
     init(map: Mapper) throws {
-        status = try map.from("status")
+        status = map.optionalFrom("status") ?? .unknown
         barcode = map.optionalFrom("barcode")
-        trademark = try map.from("trademark")
+        trademark = map.optionalFrom("trademark")
         id = try map.from("id")
         name = try map.from("name")
-        producer = try map.from("producer")
+        producer = map.optionalFrom("producer")
         category = try map.from("category")
         url = try map.from("url")
         image = try map.from("image")

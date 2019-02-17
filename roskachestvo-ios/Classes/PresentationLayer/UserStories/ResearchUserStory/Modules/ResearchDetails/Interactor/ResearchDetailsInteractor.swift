@@ -22,7 +22,8 @@ class ResearchDetailsInteractor: ResearchDetailsInteractorInput {
                 .subscribe(
                         onNext: { [weak self] research in
                             self?.output.didObtainResearchDetails(research: research)
-                        }, onError: { [weak self] _ in
+                        }, onError: { [weak self] error in
+                            print(error)
                             self?.output.didFailObtainResearchDetails()
                         })
                 .disposed(by: disposeBag)
