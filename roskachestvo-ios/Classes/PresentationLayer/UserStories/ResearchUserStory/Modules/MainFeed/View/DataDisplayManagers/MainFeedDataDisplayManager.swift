@@ -8,7 +8,7 @@
 
 import IGListKit
 
-protocol MainFeedDataDisplayManagerOutput: class {
+protocol MainFeedDataDisplayManagerOutput: class, MainFeedSectionControllerOutput {
 
 }
 
@@ -40,7 +40,7 @@ extension MainFeedDataDisplayManager: ListAdapterDataSource {
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         switch object {
         case is MainFeedSectionViewModel:
-            return MainFeedSectionController()
+            return MainFeedSectionController(output: delegate)
         default:
             fatalError()
         }

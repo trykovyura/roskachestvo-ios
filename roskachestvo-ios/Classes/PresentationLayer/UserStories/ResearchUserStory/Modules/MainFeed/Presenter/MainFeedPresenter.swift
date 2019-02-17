@@ -30,6 +30,9 @@ extension MainFeedPresenter: MainFeedViewOutput {
         interactor.categoriesWithResearches()
     }
 
+    func didTriggerResearch(with id: String) {
+        router.openResearchDetails(with: id)
+    }
 }
 
 extension MainFeedPresenter: MainFeedInteractorOutput {

@@ -1,12 +1,12 @@
 //
-//  MainFeedMainFeedViewOutput.swift
+//  ResearchDetailsResearchDetailsViewOutput.swift
 //  roskachestvo-ios
 //
-//  Created by trykov on 10/02/2019.
+//  Created by trykov on 17/02/2019.
 //  Copyright © 2019 trykov.ru. All rights reserved.
 //
 
-protocol MainFeedViewOutput {
+protocol ResearchDetailsViewOutput {
 
     /**
         @author trykov
@@ -14,5 +14,4 @@ protocol MainFeedViewOutput {
     */
 
     func didTriggerViewReady()
-    func didTriggerResearch(with id: String)
 }

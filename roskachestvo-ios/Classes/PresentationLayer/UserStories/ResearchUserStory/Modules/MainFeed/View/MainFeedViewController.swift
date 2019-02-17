@@ -84,5 +84,7 @@ class MainFeedViewController: UIViewController, MainFeedViewInput {
 }
 
 extension MainFeedViewController: MainFeedDataDisplayManagerOutput {
-
+    func didSelectResearch(with id: String) {
+        output.didTriggerResearch(with: id)
+    }
 }

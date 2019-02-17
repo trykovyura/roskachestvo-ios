@@ -9,5 +9,5 @@
 import Foundation
 
 protocol MainFeedRouterInput {
-
+    func openResearchDetails(with id: String)
 }

@@ -1,38 +1,29 @@
 //
-//  MainFeedMainFeedSectionController.swift
+//  ResearchDetailsResearchDetailsSectionController.swift
 //  roskachestvo-ios
 //
-//  Created by trykov on 10/02/2019.
+//  Created by trykov on 17/02/2019.
 //  Copyright © 2019 trykov.ru. All rights reserved.
 //
 
 import IGListKit
 
-protocol MainFeedSectionControllerOutput: class {
-    func didSelectResearch(with id: String)
-}
-
-class MainFeedSectionController: ListBindingSectionController<MainFeedSectionViewModel>,
+class ResearchDetailsSectionController: ListBindingSectionController<ResearchDetailsSectionViewModel>,
                                                        ListBindingSectionControllerDataSource {
 
-    weak var output: MainFeedSectionControllerOutput?
-
-    init(output: MainFeedSectionControllerOutput?) {
+    override init() {
         super.init()
-        self.output = output
         dataSource = self
-        selectionDelegate = self
-        inset = UIEdgeInsets(top: 15, left: 20, bottom: 0, right: 20)
+        inset = UIEdgeInsets(top: 10, left: 4, bottom: 10, right: 4)
     }
 
     func sectionController(_ sectionController: ListBindingSectionController<ListDiffable>,
                            viewModelsFor object: Any) -> [ListDiffable] {
         var viewModels = [ListDiffable]()
-        guard let object = object as? MainFeedSectionViewModel else {
+        guard let object = object as? ResearchDetailsSectionViewModel else {
             return viewModels
         }
         viewModels.append(object.viewModel)
-        viewModels.append(contentsOf: object.researches)
         return viewModels
     }
 
@@ -61,16 +52,5 @@ class MainFeedSectionController: ListBindingSectionController<MainFeedSectionVie
             }
         }
         return CGSize(width: width, height: height)
-    }
-}
-
-extension MainFeedSectionController: ListBindingSectionControllerSelectionDelegate {
-
-    func sectionController(_ sectionController: ListBindingSectionController<ListDiffable>,
-                           didSelectItemAt index: Int, viewModel: Any) {
-        guard let research = viewModel as? ResearchCellViewModel else {
-            return
-        }
-        output?.didSelectResearch(with: research.id)
     }
 }
