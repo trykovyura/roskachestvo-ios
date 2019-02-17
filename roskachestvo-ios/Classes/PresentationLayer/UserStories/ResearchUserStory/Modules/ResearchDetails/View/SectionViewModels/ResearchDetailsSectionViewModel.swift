@@ -11,9 +11,11 @@ import IGListKit
 class ResearchDetailsSectionViewModel: NSObject {
 
     let viewModel: ResearchDetailsCellViewModel
+    let products: [ListDiffable]
 
-    init(viewModel: ResearchDetailsCellViewModel) {
+    init(viewModel: ResearchDetailsCellViewModel, products: [ListDiffable]) {
        self.viewModel = viewModel
+       self.products = products
     }
 }
 

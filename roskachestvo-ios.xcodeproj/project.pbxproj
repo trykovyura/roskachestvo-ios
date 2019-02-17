@@ -51,11 +51,14 @@
 		B18B35B2D8FF356B204CBA00 /* MainFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18B3514AE5FFCB1C0730DCD /* MainFeed.storyboard */; };
 		B18B3665BDDC446B066F23D0 /* ResearchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B37A7596D24A528876B35 /* ResearchCellViewModel.swift */; };
 		B18B37DB720F3D7FC54FAEC3 /* UIFont+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3CEF49597B85B25402F0 /* UIFont+Custom.swift */; };
+		B18B37F09155F8C1606B3D70 /* LabelCellCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3436DE523A8EA59A7B97 /* LabelCellCalculator.swift */; };
 		B18B389CED0765AC4CB82A2E /* UIColor+TextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B33EC6B32EA505CBFB43D /* UIColor+TextColor.swift */; };
 		B18B3A634E4A51D37AC8948C /* Backpack-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B18B339419865226E87E4C4F /* Backpack-Light.otf */; };
 		B18B3B3454EE5AF1630722B4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B368D8A120879BA2B9ADB /* ViewModel.swift */; };
 		B18B3B594B91D29CC8CBD1E8 /* Backpack-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B18B31F1F891FEA5C6038C12 /* Backpack-Regular.otf */; };
 		B18B3B796D03DA550DEA3184 /* LTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B349252AAD9FE34D1F3C6 /* LTView.swift */; };
+		B18B3B7E00A6899CD4908BB8 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3498C6272A65D4B1F2EB /* ProductCell.swift */; };
+		B18B3DC41F90324FC7796FAF /* ProductCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3B76FDE58F6166EE33F2 /* ProductCellViewModel.swift */; };
 		B18B3E33E83A802720D0A1E9 /* TabBarBasicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3D754E1CFF47F5E53AC6 /* TabBarBasicContentView.swift */; };
 		B18B3F3D7142C03938A9ADB9 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3115CCC49D47A9A39F14 /* AppRouter.swift */; };
 		B18B3F3DE5DAEC0E5BB18FC1 /* UIColor+ApplicationPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B3072F541D6FEFD4ED429 /* UIColor+ApplicationPalette.swift */; };
@@ -145,7 +148,9 @@
 		B18B334BD74DF4BE40E965E6 /* ProximaNovaBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file.otf; path = ProximaNovaBold.otf; sourceTree = "<group>"; };
 		B18B339419865226E87E4C4F /* Backpack-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file.otf; path = "Backpack-Light.otf"; sourceTree = "<group>"; };
 		B18B33EC6B32EA505CBFB43D /* UIColor+TextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+TextColor.swift"; sourceTree = "<group>"; };
+		B18B3436DE523A8EA59A7B97 /* LabelCellCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelCellCalculator.swift; sourceTree = "<group>"; };
 		B18B349252AAD9FE34D1F3C6 /* LTView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTView.swift; sourceTree = "<group>"; };
+		B18B3498C6272A65D4B1F2EB /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		B18B3514AE5FFCB1C0730DCD /* MainFeed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainFeed.storyboard; sourceTree = "<group>"; };
 		B18B35A8DA64620F2ECFD68C /* Backpack-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file.otf; path = "Backpack-Bold.otf"; sourceTree = "<group>"; };
 		B18B368D8A120879BA2B9ADB /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -153,6 +158,7 @@
 		B18B381FDF965C85E9EE9FB7 /* UINavigationView+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationView+Custom.swift"; sourceTree = "<group>"; };
 		B18B3AA17DE0A14F0D3BA928 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B18B3B0EAF1998B339C6587C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		B18B3B76FDE58F6166EE33F2 /* ProductCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCellViewModel.swift; sourceTree = "<group>"; };
 		B18B3CB3176704F66A9B9855 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B18B3CEF49597B85B25402F0 /* UIFont+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Custom.swift"; sourceTree = "<group>"; };
 		B18B3D754E1CFF47F5E53AC6 /* TabBarBasicContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarBasicContentView.swift; sourceTree = "<group>"; };
@@ -430,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				274734367C189FFF4C0C84AE /* ResearchDetailsCell.swift */,
+				B18B3498C6272A65D4B1F2EB /* ProductCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -469,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				B18B368D8A120879BA2B9ADB /* ViewModel.swift */,
+				B18B3436DE523A8EA59A7B97 /* LabelCellCalculator.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -844,6 +852,7 @@
 			isa = PBXGroup;
 			children = (
 				0D1664F06F194C1C21B1913B /* ResearchDetailsCellViewModel.swift */,
+				B18B3B76FDE58F6166EE33F2 /* ProductCellViewModel.swift */,
 			);
 			path = CellViewModels;
 			sourceTree = "<group>";
@@ -1177,6 +1186,9 @@
 				9383BA1650668A4548BC7DC6 /* ResearchDetailsRouter.swift in Sources */,
 				278320AF374D11E85C0E84A9 /* ResearchDetailsConfigurator.swift in Sources */,
 				5D4165CC476503FBB170B335 /* ResearchDetailsInitializer.swift in Sources */,
+				B18B3DC41F90324FC7796FAF /* ProductCellViewModel.swift in Sources */,
+				B18B3B7E00A6899CD4908BB8 /* ProductCell.swift in Sources */,
+				B18B37F09155F8C1606B3D70 /* LabelCellCalculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

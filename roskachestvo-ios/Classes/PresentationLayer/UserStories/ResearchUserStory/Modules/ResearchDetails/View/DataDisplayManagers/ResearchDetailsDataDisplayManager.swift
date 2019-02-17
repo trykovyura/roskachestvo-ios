@@ -21,7 +21,10 @@ class ResearchDetailsDataDisplayManager: NSObject {
      func configure(research: ResearchPlainObject) {
          viewModels.removeAll()
          let viewModel = ResearchDetailsCellViewModel(id: "id", name: research.anons)
-         viewModels.append(ResearchDetailsSectionViewModel(viewModel: viewModel))
+         let products = research.products.map { product in
+             ProductCellViewModel(id: product.id, name: product.name, image: product.image.src)
+         }
+         viewModels.append(ResearchDetailsSectionViewModel(viewModel: viewModel, products: products))
      }
 }
 

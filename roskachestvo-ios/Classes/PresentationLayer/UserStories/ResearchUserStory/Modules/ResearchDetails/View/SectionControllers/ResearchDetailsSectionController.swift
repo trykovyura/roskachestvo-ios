@@ -24,6 +24,7 @@ class ResearchDetailsSectionController: ListBindingSectionController<ResearchDet
             return viewModels
         }
         viewModels.append(object.viewModel)
+        viewModels.append(contentsOf: object.products)
         return viewModels
     }
 
@@ -44,6 +45,8 @@ class ResearchDetailsSectionController: ListBindingSectionController<ResearchDet
         let width = obtainSectionWidth()
         let height: CGFloat
         switch viewModel {
+        case let vm as ResearchDetailsCellViewModel:
+            height = vm.name.textHeight(width: width, customFont: R.font.backpackBold(size: 15)!)
         default:
             if let viewModel = viewModel as? ViewModel, let cellHeight = viewModel.defaultHeight {
                 height = cellHeight
