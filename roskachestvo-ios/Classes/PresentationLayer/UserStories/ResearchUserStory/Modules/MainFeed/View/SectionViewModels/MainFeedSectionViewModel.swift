@@ -10,10 +10,10 @@ import IGListKit
 
 class MainFeedSectionViewModel: NSObject {
 
-    let viewModel: MainFeedCellViewModel
+    let viewModel: MainFeedCellViewModel?
     let researches: [ListDiffable]
 
-    init(viewModel: MainFeedCellViewModel, researches: [ListDiffable]) {
+    init(viewModel: MainFeedCellViewModel?, researches: [ListDiffable]) {
        self.viewModel = viewModel
        self.researches = researches
     }

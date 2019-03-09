@@ -10,4 +10,5 @@ import Foundation
 
 protocol MainFeedRouterInput {
     func openResearchDetails(with id: String)
+    func openResearchFeed(with categoryId: String)
 }

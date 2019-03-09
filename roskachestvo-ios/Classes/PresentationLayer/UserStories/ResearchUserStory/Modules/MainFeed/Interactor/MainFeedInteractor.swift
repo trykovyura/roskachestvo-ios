@@ -12,7 +12,11 @@ class MainFeedInteractor: MainFeedInteractorInput {
 
     weak var output: MainFeedInteractorOutput!
 
-    var researchNetworkService: ResearchNetworkServiceType!
+    let researchNetworkService: ResearchNetworkServiceType
+
+    init(researchNetworkService: ResearchNetworkServiceType) {
+        self.researchNetworkService = researchNetworkService
+    }
 
     let disposeBag = DisposeBag()
 

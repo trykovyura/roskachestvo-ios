@@ -1,14 +1,14 @@
 //
-//  MainFeedMainFeedRouter.swift
+//  ResearchFeedResearchFeedRouter.swift
 //  roskachestvo-ios
 //
-//  Created by trykov on 10/02/2019.
+//  Created by trykov on 09/03/2019.
 //  Copyright © 2019 trykov.ru. All rights reserved.
 //
 
 import ViperMcFlurry
 
-class MainFeedRouter: MainFeedRouterInput {
+class ResearchFeedRouter: ResearchFeedRouterInput {
 
     weak var transitionHandler: RamblerViperModuleTransitionHandlerProtocol?
 
@@ -17,25 +17,13 @@ class MainFeedRouter: MainFeedRouterInput {
     }
 
     func openResearchDetails(with id: String) {
-        let segueId: String = R.segue.mainFeedViewController.openResearchDetailsSegue.identifier
+        let segueId: String = R.segue.researchFeedViewController.openResearchDetailsSegue.identifier
         transitionHandler?.openModule!(usingSegue: segueId).thenChain { (moduleInput) -> RamblerViperModuleOutput? in
 
             guard let moduleInput = moduleInput as? ResearchDetailsModuleInput else {
                 fatalError("Invalid module type \(ResearchDetailsModuleInput.self)")
             }
             moduleInput.configure(with: id)
-            return nil
-        }
-    }
-
-    func openResearchFeed(with categoryId: String) {
-        let segueId: String = R.segue.mainFeedViewController.openResearchFeedSegue.identifier
-        transitionHandler?.openModule!(usingSegue: segueId).thenChain { (moduleInput) -> RamblerViperModuleOutput? in
-
-            guard let moduleInput = moduleInput as? ResearchFeedModuleInput else {
-                fatalError("Invalid module type \(ResearchFeedModuleInput.self)")
-            }
-            moduleInput.configure(with: categoryId)
             return nil
         }
     }

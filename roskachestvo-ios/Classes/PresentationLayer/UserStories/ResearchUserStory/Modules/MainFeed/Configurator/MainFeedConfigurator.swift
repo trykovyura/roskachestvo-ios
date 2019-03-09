@@ -19,11 +19,11 @@ class MainFeedModuleConfigurator {
 
     private func configure(viewController: MainFeedViewController) {
         let router = MainFeedRouter(transitionHandler: viewController)
-        let interactor = MainFeedInteractor()
+        let researchNetworkService = MainAssembler.sharedInstance.resolve(ResearchNetworkServiceType.self)
+        let interactor = MainFeedInteractor(researchNetworkService: researchNetworkService)
         let presenter = MainFeedPresenter(view: viewController, interactor: interactor, router: router)
 
         interactor.output = presenter
-        interactor.researchNetworkService = MainAssembler.sharedInstance.resolve(ResearchNetworkServiceType.self)
 
         viewController.output = presenter
         viewController.moduleInput = presenter

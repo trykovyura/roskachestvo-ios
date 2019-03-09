@@ -1,41 +1,29 @@
 //
-//  MainFeedMainFeedSectionController.swift
+//  ResearchFeedResearchFeedSectionController.swift
 //  roskachestvo-ios
 //
-//  Created by trykov on 10/02/2019.
+//  Created by trykov on 09/03/2019.
 //  Copyright © 2019 trykov.ru. All rights reserved.
 //
 
 import IGListKit
 
-protocol MainFeedSectionControllerOutput: class {
-    func didSelectResearch(with id: String)
-    func didSelectCategory(with id: String)
-}
+class ResearchFeedSectionController: ListBindingSectionController<ResearchFeedSectionViewModel>,
+                                                       ListBindingSectionControllerDataSource {
 
-class MainFeedSectionController: ListBindingSectionController<MainFeedSectionViewModel>,
-        ListBindingSectionControllerDataSource {
-
-    weak var output: MainFeedSectionControllerOutput?
-
-    init(output: MainFeedSectionControllerOutput?) {
+    override init() {
         super.init()
-        self.output = output
         dataSource = self
-        selectionDelegate = self
-        inset = UIEdgeInsets(top: 15, left: 20, bottom: 0, right: 20)
+        inset = UIEdgeInsets(top: 10, left: 4, bottom: 10, right: 4)
     }
 
     func sectionController(_ sectionController: ListBindingSectionController<ListDiffable>,
                            viewModelsFor object: Any) -> [ListDiffable] {
         var viewModels = [ListDiffable]()
-        guard let object = object as? MainFeedSectionViewModel else {
+        guard let object = object as? ResearchFeedSectionViewModel else {
             return viewModels
         }
-        if let viewModel = object.viewModel {
-            viewModels.append(viewModel)
-        }
-        viewModels.append(contentsOf: object.researches)
+        viewModels.append(object.viewModel)
         return viewModels
     }
 
@@ -64,20 +52,5 @@ class MainFeedSectionController: ListBindingSectionController<MainFeedSectionVie
             }
         }
         return CGSize(width: width, height: height)
-    }
-}
-
-extension MainFeedSectionController: ListBindingSectionControllerSelectionDelegate {
-
-    func sectionController(_ sectionController: ListBindingSectionController<ListDiffable>,
-                           didSelectItemAt index: Int, viewModel: Any) {
-        switch viewModel {
-        case let viewModel as ResearchCellViewModel:
-            output?.didSelectResearch(with: viewModel.id)
-        case let viewModel as MainFeedCellViewModel:
-            output?.didSelectCategory(with: viewModel.id)
-        default:
-            ()
-        }
     }
 }

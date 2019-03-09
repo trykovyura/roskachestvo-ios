@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xkq-pL-S7p">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Researchfeed View Controller-->
+        <scene sceneID="pZF-NR-9wT">
+            <objects>
+                <viewController id="xkq-pL-S7p" customClass="ResearchFeedViewController" customModule="roskachestvo_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eit-FF-q1i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ldT-fl-co7"/>
+                    </view>
+                    <connections>
+                        <segue destination="Cp1-Tb-Xen" kind="show" identifier="openResearchDetailsSegue" id="QWs-Bl-8hw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qAd-UY-9KB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="mWP-sg-h35" customClass="ResearchFeedModuleInitializer" customModule="roskachestvo_ios" customModuleProvider="target">
+                    <connections>
+                        <outlet property="researchfeedViewController" destination="xkq-pL-S7p" id="Bqd-IR-rRL"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="81" y="55"/>
+        </scene>
+        <!--ResearchDetails-->
+        <scene sceneID="G4G-m8-9Dt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ResearchDetails" id="Cp1-Tb-Xen" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RUE-y9-HCM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="694" y="23"/>
+        </scene>
+    </scenes>
+</document>

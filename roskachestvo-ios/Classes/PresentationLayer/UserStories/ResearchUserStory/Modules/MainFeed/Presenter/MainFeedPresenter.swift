@@ -35,7 +35,7 @@ extension MainFeedPresenter: MainFeedViewOutput {
     }
 
     func didTriggerCategory(with id: String) {
-        print("category : \(id)")
+        router.openResearchFeed(with: id)
     }
 }
 

@@ -27,7 +27,7 @@ class MainAssembler {
     }
 
     /// Function wraps resolving through singleton
-    public func resolve<Service>(_ serviceType: Service.Type) -> Service? {
-        return assembler.resolver.resolve(serviceType, name: nil)
+    public func resolve<Service>(_ serviceType: Service.Type) -> Service {
+        return assembler.resolver.resolve(serviceType, name: nil)!
     }
 }
