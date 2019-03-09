@@ -15,4 +15,5 @@ protocol MainFeedViewOutput {
 
     func didTriggerViewReady()
     func didTriggerResearch(with id: String)
+    func didTriggerCategory(with id: String)
 }

@@ -10,10 +10,11 @@ import IGListKit
 
 protocol MainFeedSectionControllerOutput: class {
     func didSelectResearch(with id: String)
+    func didSelectCategory(with id: String)
 }
 
 class MainFeedSectionController: ListBindingSectionController<MainFeedSectionViewModel>,
-                                                       ListBindingSectionControllerDataSource {
+        ListBindingSectionControllerDataSource {
 
     weak var output: MainFeedSectionControllerOutput?
 
@@ -68,9 +69,13 @@ extension MainFeedSectionController: ListBindingSectionControllerSelectionDelega
 
     func sectionController(_ sectionController: ListBindingSectionController<ListDiffable>,
                            didSelectItemAt index: Int, viewModel: Any) {
-        guard let research = viewModel as? ResearchCellViewModel else {
-            return
+        switch viewModel {
+        case let viewModel as ResearchCellViewModel:
+            output?.didSelectResearch(with: viewModel.id)
+        case let viewModel as MainFeedCellViewModel:
+            output?.didSelectCategory(with: viewModel.id)
+        default:
+            ()
         }
-        output?.didSelectResearch(with: research.id)
     }
 }

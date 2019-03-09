@@ -33,6 +33,10 @@ extension MainFeedPresenter: MainFeedViewOutput {
     func didTriggerResearch(with id: String) {
         router.openResearchDetails(with: id)
     }
+
+    func didTriggerCategory(with id: String) {
+        print("category : \(id)")
+    }
 }
 
 extension MainFeedPresenter: MainFeedInteractorOutput {

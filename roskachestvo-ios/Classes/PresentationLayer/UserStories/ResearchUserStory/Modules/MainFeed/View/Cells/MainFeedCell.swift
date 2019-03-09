@@ -51,6 +51,7 @@ class MainFeedCell: UICollectionViewCell, ListBindable {
        contentView.addSubview(view)
        contentView.clipsToBounds = true
        contentView.layer.cornerRadius = 4
+       addShadow()
        view.addSubview(nameLabel)
        imageView.snp.makeConstraints { make in
            make.edges.equalToSuperview()

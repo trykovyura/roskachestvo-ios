@@ -66,10 +66,10 @@ class MainFeedViewController: UIViewController, MainFeedViewInput {
         }
         collectionView.snp.makeConstraints { (make) in
             if #available(iOS 11.0, *) {
-                make.top.equalToSuperview()
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
                 make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             } else {
-                make.top.equalToSuperview()
+                make.top.equalTo(self.topLayoutGuide.snp.bottom)
                 make.bottom.equalTo(self.bottomLayoutGuide.snp.top)
             }
             make.leading.equalToSuperview().offset(10)
@@ -86,5 +86,9 @@ class MainFeedViewController: UIViewController, MainFeedViewInput {
 extension MainFeedViewController: MainFeedDataDisplayManagerOutput {
     func didSelectResearch(with id: String) {
         output.didTriggerResearch(with: id)
+    }
+
+    func didSelectCategory(with id: String) {
+        output.didTriggerCategory(with: id)
     }
 }
