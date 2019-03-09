@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  roskachestvo-ios
+
+  Created by Юрий Трыков on 2019-03-09.
+    Copyright © 2019 trykov. All rights reserved.
+*/
+
+"category.title"="Категории";
+"research.title"="Исследования";

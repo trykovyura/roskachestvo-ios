@@ -53,7 +53,7 @@ class MainFeedViewController: UIViewController, MainFeedViewInput {
         view.addSubview(collectionView)
         adapter.collectionView = collectionView
         configureViewConstraints()
-        navigationItem.title = "Исследования"
+        navigationItem.title = R.string.localizable.categoryTitle()
         view.backgroundColor = R.color.athensGray()
     }
 
