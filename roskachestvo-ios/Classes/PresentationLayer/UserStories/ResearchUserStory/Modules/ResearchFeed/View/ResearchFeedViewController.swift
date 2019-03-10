@@ -84,9 +84,6 @@ class ResearchFeedViewController: UIViewController, ResearchFeedViewInput {
 }
 
 extension ResearchFeedViewController: ResearchFeedDataDisplayManagerOutput {
-    func didSelectCategory(with id: String) {
-
-    }
 
     func didSelectResearch(with id: String) {
         output.didTriggerResearch(with: id)

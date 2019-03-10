@@ -8,11 +8,19 @@
 
 import IGListKit
 
+protocol ResearchFeedSectionControllerOutput: class {
+    func didSelectResearch(with id: String)
+}
+
 class ResearchFeedSectionController: ListBindingSectionController<ResearchFeedSectionViewModel>,
                                                        ListBindingSectionControllerDataSource {
 
-    override init() {
+    weak var output: ResearchFeedSectionControllerOutput?
+
+    init(output: ResearchFeedSectionControllerOutput?) {
         super.init()
+        self.output = output
+        selectionDelegate = self
         dataSource = self
         inset = UIEdgeInsets(top: 10, left: 4, bottom: 10, right: 4)
     }
@@ -52,5 +60,18 @@ class ResearchFeedSectionController: ListBindingSectionController<ResearchFeedSe
             }
         }
         return CGSize(width: width, height: height)
+    }
+}
+
+extension ResearchFeedSectionController: ListBindingSectionControllerSelectionDelegate {
+
+    func sectionController(_ sectionController: ListBindingSectionController<ListDiffable>,
+                           didSelectItemAt index: Int, viewModel: Any) {
+        switch viewModel {
+        case let viewModel as ResearchCellViewModel:
+            output?.didSelectResearch(with: viewModel.id)
+        default:
+            ()
+        }
     }
 }

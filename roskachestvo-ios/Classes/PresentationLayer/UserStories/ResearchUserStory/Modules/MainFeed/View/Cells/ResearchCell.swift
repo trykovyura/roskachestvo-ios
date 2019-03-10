@@ -24,6 +24,13 @@ class ResearchCell: UICollectionViewCell, ListBindable {
         return view
     }()
 
+    lazy var bottomBar: ResearchSummaryView = {
+        let view = ResearchSummaryView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -44,15 +51,17 @@ class ResearchCell: UICollectionViewCell, ListBindable {
         } else {
             imageView.image = nil
         }
-
+        bottomBar.configure(with: viewModel.summary)
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(imageView)
         contentView.addSubview(view)
+        contentView.addSubview(bottomBar)
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 4
+        addShadow()
         view.addSubview(nameLabel)
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -69,6 +78,12 @@ class ResearchCell: UICollectionViewCell, ListBindable {
             make.trailing.lessThanOrEqualToSuperview()
             make.top.lessThanOrEqualToSuperview()
             make.bottom.lessThanOrEqualToSuperview()
+        }
+        bottomBar.snp.makeConstraints { make in
+            make.height.equalTo(40)
+            make.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
 

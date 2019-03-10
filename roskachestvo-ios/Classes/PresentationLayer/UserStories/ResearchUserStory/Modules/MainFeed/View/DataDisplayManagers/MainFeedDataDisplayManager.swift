@@ -24,7 +24,10 @@ class MainFeedDataDisplayManager: NSObject {
              let viewModel = MainFeedCellViewModel(id: String(category.id), name: category.name,
                      image: category.researches.first?.image.src)
              let researches = category.researches.map { research in
-                 ResearchCellViewModel(id: research.id, name: research.name, image: research.image.src)
+                 ResearchCellViewModel(id: research.id,
+                         name: research.name,
+                         image: research.image.src,
+                         summary: research.summary)
              }
              return MainFeedSectionViewModel(viewModel: viewModel, researches: [])
          })

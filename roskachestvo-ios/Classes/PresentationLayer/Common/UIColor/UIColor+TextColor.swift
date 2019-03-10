@@ -62,11 +62,15 @@ extension UIColor {
         }
 
         enum Red {
-
+            static let terracotta = UIColor.ApplicationPalete.Red.terracotta
         }
 
         enum Blue {
 
+        }
+
+        enum Yellow {
+            static let buttercup = UIColor.ApplicationPalete.Yellow.buttercup
         }
     }
 }

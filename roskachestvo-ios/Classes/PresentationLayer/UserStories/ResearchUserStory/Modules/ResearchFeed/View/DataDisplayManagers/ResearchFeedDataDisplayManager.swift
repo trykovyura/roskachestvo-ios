@@ -8,7 +8,7 @@
 
 import IGListKit
 
-protocol ResearchFeedDataDisplayManagerOutput: MainFeedSectionControllerOutput {
+protocol ResearchFeedDataDisplayManagerOutput: ResearchFeedSectionControllerOutput {
 
 }
 
@@ -20,10 +20,14 @@ class ResearchFeedDataDisplayManager: NSObject {
 
      func configure(researches: [ResearchesPlainObject]) {
          viewModels.removeAll()
-         let researches = researches.map { research in
-             ResearchCellViewModel(id: research.id, name: research.name, image: research.image.src)
+         let researches: [ResearchFeedSectionViewModel] = researches.map { research in
+             let viewModel = ResearchCellViewModel(id: research.id,
+                     name: research.name,
+                     image: research.image.src,
+                     summary: research.summary)
+             return ResearchFeedSectionViewModel(viewModel: viewModel)
          }
-         viewModels.append(MainFeedSectionViewModel(viewModel: nil, researches: researches))
+         viewModels.append(contentsOf: researches)
      }
 }
 
@@ -36,9 +40,7 @@ extension ResearchFeedDataDisplayManager: ListAdapterDataSource {
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         switch object {
         case is ResearchFeedSectionViewModel:
-            return ResearchFeedSectionController()
-        case is MainFeedSectionViewModel:
-            return MainFeedSectionController(output: delegate)
+            return ResearchFeedSectionController(output: delegate)
         default:
             fatalError()
         }

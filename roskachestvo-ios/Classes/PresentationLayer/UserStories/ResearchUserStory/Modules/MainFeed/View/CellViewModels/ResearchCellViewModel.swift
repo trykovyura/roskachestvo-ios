@@ -8,11 +8,13 @@ import IGListKit
 class ResearchCellViewModel {
 
     let id, name, image: String
+    let summary: ResearchSummary?
 
-    init(id: String, name: String, image: String?) {
+    init(id: String, name: String, image: String?, summary: ResearchSummary?) {
         self.id = id
         self.name = name
         self.image = "https://roskachestvo.gov.ru" + (image ?? "")
+        self.summary = summary
     }
 }
 
@@ -27,7 +29,8 @@ extension ResearchCellViewModel: ListDiffable {
             return false
         }
         return object.name == self.name &&
-                object.image == self.image
+                object.image == self.image &&
+                object.summary == self.summary
     }
 
 }

@@ -13,6 +13,7 @@ struct ResearchesPlainObject: Mappable {
     let url: String
     let utime: Int64
     let image: ImagePlainObject
+    let summary: ResearchSummary?
 
     init(map: Mapper) throws {
         id = try map.from("id")
@@ -21,5 +22,6 @@ struct ResearchesPlainObject: Mappable {
         url = try map.from("url")
         utime = try map.from("utime")
         image = try map.from("image")
+        summary = map.optionalFrom("summary")
     }
 }
