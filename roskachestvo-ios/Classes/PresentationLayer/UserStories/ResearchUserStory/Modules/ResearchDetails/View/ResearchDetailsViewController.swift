@@ -60,7 +60,7 @@ class ResearchDetailsViewController: UIViewController, ResearchDetailsViewInput 
     }
 
     func configure(with research: ResearchPlainObject) {
-        navigationController?.title = research.name
+        title = research.name
         dataDisplayManager.configure(research: research)
         adapter.performUpdates(animated: true)
     }

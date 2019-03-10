@@ -43,6 +43,7 @@ class ProductDetailsViewController: UIViewController, ProductDetailsViewInput {
         view.addSubview(collectionView)
         adapter.collectionView = collectionView
         configureViewConstraints()
+        title = ""
     }
 
     func configureViewConstraints() {

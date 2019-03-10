@@ -54,6 +54,7 @@ class ResearchFeedViewController: UIViewController, ResearchFeedViewInput {
         adapter.collectionView = collectionView
         configureViewConstraints()
         navigationItem.title = R.string.localizable.researchTitle()
+        title = R.string.localizable.researchTitle()
         view.backgroundColor = R.color.athensGray()
     }
 
