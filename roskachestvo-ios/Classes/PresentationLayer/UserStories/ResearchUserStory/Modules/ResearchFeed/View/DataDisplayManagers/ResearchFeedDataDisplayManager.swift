@@ -14,7 +14,8 @@ protocol ResearchFeedDataDisplayManagerOutput: ResearchFeedSectionControllerOutp
 
 class ResearchFeedDataDisplayManager: NSObject {
 
-     var viewModels = [ListDiffable]()
+    var viewModels: [ListDiffable] = [SkeletonSectionViewModel(viewModels:
+    SkeletonSectionViewModel.feedSkeletonViewModels(height: 176))]
 
      weak var delegate: ResearchFeedDataDisplayManagerOutput?
 
@@ -41,6 +42,8 @@ extension ResearchFeedDataDisplayManager: ListAdapterDataSource {
         switch object {
         case is ResearchFeedSectionViewModel:
             return ResearchFeedSectionController(output: delegate)
+        case is SkeletonSectionViewModel:
+            return SkeletonSectionController()
         default:
             fatalError()
         }

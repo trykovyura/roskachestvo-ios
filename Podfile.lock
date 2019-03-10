@@ -33,6 +33,7 @@ PODS:
   - RxAtomic (4.4.0)
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
+  - SkeletonView (1.4.1)
   - SnapKit (4.2.0)
   - SwiftLint (0.30.1)
   - Swinject (2.5.0)
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - Moya/RxSwift (~> 12.0.1)
   - R.swift
   - Reveal-SDK (~> 18)
+  - SkeletonView (~> 1.4.1)
   - SnapKit
   - SwiftLint (~> 0.30.1)
   - Swinject (~> 2.5.0)
@@ -70,6 +72,7 @@ SPEC REPOS:
     - Reveal-SDK
     - RxAtomic
     - RxSwift
+    - SkeletonView
     - SnapKit
     - SwiftLint
     - Swinject
@@ -91,6 +94,7 @@ SPEC CHECKSUMS:
   Reveal-SDK: cce79388da3fd0bbb6ae19d769b906cfc3a33a89
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  SkeletonView: 60d6ce7edb0cb4c7758db33c74add50392b3c475
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
   Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
@@ -98,6 +102,6 @@ SPEC CHECKSUMS:
   ViperMcFlurry: 701bc3ad8d188b1f1e157ec0ddf4e77184de88b5
   Wrap: 918fdb5157e4f701f9503b2633752d6f94616f84
 
-PODFILE CHECKSUM: deb0bf8a715a27141f321a1dd3c5fdfe2caea965
+PODFILE CHECKSUM: 8a400cced8f32e0a1663a3e80a6406ee2a8ef2f0
 
 COCOAPODS: 1.5.3

@@ -23,7 +23,7 @@ class MainFeedSectionController: ListBindingSectionController<MainFeedSectionVie
         self.output = output
         dataSource = self
         selectionDelegate = self
-        inset = UIEdgeInsets(top: 15, left: 20, bottom: 0, right: 20)
+        inset = UIEdgeInsets(top: 10, left: 4, bottom: 10, right: 4)
     }
 
     func sectionController(_ sectionController: ListBindingSectionController<ListDiffable>,

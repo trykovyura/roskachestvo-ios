@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 extension UICollectionViewCell {
 
@@ -13,5 +14,15 @@ extension UICollectionViewCell {
         layer.shadowOffset.height = 3
         layer.shadowRadius = 3
         layer.masksToBounds = false
+    }
+
+    func skeletonGradient() -> SkeletonGradient {
+        let gradient = SkeletonGradient(baseColor: R.color.ghost1()!,
+                secondaryColor: R.color.ghost2())
+        return gradient
+    }
+
+    func showAnimatedGradientSkeletonLT() {
+        showAnimatedGradientSkeleton(usingGradient: skeletonGradient(), animation: nil)
     }
 }

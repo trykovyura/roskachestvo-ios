@@ -25,6 +25,7 @@ target 'roskachestvo-ios' do
   pod 'SnapKit'
   pod 'IGListKit'
   pod 'Kingfisher'
+  pod 'SkeletonView', '~> 1.4.1'
 
   target 'roskachestvo-iosTests' do
     inherit! :search_paths

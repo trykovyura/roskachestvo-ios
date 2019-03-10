@@ -14,24 +14,25 @@ protocol MainFeedDataDisplayManagerOutput: MainFeedSectionControllerOutput {
 
 class MainFeedDataDisplayManager: NSObject {
 
-     var viewModels = [ListDiffable]()
+    var viewModels: [ListDiffable] = [SkeletonSectionViewModel(viewModels:
+    SkeletonSectionViewModel.feedSkeletonViewModels())]
 
-     weak var delegate: MainFeedDataDisplayManagerOutput?
+    weak var delegate: MainFeedDataDisplayManagerOutput?
 
-     func configure(categories: [CategoriesPlainObject]) {
-         viewModels.removeAll()
-         viewModels.append(contentsOf: categories.map { category in
-             let viewModel = MainFeedCellViewModel(id: String(category.id), name: category.name,
-                     image: category.researches.first?.image.src)
-             let researches = category.researches.map { research in
-                 ResearchCellViewModel(id: research.id,
-                         name: research.name,
-                         image: research.image.src,
-                         summary: research.summary)
-             }
-             return MainFeedSectionViewModel(viewModel: viewModel, researches: [])
-         })
-     }
+    func configure(categories: [CategoriesPlainObject]) {
+        viewModels.removeAll()
+        viewModels.append(contentsOf: categories.map { category in
+            let viewModel = MainFeedCellViewModel(id: String(category.id), name: category.name,
+                    image: category.researches.first?.image.src)
+            let researches = category.researches.map { research in
+                ResearchCellViewModel(id: research.id,
+                        name: research.name,
+                        image: research.image.src,
+                        summary: research.summary)
+            }
+            return MainFeedSectionViewModel(viewModel: viewModel, researches: [])
+        })
+    }
 }
 
 extension MainFeedDataDisplayManager: ListAdapterDataSource {
@@ -44,6 +45,8 @@ extension MainFeedDataDisplayManager: ListAdapterDataSource {
         switch object {
         case is MainFeedSectionViewModel:
             return MainFeedSectionController(output: delegate)
+        case is SkeletonSectionViewModel:
+            return SkeletonSectionController()
         default:
             fatalError()
         }
