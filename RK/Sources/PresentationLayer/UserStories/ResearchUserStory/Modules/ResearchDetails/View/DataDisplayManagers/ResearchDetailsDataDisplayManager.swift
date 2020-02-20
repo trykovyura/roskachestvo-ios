@@ -18,13 +18,15 @@ class ResearchDetailsDataDisplayManager: NSObject {
 
      weak var delegate: ResearchDetailsDataDisplayManagerOutput?
 
-     func configure(research: ResearchPlainObject) {
+     func configure(research: ResearchDTO) {
          viewModels.removeAll()
-         let viewModel = ResearchDetailsCellViewModel(id: "id", name: research.anons)
-         let products = research.products.map { product in
-             ProductCellViewModel(id: product.id, name: product.name, image: product.image.src)
+         let viewModel = ResearchDetailsCellViewModel(id: "id", name: research.anons ?? "")
+         let products = research.products?.map { product in
+             ProductCellViewModel(id: product.id ?? "",
+                     name: product.name ?? "",
+                     image: product.image?.src ?? "")
          }
-         viewModels.append(ResearchDetailsSectionViewModel(viewModel: viewModel, products: products))
+         viewModels.append(ResearchDetailsSectionViewModel(viewModel: viewModel, products: products ?? []))
      }
 }
 

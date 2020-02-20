@@ -14,5 +14,5 @@ protocol ResearchDetailsViewInput: class {
     */
 
     func setupInitialState()
-    func configure(with research: ResearchPlainObject)
+    func configure(with research: ResearchDTO)
 }

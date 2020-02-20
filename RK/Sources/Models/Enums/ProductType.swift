@@ -5,7 +5,7 @@
 
 import Foundation
 
-enum ProductType: String {
+enum ProductType: String, Codable {
     case withviolation
     case quality
     case withsign

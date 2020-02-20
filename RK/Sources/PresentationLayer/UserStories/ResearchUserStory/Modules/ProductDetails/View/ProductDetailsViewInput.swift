@@ -14,5 +14,5 @@ protocol ProductDetailsViewInput: class {
     */
 
     func setupInitialState()
-    func configure(with product: ProductPlainObject)
+    func configure(with product: ProductDTO)
 }

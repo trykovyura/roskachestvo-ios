@@ -60,7 +60,7 @@ class ProductDetailsViewController: UIViewController, ProductDetailsViewInput {
         }
     }
 
-    func configure(with product: ProductPlainObject) {
+    func configure(with product: ProductDTO) {
         dataDisplayManager.configure(product: product)
         adapter.performUpdates(animated: true)
     }

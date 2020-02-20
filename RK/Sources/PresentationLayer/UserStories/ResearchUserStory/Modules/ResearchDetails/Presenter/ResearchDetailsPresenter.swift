@@ -43,7 +43,7 @@ extension ResearchDetailsPresenter: ResearchDetailsViewOutput {
 }
 
 extension ResearchDetailsPresenter: ResearchDetailsInteractorOutput {
-    func didObtainResearchDetails(research: ResearchPlainObject) {
+    func didObtainResearchDetails(research: ResearchDTO) {
         view?.configure(with: research)
     }
 

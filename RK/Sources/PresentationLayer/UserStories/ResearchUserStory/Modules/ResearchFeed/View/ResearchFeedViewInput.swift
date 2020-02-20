@@ -14,5 +14,5 @@ protocol ResearchFeedViewInput: class {
     */
 
     func setupInitialState()
-    func configureWith(researches: [ResearchesPlainObject])
+    func configureWith(researches: [ResearchesDTO])
 }

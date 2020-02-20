@@ -43,7 +43,7 @@ extension ResearchFeedPresenter: ResearchFeedViewOutput {
 
 extension ResearchFeedPresenter: ResearchFeedInteractorOutput {
 
-    func didObtainResearches(_ researches: [ResearchesPlainObject]) {
+    func didObtainResearches(_ researches: [ResearchesDTO]) {
         view?.configureWith(researches: researches)
     }
 

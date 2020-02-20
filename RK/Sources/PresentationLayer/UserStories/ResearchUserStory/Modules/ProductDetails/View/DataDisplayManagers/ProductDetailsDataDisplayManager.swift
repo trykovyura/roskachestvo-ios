@@ -18,9 +18,9 @@ class ProductDetailsDataDisplayManager: NSObject {
 
      weak var delegate: ProductDetailsDataDisplayManagerOutput?
 
-     func configure(product: ProductPlainObject) {
+     func configure(product: ProductDTO) {
          viewModels.removeAll()
-         let viewModel = ProductDetailsCellViewModel(id: "id", name: product.name)
+         let viewModel = ProductDetailsCellViewModel(id: "id", name: product.name ?? "")
          viewModels.append(ProductDetailsSectionViewModel(viewModel: viewModel))
      }
 }

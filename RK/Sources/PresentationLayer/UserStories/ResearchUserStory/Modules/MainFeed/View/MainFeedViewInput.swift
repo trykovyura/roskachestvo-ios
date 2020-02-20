@@ -14,5 +14,5 @@ protocol MainFeedViewInput: class {
     */
 
     func setupInitialState()
-    func configureWith(categories: [CategoriesPlainObject])
+    func configureWith(categories: [CategoriesDTO])
 }

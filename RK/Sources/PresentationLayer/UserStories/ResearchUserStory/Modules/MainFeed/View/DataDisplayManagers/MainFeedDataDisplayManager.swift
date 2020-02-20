@@ -19,18 +19,12 @@ class MainFeedDataDisplayManager: NSObject {
 
     weak var delegate: MainFeedDataDisplayManagerOutput?
 
-    func configure(categories: [CategoriesPlainObject]) {
+    func configure(categories: [CategoriesDTO]) {
         viewModels.removeAll()
         viewModels.append(contentsOf: categories.map { category in
-            let viewModel = MainFeedCellViewModel(id: String(category.id), name: category.name,
-                    image: category.researches.first?.image.src)
-            let researches = category.researches.map { research in
-                ResearchCellViewModel(id: research.id,
-                        name: research.name,
-                        image: research.image.src,
-                        summary: research.summary)
-            }
-            return MainFeedSectionViewModel(viewModel: viewModel, researches: [])
+            let viewModel = MainFeedCellViewModel(model: category)
+            let researches = category.researches?.map(ResearchCellViewModel.init)
+            return MainFeedSectionViewModel(viewModel: viewModel, researches: researches ?? [])
         })
     }
 }

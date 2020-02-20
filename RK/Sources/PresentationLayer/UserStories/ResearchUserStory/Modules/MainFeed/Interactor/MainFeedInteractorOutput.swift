@@ -10,6 +10,6 @@ import Foundation
 
 protocol MainFeedInteractorOutput: class {
 
-    func didObtainCategoriesWithResearches(_ response: [CategoriesPlainObject])
+    func didObtainCategoriesWithResearches(_ response: [CategoriesDTO])
     func didFailObtainCategoriesWithResearches()
 }

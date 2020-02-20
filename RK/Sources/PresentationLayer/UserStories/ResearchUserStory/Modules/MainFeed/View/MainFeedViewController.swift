@@ -77,7 +77,7 @@ class MainFeedViewController: UIViewController, MainFeedViewInput {
         }
      }
 
-    func configureWith(categories: [CategoriesPlainObject]) {
+    func configureWith(categories: [CategoriesDTO]) {
         dataDisplayManager.configure(categories: categories)
         adapter.performUpdates(animated: true)
     }

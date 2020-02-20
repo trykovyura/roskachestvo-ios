@@ -17,9 +17,6 @@ target 'RK' do
 
   # Network
   pod 'Moya/RxSwift'
-  pod 'Moya-ModelMapper/RxSwift', '~> 8.0.0'
-  pod 'Wrap', '~> 3.0.0'
-  pod 'Unbox', '~> 3.0.0'
 
   #UI
   pod 'SnapKit'

@@ -80,7 +80,7 @@ class ResearchSummaryView: UIView {
         }
     }
 
-    func configure(with summary: ResearchSummary?) {
+    func configure(with summary: ResearchSummaryDTO?) {
         guard let summary = summary else {
             qualityLabel.text = "K 0"
             highQualityLabel.text = "0"

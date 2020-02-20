@@ -9,6 +9,6 @@
 import Foundation
 
 protocol ProductDetailsInteractorOutput: class {
-    func didObtainProductDetails(product: ProductPlainObject)
+    func didObtainProductDetails(product: ProductDTO)
     func didFailObtainProductDetails()
 }

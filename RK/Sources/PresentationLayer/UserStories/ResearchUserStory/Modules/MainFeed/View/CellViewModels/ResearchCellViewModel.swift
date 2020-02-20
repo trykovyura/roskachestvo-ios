@@ -8,15 +8,20 @@ import IGListKit
 class ResearchCellViewModel {
 
     let id, name, image: String
-    let summary: ResearchSummary?
+    let summary: ResearchSummaryDTO?
 
-    init(id: String, name: String, image: String?, summary: ResearchSummary?) {
+    init(id: String, name: String, image: String?, summary: ResearchSummaryDTO?) {
         self.id = id
         self.name = name
         self.image = "https://roskachestvo.gov.ru" + (image ?? "")
         self.summary = summary
     }
-}
+
+    convenience init(model: ResearchesDTO) {
+        self.init(id: model.id ?? "",
+                name: model.name ?? "", image: model.image?.src, summary: model.summary)
+    }
+ }
 
 extension ResearchCellViewModel: ListDiffable {
 

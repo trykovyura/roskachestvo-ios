@@ -5,16 +5,15 @@
 
 import RxSwift
 import Moya
-import Moya_ModelMapper
 
 protocol ResearchNetworkServiceType: class {
-    func searchProduct(code: String) -> Observable<[SearchProductPlainObject]>
-    func product(id: String) -> Observable<ProductPlainObject>
-    func products() -> Observable<[ProductsPlainObject]>
-    func categories() -> Observable<[CategoryPlainObject]>
-    func categoriesWithResearches() -> Observable<[CategoriesPlainObject]>
-    func researches() -> Observable<[ResearchesPlainObject]>
-    func research(id: String) -> Observable<ResearchPlainObject>
+    func searchProduct(code: String) -> Observable<[SearchProductDTO]>
+    func product(id: String) -> Observable<ProductDTO>
+    func products() -> Observable<[ProductsDTO]>
+    func categories() -> Observable<[CategoryDTO]>
+    func categoriesWithResearches() -> Observable<[CategoriesDTO]>
+    func researches() -> Observable<[ResearchesDTO]>
+    func research(id: String) -> Observable<ResearchDTO>
 }
 
 class ResearchNetworkService: ResearchNetworkServiceType {
@@ -27,45 +26,45 @@ class ResearchNetworkService: ResearchNetworkServiceType {
         self.networkClient = networkClient
     }
 
-    func searchProduct(code: String) -> Observable<[SearchProductPlainObject]> {
+    func searchProduct(code: String) -> Observable<[SearchProductDTO]> {
         return networkClient.request(MultiTarget(RoskachestvoAPI.searchProduct(code: code)))
                 .observeOn(RSKScheduler.background)
-                .map(to: [SearchProductPlainObject].self)
+                .map([SearchProductDTO].self)
     }
 
-    func product(id: String) -> Observable<ProductPlainObject> {
+    func product(id: String) -> Observable<ProductDTO> {
         return networkClient.request(MultiTarget(RoskachestvoAPI.product(id: id)))
                 .observeOn(RSKScheduler.background)
-                .map(to: ProductPlainObject.self)
+                .map(ProductDTO.self)
     }
 
-    func products() -> Observable<[ProductsPlainObject]> {
+    func products() -> Observable<[ProductsDTO]> {
         return networkClient.request(MultiTarget(RoskachestvoAPI.products))
                 .observeOn(RSKScheduler.background)
-                .map(to: [ProductsPlainObject].self)
+                .map([ProductsDTO].self)
     }
 
-    func categories() -> Observable<[CategoryPlainObject]> {
+    func categories() -> Observable<[CategoryDTO]> {
         return networkClient.request(MultiTarget(RoskachestvoAPI.categories))
                 .observeOn(RSKScheduler.background)
-                .map(to: [CategoryPlainObject].self)
+                .map([CategoryDTO].self)
     }
 
-    func categoriesWithResearches() -> Observable<[CategoriesPlainObject]> {
+    func categoriesWithResearches() -> Observable<[CategoriesDTO]> {
         return networkClient.request(MultiTarget(RoskachestvoAPI.categoriesWithResearches))
                 .observeOn(RSKScheduler.background)
-                .map(to: [CategoriesPlainObject].self)
+                .map([CategoriesDTO].self)
     }
 
-    func researches() -> Observable<[ResearchesPlainObject]> {
+    func researches() -> Observable<[ResearchesDTO]> {
         return networkClient.request(MultiTarget(RoskachestvoAPI.researches))
                 .observeOn(RSKScheduler.background)
-                .map(to: [ResearchesPlainObject].self)
+                .map([ResearchesDTO].self)
     }
 
-    func research(id: String) -> Observable<ResearchPlainObject> {
+    func research(id: String) -> Observable<ResearchDTO> {
         return networkClient.request(MultiTarget(RoskachestvoAPI.research(id: id)))
                 .observeOn(RSKScheduler.background)
-                .map(to: ResearchPlainObject.self)
+                .map(ResearchDTO.self)
     }
 }

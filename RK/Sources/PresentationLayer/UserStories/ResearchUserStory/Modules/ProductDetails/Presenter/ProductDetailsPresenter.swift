@@ -39,7 +39,7 @@ extension ProductDetailsPresenter: ProductDetailsViewOutput {
 }
 
 extension ProductDetailsPresenter: ProductDetailsInteractorOutput {
-    func didObtainProductDetails(product: ProductPlainObject) {
+    func didObtainProductDetails(product: ProductDTO) {
         view?.configure(with: product)
     }
 

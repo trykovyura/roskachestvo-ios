@@ -42,8 +42,8 @@ class ResearchFeedInteractor: ResearchFeedInteractorInput {
 
     func researchesByCategory(categoryId: Int) {
         researchNetworkService.categoriesWithResearches()
-                .flatMap { categories -> Observable<[ResearchesPlainObject]> in
-                    let categories = categories.filter { (object: CategoriesPlainObject) -> Bool in
+                .flatMap { categories -> Observable<[ResearchesDTO]> in
+                    let categories = categories.filter { (object: CategoriesDTO) -> Bool in
                         object.id == categoryId
                     }
                     return Observable.just(categories.first?.researches ?? [])

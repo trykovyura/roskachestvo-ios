@@ -9,6 +9,6 @@
 import Foundation
 
 protocol ResearchFeedInteractorOutput: class {
-    func didObtainResearches(_ researches: [ResearchesPlainObject])
+    func didObtainResearches(_ researches: [ResearchesDTO])
     func didFailObtainResearches()
 }

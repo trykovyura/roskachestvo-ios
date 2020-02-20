@@ -19,12 +19,12 @@ class ResearchFeedDataDisplayManager: NSObject {
 
      weak var delegate: ResearchFeedDataDisplayManagerOutput?
 
-     func configure(researches: [ResearchesPlainObject]) {
+     func configure(researches: [ResearchesDTO]) {
          viewModels.removeAll()
          let researches: [ResearchFeedSectionViewModel] = researches.map { research in
-             let viewModel = ResearchCellViewModel(id: research.id,
-                     name: research.name,
-                     image: research.image.src,
+             let viewModel = ResearchCellViewModel(id: research.id ?? "",
+                     name: research.name ?? "",
+                     image: research.image?.src ?? "",
                      summary: research.summary)
              return ResearchFeedSectionViewModel(viewModel: viewModel)
          }

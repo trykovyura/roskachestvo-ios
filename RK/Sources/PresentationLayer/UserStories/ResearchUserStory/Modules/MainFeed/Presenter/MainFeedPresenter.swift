@@ -41,7 +41,7 @@ extension MainFeedPresenter: MainFeedViewOutput {
 
 extension MainFeedPresenter: MainFeedInteractorOutput {
 
-    func didObtainCategoriesWithResearches(_ response: [CategoriesPlainObject]) {
+    func didObtainCategoriesWithResearches(_ response: [CategoriesDTO]) {
         view?.configureWith(categories: response)
     }
 

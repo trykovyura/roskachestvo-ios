@@ -17,6 +17,11 @@ class MainFeedCellViewModel {
        self.name = name
        self.image = "https://roskachestvo.gov.ru" + (image ?? "")
     }
+
+    convenience init(model: CategoriesDTO) {
+        self.init(id: model.id?.description ?? "", name: model.name ?? "",
+                image: model.researches?.first?.image?.src)
+    }
 }
 
 extension MainFeedCellViewModel: ListDiffable {

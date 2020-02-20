@@ -78,7 +78,7 @@ class ResearchFeedViewController: UIViewController, ResearchFeedViewInput {
         }
     }
 
-    func configureWith(researches: [ResearchesPlainObject]) {
+    func configureWith(researches: [ResearchesDTO]) {
         dataDisplayManager.configure(researches: researches)
         adapter.performUpdates(animated: true)
     }
