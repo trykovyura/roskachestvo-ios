@@ -1,15 +1,15 @@
 PODS:
-  - Alamofire (4.8.1)
-  - ESTabBarController-swift (2.6.4)
-  - IGListKit (3.4.0):
-    - IGListKit/Default (= 3.4.0)
-  - IGListKit/Default (3.4.0):
-    - IGListKit/Diffing
-  - IGListKit/Diffing (3.4.0)
-  - Kingfisher (5.1.0)
-  - ModelMapper (9.0.1):
-    - ModelMapper/Core (= 9.0.1)
-  - ModelMapper/Core (9.0.1)
+  - Alamofire (4.9.1)
+  - ESTabBarController-swift (2.6.5)
+  - IGListDiffKit (4.0.0)
+  - IGListKit (4.0.0):
+    - IGListDiffKit (= 4.0.0)
+  - Kingfisher (5.13.1):
+    - Kingfisher/Core (= 5.13.1)
+  - Kingfisher/Core (5.13.1)
+  - ModelMapper (10.0.0):
+    - ModelMapper/Core (= 10.0.0)
+  - ModelMapper/Core (10.0.0)
   - Moya (12.0.1):
     - Moya/Core (= 12.0.1)
   - Moya-ModelMapper/Core (8.0.0):
@@ -25,16 +25,14 @@ PODS:
   - Moya/RxSwift (12.0.1):
     - Moya/Core
     - RxSwift (~> 4.0)
-  - R.swift (5.0.1):
-    - R.swift.Library (~> 5.0.0)
-  - R.swift.Library (5.0.0)
+  - R.swift (5.1.0):
+    - R.swift.Library (~> 5.1.0)
+  - R.swift.Library (5.1.0)
   - Result (4.1.0)
   - Reveal-SDK (18)
-  - RxAtomic (4.4.0)
-  - RxSwift (4.4.0):
-    - RxAtomic (~> 4.4)
-  - SkeletonView (1.4.1)
-  - SnapKit (4.2.0)
+  - RxSwift (4.5.0)
+  - SkeletonView (1.4.2)
+  - SnapKit (5.0.1)
   - SwiftLint (0.30.1)
   - Swinject (2.5.0)
   - Unbox (3.0.0)
@@ -46,7 +44,7 @@ DEPENDENCIES:
   - IGListKit
   - Kingfisher
   - Moya-ModelMapper/RxSwift (~> 8.0.0)
-  - Moya/RxSwift (~> 12.0.1)
+  - Moya/RxSwift
   - R.swift
   - Reveal-SDK (~> 18)
   - SkeletonView (~> 1.4.1)
@@ -58,9 +56,10 @@ DEPENDENCIES:
   - Wrap (~> 3.0.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
     - ESTabBarController-swift
+    - IGListDiffKit
     - IGListKit
     - Kingfisher
     - ModelMapper
@@ -70,7 +69,6 @@ SPEC REPOS:
     - R.swift.Library
     - Result
     - Reveal-SDK
-    - RxAtomic
     - RxSwift
     - SkeletonView
     - SnapKit
@@ -81,27 +79,27 @@ SPEC REPOS:
     - Wrap
 
 SPEC CHECKSUMS:
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
-  ESTabBarController-swift: 58cca4ab7de980657d99a02181c1ff310983e975
-  IGListKit: 7a5d788e9fb746bcd402baa8e8b24bc3bd2a5a07
-  Kingfisher: fcec238063d17404fca89bf0a850583211c4cbf6
-  ModelMapper: 89a61430a75e6265040dc9555ab1feddeb25b986
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  ESTabBarController-swift: f31cd3e30bde23619d3b300266f27864d96ffb58
+  IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
+  IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
+  Kingfisher: f33a848445e33c543620812158dc5d47f6bf90df
+  ModelMapper: a8dbf2a2003bf626627b9fe7c9a22b3405a30404
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   Moya-ModelMapper: 9032a62301f6489405d56b7bb4e1f54944638fe3
-  R.swift: a8e1a7e7f38441282fbcb7a3c266076eb38b77ba
-  R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
+  R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
+  R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   Reveal-SDK: cce79388da3fd0bbb6ae19d769b906cfc3a33a89
-  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
-  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
-  SkeletonView: 60d6ce7edb0cb4c7758db33c74add50392b3c475
-  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SkeletonView: c2523c3c8c6510e273e49a3bf364a434744c3914
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
   Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
   Unbox: 9ed33b2a31f7a8a049f54b94d40c4a52a28c4d9d
   ViperMcFlurry: 701bc3ad8d188b1f1e157ec0ddf4e77184de88b5
   Wrap: 918fdb5157e4f701f9503b2633752d6f94616f84
 
-PODFILE CHECKSUM: 8a400cced8f32e0a1663a3e80a6406ee2a8ef2f0
+PODFILE CHECKSUM: 7e432e5bfdc234a711ea589c1cfeaef7bb0afb62
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

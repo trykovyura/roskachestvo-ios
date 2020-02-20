@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/xcode
 
+*.xcodeproj
+*.xcworkspace
+
 ### OSX ###
 *.DS_Store
 .AppleDouble

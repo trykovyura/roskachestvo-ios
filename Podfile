@@ -1,9 +1,9 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '13.0'
+inhibit_all_warnings!
+use_frameworks!
 
-target 'roskachestvo-ios' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+target 'RK' do
 
   # Pods for roskachestvo-ios
   pod 'Reveal-SDK', '~> 18', :configurations => ['Debug']
@@ -16,7 +16,7 @@ target 'roskachestvo-ios' do
   pod 'Swinject', '~> 2.5.0'
 
   # Network
-  pod 'Moya/RxSwift', '~> 12.0.1'
+  pod 'Moya/RxSwift'
   pod 'Moya-ModelMapper/RxSwift', '~> 8.0.0'
   pod 'Wrap', '~> 3.0.0'
   pod 'Unbox', '~> 3.0.0'
@@ -27,7 +27,7 @@ target 'roskachestvo-ios' do
   pod 'Kingfisher'
   pod 'SkeletonView', '~> 1.4.1'
 
-  target 'roskachestvo-iosTests' do
+  target 'RKTests' do
     inherit! :search_paths
     # Pods for testing
   end

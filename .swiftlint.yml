@@ -1,7 +1,7 @@
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
   - Pods
-  - roskachestvo-iosTests
-  - roskachestvo-ios/Resources/Rswift
+  - RKTests
+  - RK/Resources/Rswift
 identifier_name:
   min_length: 2
