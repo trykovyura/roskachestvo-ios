@@ -49,6 +49,8 @@ targets:
           PROVISIONING_PROFILE_SPECIFIER: "match AppStore ru.trykov.roskachestvo"
     sources:
       - path: RK
+        excludes:
+          - SupportingFiles/Info.plist
     preBuildScripts:
       - script: "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --strict\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n"
         name: Swiftlint
@@ -69,6 +71,12 @@ targets:
         UIAppFonts: [ProximaNovaBold.otf, Backpack-Bold.otf, Backpack-Light.otf, Backpack-Regular.otf]
         LSRequiresIPhoneOS: true
         ITSAppUsesNonExemptEncryption: false
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneConfigurationName: Default Configuration
+                UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
   RKTests:
     type: bundle.unit-test
     platform: iOS

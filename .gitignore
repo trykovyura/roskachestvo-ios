@@ -35,7 +35,7 @@ Temporary Items
 ## Build generated
 build/
 DerivedData/
-youvote-ios.xcworkspace
+SupportingFiles/Info.plist
 
 ## Various settings
 *.pbxuser
@@ -81,3 +81,4 @@ fastlane/test_output
 *.ipa
 *.zip
 /roskachestvo-ios/Resources/Rswift/R.generated.swift
+/RK/SupportingFiles/Info.plist
