@@ -44,37 +44,6 @@ final class AppRouter {
 
     func openMainViewController() {
 		let mainTabScene = MainTabScene()
-//        let tabBarController = ESTabBarController()
-//        tabBarController.tabBar.barTintColor = UIColor.TextColor.Gray.athensGray
-//        tabBarController.tabBar.isTranslucent = true
-//        tabBarController.tabBar.backgroundImage = R.image.background()
-//        let viewController = R.storyboard.mainFeed().instantiateInitialViewController()!
-//        let v1 = UINavigationController(rootViewController: viewController)
-//        v1.navigationBar.hideBottomHairline()
-//        v1.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        v1.navigationBar.shadowImage = UIImage()
-//        v1.navigationBar.isTranslucent = true
-//        UINavigationBar.appearance().tintColor = R.color.viridianGreen()
-//        UINavigationBar.appearance().titleTextAttributes =
-//            [NSAttributedString.Key.foregroundColor: R.color.viridianGreen()!,
-//             NSAttributedString.Key.font: R.font.backpackBold(size: 15)!]
-//        let v2 = UINavigationController(rootViewController: UIViewController())
-//        let v3 = UINavigationController(rootViewController: UIViewController())
-//        let v4 = UINavigationController(rootViewController: UIViewController())
-//        let v5 = UINavigationController(rootViewController: UIViewController())
-//
-//        v1.tabBarItem = ESTabBarItem(TabBarBasicContentView(),
-//                title: "Главная", image: R.image.mainTab(), selectedImage: R.image.mainTab())
-//        v2.tabBarItem = ESTabBarItem(TabBarBasicContentView(),
-//                title: "Поиск", image: R.image.searchTab(), selectedImage: R.image.searchTab())
-//        v3.tabBarItem = ESTabBarItem(TabBarCentralContentView(),
-//                title: nil, image: R.image.scanTabFull(), selectedImage: R.image.scanTabFull())
-//        v4.tabBarItem = ESTabBarItem(TabBarBasicContentView(),
-//                title: "История", image: R.image.historyTab(), selectedImage: R.image.historyTab())
-//        v5.tabBarItem = ESTabBarItem(TabBarBasicContentView(),
-//                title: "О нас", image: R.image.aboutTab(), selectedImage: R.image.aboutTab())
-//
-//        tabBarController.viewControllers = [v1, v2, v3, v4, v5]
         mainWindow?.rootViewController = UIHostingController(rootView: mainTabScene)
         mainWindow?.makeKeyAndVisible()
     }

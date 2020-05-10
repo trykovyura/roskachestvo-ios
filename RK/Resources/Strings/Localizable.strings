@@ -8,3 +8,10 @@
 
 "category.title"="Категории";
 "research.title"="Исследования";
+
+// TabBar
+"tab.main" = "Главная";
+"tab.search" = "Поиск";
+"tab.scan" = "Сканировать";
+"tab.history" = "История";
+"tab.about" = "О нас";
