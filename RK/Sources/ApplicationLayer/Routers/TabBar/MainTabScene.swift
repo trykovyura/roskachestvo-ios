@@ -9,28 +9,43 @@ import SwiftUI
 
 struct MainTabScene: View {
 
-  @State private var selectedItem = 1
+    @State private var selectedItem = 1
 
-  var body: some View {
-    TabView (selection: $selectedItem) {
-      // First Secection
-      MainFeedViewScene()
-        .tabItem {
-            Image(R.image.mainTab.name)
-      Text("Главная")
-    }.tag(1)
-
-      // Second Secection
-        Text("Second Section!")
-            .padding(0.0)
-        .tabItem {
-            Image(R.image.searchTab.name)
-      Text("Поиск")
-    }.tag(2)
-
-   }
-   .font(.headline)
-  }
+    var body: some View {
+        TabView(selection: $selectedItem) {
+            MainFeedViewScene()
+                    .tabItem {
+                        R.image.mainTab.image
+                        R.string.localizable.tabMain.text
+                    }.tag(1)
+            Text("Second Section!")
+                    .padding(0.0)
+                    .tabItem {
+                        R.image.searchTab.image
+                        R.string.localizable.tabSearch.text
+                    }.tag(2)
+            Text("Scan!")
+                    .padding(0.0)
+                    .tabItem {
+                        R.image.scanTab.image
+                        R.string.localizable.tabScan.text
+                    }.tag(3)
+            Text("History")
+                    .padding(0.0)
+                    .tabItem {
+                        R.image.historyTab.image
+                        R.string.localizable.tabHistory.text
+                    }.tag(4)
+            Text("About")
+                    .padding(0.0)
+                    .tabItem {
+                        R.image.aboutTab.image
+                        R.string.localizable.tabAbout.text
+                    }.tag(5)
+        }
+                .accentColor(R.color.viridianGreen.color)
+                .font(.headline)
+    }
 }
 
 struct MainTabScenePreviews: PreviewProvider {

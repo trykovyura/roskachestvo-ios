@@ -431,12 +431,35 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 2 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 7 localization keys.
     struct localizable {
+      /// Value: Главная
+      static let tabMain = Rswift.StringResource(key: "tab.main", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Исследования
       static let researchTitle = Rswift.StringResource(key: "research.title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: История
+      static let tabHistory = Rswift.StringResource(key: "tab.history", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Категории
       static let categoryTitle = Rswift.StringResource(key: "category.title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: О нас
+      static let tabAbout = Rswift.StringResource(key: "tab.about", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Поиск
+      static let tabSearch = Rswift.StringResource(key: "tab.search", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Сканировать
+      static let tabScan = Rswift.StringResource(key: "tab.scan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: Главная
+      static func tabMain(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("tab.main", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "tab.main"
+        }
+
+        return NSLocalizedString("tab.main", bundle: bundle, comment: "")
+      }
 
       /// Value: Исследования
       static func researchTitle(preferredLanguages: [String]? = nil) -> String {
@@ -451,6 +474,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("research.title", bundle: bundle, comment: "")
       }
 
+      /// Value: История
+      static func tabHistory(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("tab.history", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "tab.history"
+        }
+
+        return NSLocalizedString("tab.history", bundle: bundle, comment: "")
+      }
+
       /// Value: Категории
       static func categoryTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -462,6 +498,45 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("category.title", bundle: bundle, comment: "")
+      }
+
+      /// Value: О нас
+      static func tabAbout(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("tab.about", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "tab.about"
+        }
+
+        return NSLocalizedString("tab.about", bundle: bundle, comment: "")
+      }
+
+      /// Value: Поиск
+      static func tabSearch(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("tab.search", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "tab.search"
+        }
+
+        return NSLocalizedString("tab.search", bundle: bundle, comment: "")
+      }
+
+      /// Value: Сканировать
+      static func tabScan(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("tab.scan", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "tab.scan"
+        }
+
+        return NSLocalizedString("tab.scan", bundle: bundle, comment: "")
       }
 
       fileprivate init() {}
