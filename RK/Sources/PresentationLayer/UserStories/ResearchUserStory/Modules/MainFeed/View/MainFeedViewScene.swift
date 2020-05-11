@@ -7,14 +7,63 @@
 
 import SwiftUI
 
-struct MainFeedViewScene: UIViewControllerRepresentable {
+//struct MainFeedViewScene {
+//    typealias UIViewControllerType = MainFeedViewController
+//
+//    func makeUIViewController(context: Context) -> MainFeedViewController {
+//        R.storyboard.mainFeed.instantiateInitialViewController()!
+//    }
+//
+//    func updateUIViewController(_ uiViewController: MainFeedViewController, context: Context) {
+//    }
+//}
+import RxSwift
+import struct Kingfisher.KFImage
 
-    typealias UIViewControllerType = MainFeedViewController
-
-    func makeUIViewController(context: Context) -> MainFeedViewController {
-        R.storyboard.mainFeed.instantiateInitialViewController()!
+struct MainFeedViewScene: View {
+    let researchNetworkService = MainAssembler.sharedInstance.resolve(ResearchNetworkServiceType.self)
+    @State var state: [CategoriesDTO]
+    let disposeBag = DisposeBag()
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(state) { category in
+                    ForEach(category.researches!) { research in
+                        ResearchCellView(viewModel: ResearchCellViewModel(model: research))
+                    }
+                }
+            }
+            .navigationBarTitle(R.string.localizable.categoryTitle())
+            .onAppear(perform: fetch)
+        }
     }
+    private func fetch() {
+        researchNetworkService.categoriesWithResearches()
+                       .observeOn(MainScheduler.instance)
+                       .subscribe(
+                               onNext: { response in
+                                   self.state = response
+                               }, onError: { error in
+                                   print(error)
+                               })
+                       .disposed(by: disposeBag)
+    }
+}
+struct ResearchCellView: View {
 
-    func updateUIViewController(_ uiViewController: MainFeedViewController, context: Context) {
+    @State var viewModel: ResearchCellViewModel
+    var body: some View {
+       VStack {
+            Text(viewModel.name)
+        KFImage(URL(string: viewModel.image))
+                               .resizable()
+        .clipped()
+                               .aspectRatio(contentMode: .fill)
+                           HStack(alignment: .firstTextBaseline, spacing: 23) {
+                               Text("K 5")
+                               Text("! 3")
+                           }
+                       }
+       .frame(height: 200)
     }
 }

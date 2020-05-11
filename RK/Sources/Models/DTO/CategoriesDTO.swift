@@ -11,3 +11,6 @@ struct CategoriesDTO: Codable {
     let time: Int64?
     let researches: [ResearchesDTO]?
 }
+extension CategoriesDTO: Identifiable {
+
+}

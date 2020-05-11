@@ -13,7 +13,7 @@ struct MainTabScene: View {
 
     var body: some View {
         TabView(selection: $selectedItem) {
-            MainFeedViewScene()
+            MainFeedViewScene(state: [])
                     .tabItem {
                         R.image.mainTab.image
                         R.string.localizable.tabMain.text
