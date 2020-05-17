@@ -51,6 +51,8 @@ targets:
       - path: RK
         excludes:
           - SupportingFiles/Info.plist
+    dependencies:
+      - carthage: Unicore
     preBuildScripts:
       - script: "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --strict\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n"
         name: Swiftlint

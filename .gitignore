@@ -55,6 +55,7 @@ xcuserdata/
 
 ### CocoaPods ###
 /Pods
+/Carthage
 
 ### AppCode ###
 .idea
