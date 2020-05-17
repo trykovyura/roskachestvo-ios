@@ -33,7 +33,6 @@ struct MainFeedViewScene: View {
                     }
                 }
             }
-            .navigationBarTitle(R.string.localizable.categoryTitle())
             .onAppear(perform: fetch)
         }
     }
@@ -50,20 +49,27 @@ struct MainFeedViewScene: View {
     }
 }
 struct ResearchCellView: View {
-
     @State var viewModel: ResearchCellViewModel
     var body: some View {
-       VStack {
+        VStack {
+            KFImage(URL(string: viewModel.image))
+            .onFailure(perform: {error in
+            })
+                .resizable()
+                .frame(width: UIScreen.screenSize.width * 0.95, alignment: .leading)
             Text(viewModel.name)
-        KFImage(URL(string: viewModel.image))
-                               .resizable()
-        .clipped()
-                               .aspectRatio(contentMode: .fill)
-                           HStack(alignment: .firstTextBaseline, spacing: 23) {
-                               Text("K 5")
-                               Text("! 3")
-                           }
-                       }
-       .frame(height: 200)
+                .font(.system(size: 17.0))
+                .frame(width: UIScreen.screenSize.width * 0.95, alignment: .leading)
+        }
+        .background(Color.white)
+        .frame(width: UIScreen.screenSize.width * 0.95, height: UIScreen.screenHeight/5 )
+        .navigationBarTitle(R.string.localizable.categoryTitle())
+        .font(.largeTitle)
     }
+}
+
+extension UIScreen {
+   static let screenWidth = UIScreen.main.bounds.size.width
+   static let screenHeight = UIScreen.main.bounds.size.height
+   static let screenSize = UIScreen.main.bounds.size
 }
