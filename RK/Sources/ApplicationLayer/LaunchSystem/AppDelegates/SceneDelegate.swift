@@ -7,17 +7,15 @@
 
 import UIKit
 import SwiftUI
-import Unicore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var router: AppRouter?
     let appConfigurator = AppConfigurator()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
-        let initialState = AppState()
+        let initialState = AppState(selectedTab: 1)
         let store = Store(
                 initialState: initialState,
                 reducer: Reduce.state
@@ -26,8 +24,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             self.window = window
             appConfigurator.configure()
-            router = AppRouter(with: self.window)
-            router?.openMainViewController()
+            let storeProvider = StoreProvider(store: store) {
+                MainTabScene()
+            }
+            window.rootViewController = UIHostingController(rootView: storeProvider)
+            window.makeKeyAndVisible()
         }
     }
 

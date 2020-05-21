@@ -7,12 +7,20 @@
 
 import SwiftUI
 
-struct MainTabScene: View {
+struct MainTabScene: ConnectedView {
 
-    @State private var selectedItem = 1
+    struct Props {
+        let selectedItem: Binding<Int>
+    }
 
-    var body: some View {
-        TabView(selection: $selectedItem) {
+    func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
+        let selectedItem = Binding<Int>(get: { state.selectedTab },
+                set: { dispatch(Actions.ToggleTabSelect(selectedTab: $0)) })
+        return Props(selectedItem: selectedItem)
+    }
+
+    static func body(props: Props) -> some View {
+        TabView(selection: props.selectedItem) {
             MainFeedViewScene()
                     .tabItem {
                         R.image.mainTab.image
