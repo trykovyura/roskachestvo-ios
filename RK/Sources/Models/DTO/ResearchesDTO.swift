@@ -14,3 +14,6 @@ struct ResearchesDTO: Codable {
     let image: ImageDTO?
     let summary: ResearchSummaryDTO?
 }
+extension ResearchesDTO: Identifiable {
+
+}
