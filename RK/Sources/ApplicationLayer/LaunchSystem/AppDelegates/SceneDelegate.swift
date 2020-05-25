@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
-        let initialState = AppState(selectedTab: 1)
+        let initialState = AppState(selectedTab: 1, categories: [])
         let store = Store(
                 initialState: initialState,
                 reducer: Reduce.state

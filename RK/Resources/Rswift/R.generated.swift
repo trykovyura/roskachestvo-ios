@@ -90,36 +90,8 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.segue` struct is generated, and contains static references to 3 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 2 view controllers.
   struct segue {
-    /// This struct is generated for `MainFeedViewController`, and contains static references to 2 segues.
-    struct mainFeedViewController {
-      /// Segue identifier `openResearchDetailsSegue`.
-      static let openResearchDetailsSegue: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, MainFeedViewController, ResearchDetailsViewController> = Rswift.StoryboardSegueIdentifier(identifier: "openResearchDetailsSegue")
-      /// Segue identifier `openResearchFeedSegue`.
-      static let openResearchFeedSegue: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, MainFeedViewController, ResearchFeedViewController> = Rswift.StoryboardSegueIdentifier(identifier: "openResearchFeedSegue")
-
-      #if os(iOS) || os(tvOS)
-      /// Optionally returns a typed version of segue `openResearchDetailsSegue`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func openResearchDetailsSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, MainFeedViewController, ResearchDetailsViewController>? {
-        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.mainFeedViewController.openResearchDetailsSegue, segue: segue)
-      }
-      #endif
-
-      #if os(iOS) || os(tvOS)
-      /// Optionally returns a typed version of segue `openResearchFeedSegue`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func openResearchFeedSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, MainFeedViewController, ResearchFeedViewController>? {
-        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.mainFeedViewController.openResearchFeedSegue, segue: segue)
-      }
-      #endif
-
-      fileprivate init() {}
-    }
-
     /// This struct is generated for `ResearchDetailsViewController`, and contains static references to 1 segues.
     struct researchDetailsViewController {
       /// Segue identifier `openProductDetailsSegue`.
@@ -159,12 +131,10 @@ struct R: Rswift.Validatable {
   #endif
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 6 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 5 storyboards.
   struct storyboard {
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
-    /// Storyboard `MainFeed`.
-    static let mainFeed = _R.storyboard.mainFeed()
     /// Storyboard `Main`.
     static let main = _R.storyboard.main()
     /// Storyboard `ProductDetails`.
@@ -185,13 +155,6 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "Main", bundle: ...)`
     static func main(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.main)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIStoryboard(name: "MainFeed", bundle: ...)`
-    static func mainFeed(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.mainFeed)
     }
     #endif
 
@@ -575,9 +538,6 @@ struct _R: Rswift.Validatable {
       try main.validate()
       #endif
       #if os(iOS) || os(tvOS)
-      try mainFeed.validate()
-      #endif
-      #if os(iOS) || os(tvOS)
       try productDetails.validate()
       #endif
       #if os(iOS) || os(tvOS)
@@ -608,22 +568,6 @@ struct _R: Rswift.Validatable {
     struct main: Rswift.StoryboardResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let name = "Main"
-
-      static func validate() throws {
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    struct mainFeed: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = MainFeedViewController
-
-      let bundle = R.hostingBundle
-      let name = "MainFeed"
 
       static func validate() throws {
         if #available(iOS 11.0, tvOS 11.0, *) {

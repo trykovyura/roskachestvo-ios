@@ -7,6 +7,8 @@ PODS:
   - Kingfisher (5.13.1):
     - Kingfisher/Core (= 5.13.1)
   - Kingfisher/Core (5.13.1)
+  - Kingfisher/SwiftUI (5.13.1):
+    - Kingfisher/Core
   - Moya/Core (12.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 4.0)
@@ -29,6 +31,7 @@ DEPENDENCIES:
   - ESTabBarController-swift (~> 2.6.4)
   - IGListKit
   - Kingfisher
+  - Kingfisher/SwiftUI
   - Moya/RxSwift
   - R.swift
   - Reveal-SDK (~> 18)
@@ -75,6 +78,6 @@ SPEC CHECKSUMS:
   Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
   ViperMcFlurry: 701bc3ad8d188b1f1e157ec0ddf4e77184de88b5
 
-PODFILE CHECKSUM: bca798fb55780d453baf33c9fe0c829be23f9a89
+PODFILE CHECKSUM: 8a63422ab0274b97167db8094c4a540d31592f22
 
 COCOAPODS: 1.9.1

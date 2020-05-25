@@ -6,4 +6,7 @@ extension Actions {
     struct ToggleTabSelect: Action {
         let selectedTab: Int
     }
+    struct ToggleCategories: Action {
+        let categories: [CategoriesDTO]
+    }
 }
