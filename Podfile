@@ -22,6 +22,7 @@ target 'RK' do
   pod 'SnapKit'
   pod 'IGListKit'
   pod 'Kingfisher'
+  pod 'Kingfisher/SwiftUI'
   pod 'SkeletonView', '~> 1.4.1'
 
   target 'RKTests' do
