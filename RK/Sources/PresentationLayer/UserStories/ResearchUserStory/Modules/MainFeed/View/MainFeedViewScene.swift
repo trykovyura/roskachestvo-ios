@@ -6,46 +6,43 @@
 //
 
 import SwiftUI
-
-//struct MainFeedViewScene {
-//    typealias UIViewControllerType = MainFeedViewController
-//
-//    func makeUIViewController(context: Context) -> MainFeedViewController {
-//        R.storyboard.mainFeed.instantiateInitialViewController()!
-//    }
-//
-//    func updateUIViewController(_ uiViewController: MainFeedViewController, context: Context) {
-//    }
-//}
 import RxSwift
 import struct Kingfisher.KFImage
 
-struct MainFeedViewScene: View {
-    let researchNetworkService = MainAssembler.sharedInstance.resolve(ResearchNetworkServiceType.self)
-    @State var state: [CategoriesDTO]
+struct MainFeedViewScene: ConnectedView {
     let disposeBag = DisposeBag()
-    var body: some View {
+    let researchNetworkService = MainAssembler.sharedInstance.resolve(ResearchNetworkServiceType.self)
+
+    struct Props {
+        let categories: [CategoriesDTO]
+        let appearTrigger: () -> Void
+    }
+
+    func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
+        let categories = state.categories
+        let appearTrigger = { [researchNetworkService, disposeBag] in
+            researchNetworkService.categoriesWithResearches()
+                    .observeOn(MainScheduler.instance)
+                    .subscribe(
+                            onNext: { response in
+                                dispatch(Actions.ToggleCategories(categories: response))
+                            }, onError: { error in
+                        print(error)
+                    })
+                    .disposed(by: disposeBag) }
+        return Props(categories: categories, appearTrigger: appearTrigger)
+    }
+
+    static func body(props: Props) -> some View {
         NavigationView {
             List {
-                ForEach(state) { category in
+                ForEach(props.categories) { category in
                     ForEach(category.researches!) { research in
                         ResearchCellView(viewModel: ResearchCellViewModel(model: research))
                     }
                 }
-            }
-            .onAppear(perform: fetch)
+            }.onAppear(perform: props.appearTrigger)
         }
-    }
-    private func fetch() {
-        researchNetworkService.categoriesWithResearches()
-                       .observeOn(MainScheduler.instance)
-                       .subscribe(
-                               onNext: { response in
-                                   self.state = response
-                               }, onError: { error in
-                                   print(error)
-                               })
-                       .disposed(by: disposeBag)
     }
 }
 struct ResearchCellView: View {
@@ -53,8 +50,6 @@ struct ResearchCellView: View {
     var body: some View {
         VStack {
             KFImage(URL(string: viewModel.image))
-            .onFailure(perform: {error in
-            })
                 .resizable()
                 .frame(width: UIScreen.screenSize.width * 0.95, alignment: .leading)
             Text(viewModel.name)

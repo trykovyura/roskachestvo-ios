@@ -43,9 +43,7 @@ final class AppRouter {
     }
 
     func openMainViewController() {
-		let mainTabScene = MainTabScene()
-        mainWindow?.rootViewController = UIHostingController(rootView: mainTabScene)
-        mainWindow?.makeKeyAndVisible()
+
     }
 
     func openSplashViewController() {
