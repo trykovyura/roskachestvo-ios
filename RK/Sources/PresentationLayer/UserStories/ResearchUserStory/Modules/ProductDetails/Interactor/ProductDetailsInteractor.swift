@@ -17,15 +17,15 @@ class ProductDetailsInteractor: ProductDetailsInteractorInput {
     let disposeBag = DisposeBag()
 
     func productDetails(with productId: String) {
-        researchNetworkService.product(id: productId)
-                .observeOn(MainScheduler.instance)
-                .subscribe(
-                        onNext: { [weak self] product in
-                            self?.output.didObtainProductDetails(product: product)
-                        }, onError: { [weak self] error in
-                    print(error)
-                    self?.output.didFailObtainProductDetails()
-                })
-                .disposed(by: disposeBag)
+//        researchNetworkService.product(id: productId)
+//                .receive(on: DispatchQueue.main)
+//                .sink(
+//                        onNext: { [weak self] product in
+//                            self?.output.didObtainProductDetails(product: product)
+//                        }, onError: { [weak self] error in
+//                    print(error)
+//                    self?.output.didFailObtainProductDetails()
+//                })
+//                .disposed(by: disposeBag)
     }
 }

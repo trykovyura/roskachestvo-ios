@@ -3,17 +3,17 @@
 // Copyright (c) 2019 trykov. All rights reserved.
 //
 
-import RxSwift
+import Combine
 import Moya
 
 protocol ResearchNetworkServiceType: class {
-    func searchProduct(code: String) -> Observable<[SearchProductDTO]>
-    func product(id: String) -> Observable<ProductDTO>
-    func products() -> Observable<[ProductsDTO]>
-    func categories() -> Observable<[CategoryDTO]>
-    func categoriesWithResearches() -> Observable<[CategoriesDTO]>
-    func researches() -> Observable<[ResearchesDTO]>
-    func research(id: String) -> Observable<ResearchDTO>
+    func searchProduct(code: String) -> AnyPublisher<[SearchProductDTO], Error>
+    func product(id: String) -> AnyPublisher<ProductDTO, Error>
+    func products() -> AnyPublisher<[ProductsDTO], Error>
+    func categories() -> AnyPublisher<[CategoryDTO], Error>
+    func categoriesWithResearches() -> AnyPublisher<[CategoriesDTO], Error>
+    func researches() -> AnyPublisher<[ResearchesDTO], Error>
+    func research(id: String) -> AnyPublisher<ResearchDTO, Error>
 }
 
 class ResearchNetworkService: ResearchNetworkServiceType {
@@ -26,45 +26,45 @@ class ResearchNetworkService: ResearchNetworkServiceType {
         self.networkClient = networkClient
     }
 
-    func searchProduct(code: String) -> Observable<[SearchProductDTO]> {
+    func searchProduct(code: String) -> AnyPublisher<[SearchProductDTO], Error> {
         return networkClient.request(MultiTarget(RoskachestvoAPI.searchProduct(code: code)))
-                .observeOn(RSKScheduler.background)
-                .map([SearchProductDTO].self)
+                .decode(type: [SearchProductDTO].self, decoder: JSONDecoder())
+                .eraseToAnyPublisher()
     }
 
-    func product(id: String) -> Observable<ProductDTO> {
+    func product(id: String) -> AnyPublisher<ProductDTO, Error> {
         return networkClient.request(MultiTarget(RoskachestvoAPI.product(id: id)))
-                .observeOn(RSKScheduler.background)
-                .map(ProductDTO.self)
+                .decode(type: ProductDTO.self, decoder: JSONDecoder())
+                .eraseToAnyPublisher()
     }
 
-    func products() -> Observable<[ProductsDTO]> {
+    func products() -> AnyPublisher<[ProductsDTO], Error> {
         return networkClient.request(MultiTarget(RoskachestvoAPI.products))
-                .observeOn(RSKScheduler.background)
-                .map([ProductsDTO].self)
+                .decode(type: [ProductsDTO].self, decoder: JSONDecoder())
+                .eraseToAnyPublisher()
     }
 
-    func categories() -> Observable<[CategoryDTO]> {
+    func categories() -> AnyPublisher<[CategoryDTO], Error> {
         return networkClient.request(MultiTarget(RoskachestvoAPI.categories))
-                .observeOn(RSKScheduler.background)
-                .map([CategoryDTO].self)
+                .decode(type: [CategoryDTO].self, decoder: JSONDecoder())
+                .eraseToAnyPublisher()
     }
 
-    func categoriesWithResearches() -> Observable<[CategoriesDTO]> {
+    func categoriesWithResearches() -> AnyPublisher<[CategoriesDTO], Error> {
         return networkClient.request(MultiTarget(RoskachestvoAPI.categoriesWithResearches))
-                .observeOn(RSKScheduler.background)
-                .map([CategoriesDTO].self)
+                .decode(type: [CategoriesDTO].self, decoder: JSONDecoder())
+                .eraseToAnyPublisher()
     }
 
-    func researches() -> Observable<[ResearchesDTO]> {
+    func researches() -> AnyPublisher<[ResearchesDTO], Error> {
         return networkClient.request(MultiTarget(RoskachestvoAPI.researches))
-                .observeOn(RSKScheduler.background)
-                .map([ResearchesDTO].self)
+                .decode(type: [ResearchesDTO].self, decoder: JSONDecoder())
+                .eraseToAnyPublisher()
     }
 
-    func research(id: String) -> Observable<ResearchDTO> {
+    func research(id: String) -> AnyPublisher<ResearchDTO, Error> {
         return networkClient.request(MultiTarget(RoskachestvoAPI.research(id: id)))
-                .observeOn(RSKScheduler.background)
-                .map(ResearchDTO.self)
+                .decode(type: ResearchDTO.self, decoder: JSONDecoder())
+                .eraseToAnyPublisher()
     }
 }
