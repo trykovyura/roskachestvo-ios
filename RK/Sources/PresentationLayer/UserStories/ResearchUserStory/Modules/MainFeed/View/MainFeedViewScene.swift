@@ -6,13 +6,10 @@
 //
 
 import SwiftUI
-import RxSwift
+import Combine
 import struct Kingfisher.KFImage
 
 struct MainFeedViewScene: ConnectedView {
-    let disposeBag = DisposeBag()
-    let researchNetworkService = MainAssembler.sharedInstance.resolve(ResearchNetworkServiceType.self)
-
     struct Props {
         let categories: [CategoriesDTO]
         let appearTrigger: () -> Void
@@ -20,16 +17,7 @@ struct MainFeedViewScene: ConnectedView {
 
     func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
         let categories = state.categories
-        let appearTrigger = { [researchNetworkService, disposeBag] in
-            researchNetworkService.categoriesWithResearches()
-                    .observeOn(MainScheduler.instance)
-                    .subscribe(
-                            onNext: { response in
-                                dispatch(Actions.ToggleCategories(categories: response))
-                            }, onError: { error in
-                        print(error)
-                    })
-                    .disposed(by: disposeBag) }
+        let appearTrigger = { dispatch(Actions.CategoryAction.start) }
         return Props(categories: categories, appearTrigger: appearTrigger)
     }
 

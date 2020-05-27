@@ -18,8 +18,13 @@ extension Reduce {
         }
     }
     static let categories = AppState.reduce.categories.withRules { match in
-        match.on(Actions.ToggleCategories.self) { _, action in
-            action.categories
+        match.on(Actions.CategoryAction.self) { state, action in
+            switch action {
+            case Actions.CategoryAction.success(let categories):
+                return categories
+            default:()
+                return state
+            }
         }
     }
 }

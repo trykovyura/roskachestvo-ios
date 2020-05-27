@@ -3,9 +3,9 @@
 // Copyright (c) 2019 trykov. All rights reserved.
 //
 
-import RxSwift
+import Combine
 import Moya
 
 protocol NetworkClient {
-    func request(_ token: MultiTarget) -> Observable<Response>
+    func request(_ token: MultiTarget) -> AnyPublisher<Data, URLError>
 }

@@ -12,13 +12,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     let appConfigurator = AppConfigurator()
+    let middlewareCreator = MiddlewaresCreator()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
         let initialState = AppState(selectedTab: 1, categories: [])
+        let researchNetworkService = MainAssembler.sharedInstance.resolve(ResearchNetworkServiceType.self)
         let store = Store(
                 initialState: initialState,
-                reducer: Reduce.state
+                reducer: Reduce.state,
+                middlewares: [middlewareCreator.categoryMiddleware(api: researchNetworkService)]
         )
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

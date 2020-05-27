@@ -17,15 +17,15 @@ class ResearchDetailsInteractor: ResearchDetailsInteractorInput {
     let disposeBag = DisposeBag()
 
     func researchDetails(with researchId: String) {
-        researchNetworkService.research(id: researchId)
-                .observeOn(MainScheduler.instance)
-                .subscribe(
-                        onNext: { [weak self] research in
-                            self?.output.didObtainResearchDetails(research: research)
-                        }, onError: { [weak self] error in
-                            print(error)
-                            self?.output.didFailObtainResearchDetails()
-                        })
-                .disposed(by: disposeBag)
+//        researchNetworkService.research(id: researchId)
+//                .observeOn(MainScheduler.instance)
+//                .subscribe(
+//                        onNext: { [weak self] research in
+//                            self?.output.didObtainResearchDetails(research: research)
+//                        }, onError: { [weak self] error in
+//                            print(error)
+//                            self?.output.didFailObtainResearchDetails()
+//                        })
+//                .disposed(by: disposeBag)
     }
 }

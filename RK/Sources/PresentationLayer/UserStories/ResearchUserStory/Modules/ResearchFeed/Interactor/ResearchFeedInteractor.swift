@@ -29,32 +29,32 @@ class ResearchFeedInteractor: ResearchFeedInteractorInput {
     }
 
     func researches() {
-        researchNetworkService.researches()
-                .observeOn(MainScheduler.instance)
-                .subscribe(
-                        onNext: { [weak self] response in
-                            self?.output.didObtainResearches(response)
-                        }, onError: { [weak self] _ in
-                    self?.output.didFailObtainResearches()
-                })
-                .disposed(by: disposeBag)
+//        researchNetworkService.researches()
+//                .observeOn(MainScheduler.instance)
+//                .subscribe(
+//                        onNext: { [weak self] response in
+//                            self?.output.didObtainResearches(response)
+//                        }, onError: { [weak self] _ in
+//                    self?.output.didFailObtainResearches()
+//                })
+//                .disposed(by: disposeBag)
     }
 
     func researchesByCategory(categoryId: Int) {
-        researchNetworkService.categoriesWithResearches()
-                .flatMap { categories -> Observable<[ResearchesDTO]> in
-                    let categories = categories.filter { (object: CategoriesDTO) -> Bool in
-                        object.id == categoryId
-                    }
-                    return Observable.just(categories.first?.researches ?? [])
-                }
-                .observeOn(MainScheduler.instance)
-                .subscribe(
-                        onNext: { [weak self] response in
-                            self?.output.didObtainResearches(response)
-                        }, onError: { [weak self] _ in
-                    self?.output.didFailObtainResearches()
-                })
-                .disposed(by: disposeBag)
+//        researchNetworkService.categoriesWithResearches()
+//                .flatMap { categories -> Observable<[ResearchesDTO]> in
+//                    let categories = categories.filter { (object: CategoriesDTO) -> Bool in
+//                        object.id == categoryId
+//                    }
+//                    return Observable.just(categories.first?.researches ?? [])
+//                }
+//                .observeOn(MainScheduler.instance)
+//                .subscribe(
+//                        onNext: { [weak self] response in
+//                            self?.output.didObtainResearches(response)
+//                        }, onError: { [weak self] _ in
+//                    self?.output.didFailObtainResearches()
+//                })
+//                .disposed(by: disposeBag)
     }
 }

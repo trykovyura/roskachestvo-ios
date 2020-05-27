@@ -4,9 +4,9 @@
 //
 
 import Moya
-import RxSwift
-import Result
+import Combine
 import Alamofire
+import Foundation
 
 class MoyaNetworkClient: NetworkClient {
 
@@ -32,12 +32,26 @@ class MoyaNetworkClient: NetworkClient {
     }
 
     // Выполнение сетевого запроса
-    // Даем 1 попытка для retry
     // Пропускаем только успешные запросы 200-299
-    func request(_ token: MultiTarget) -> Observable<Response> {
-        return provider.rx.request(token)
-                .retry(1)
-                .filterSuccessfulStatusCodes()
-                .asObservable()
+    func request(_ token: MultiTarget) -> AnyPublisher<Data, URLError> {
+        guard let urlRequest = try? provider.endpoint(token).urlRequest() else {
+            return Fail(error: URLError(.badURL))
+                .eraseToAnyPublisher()
+        }
+        return URLSession.shared.dataTaskPublisher(for: urlRequest)
+                .tryMap { element -> Data in
+                    guard let httpResponse = element.response as? HTTPURLResponse,
+                          (200...299).contains(httpResponse.statusCode) else {
+                        throw URLError(.badServerResponse)
+                    }
+                    return element.data
+                }
+                .mapError { error in
+                    guard let error = error as? URLError else {
+                        return URLError(.unknown)
+                    }
+                    return error
+                }
+                .eraseToAnyPublisher()
     }
 }
