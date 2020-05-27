@@ -3,9 +3,9 @@
 //
 
 extension Actions {
-    struct TriggerCategories: Action {
-    }
-    struct ToggleCategories: Action {
-        let categories: [CategoriesDTO]
+    enum CategoryAction: Action {
+        case start
+        case error(Error)
+        case success([CategoriesDTO])
     }
 }

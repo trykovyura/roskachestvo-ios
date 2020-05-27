@@ -10,7 +10,6 @@ import Combine
 import struct Kingfisher.KFImage
 
 struct MainFeedViewScene: ConnectedView {
-    let researchNetworkService = MainAssembler.sharedInstance.resolve(ResearchNetworkServiceType.self)
     struct Props {
         let categories: [CategoriesDTO]
         let appearTrigger: () -> Void
@@ -18,13 +17,7 @@ struct MainFeedViewScene: ConnectedView {
 
     func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
         let categories = state.categories
-//        let cancelable = researchNetworkService.categoriesWithResearches()
-//                .receive(on: DispatchQueue.main)
-//                .sink(receiveCompletion: { _ in
-//                }, receiveValue: { response in
-//                    )
-//                })
-        let appearTrigger = { dispatch(Actions.TriggerCategories) }
+        let appearTrigger = { dispatch(Actions.CategoryAction.start) }
         return Props(categories: categories, appearTrigger: appearTrigger)
     }
 
