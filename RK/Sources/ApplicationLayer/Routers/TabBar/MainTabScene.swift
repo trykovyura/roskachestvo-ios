@@ -32,7 +32,7 @@ struct MainTabScene: ConnectedView {
                         R.image.searchTab.image
                         R.string.localizable.tabSearch.text
                     }.tag(2)
-            Text("Scan!")
+            ScannerViewScene()
                     .padding(0.0)
                     .tabItem {
                         R.image.scanTab.image

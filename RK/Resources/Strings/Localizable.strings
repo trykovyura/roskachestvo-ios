@@ -5,6 +5,9 @@
   Created by Юрий Трыков on 2019-03-09.
     Copyright © 2019 trykov. All rights reserved.
 */
+// Common
+"ok" = "OK";
+"cancel" = "Отмена";
 
 "category.title"="Категории";
 "research.title"="Исследования";
@@ -15,3 +18,12 @@
 "tab.scan" = "Сканировать";
 "tab.history" = "История";
 "tab.about" = "О нас";
+
+// Scanner
+"scanner.title" = "Сканирование штрихкода";
+"scanner.error.title" = "Scanning not supported";
+"scanner.error.description" = "Your device does not support scanning a code from an item. Please use a device with a camera.";
+"scanner.permission.allow" = "Разрешить";
+"scanner.permission.decline" = "Разрешить";
+"scanner.permission.camera.title" = "Нет доступа к камере";
+"scanner.permission.camera.message" = "Требуется разрешение для камеры";
