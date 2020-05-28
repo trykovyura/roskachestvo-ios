@@ -67,6 +67,7 @@ targets:
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
         UILaunchStoryboardName: LaunchScreen
         UIUserInterfaceStyle: Light
+        NSCameraUsageDescription: Приложение сможет отсканировать бар код для поиска продуктов
         UIStatusBarStyle: UIStatusBarStyleLightContent
         UIAppFonts: [ProximaNovaBold.otf, Backpack-Bold.otf, Backpack-Light.otf, Backpack-Regular.otf]
         LSRequiresIPhoneOS: true

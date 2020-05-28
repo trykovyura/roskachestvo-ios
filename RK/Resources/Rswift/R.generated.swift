@@ -183,7 +183,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 5 colors.
+  /// This `R.color` struct is generated, and contains static references to 6 colors.
   struct color {
     /// Color `Athens Gray`.
     static let athensGray = Rswift.ColorResource(bundle: R.hostingBundle, name: "Athens Gray")
@@ -195,6 +195,8 @@ struct R: Rswift.Validatable {
     static let ghost2 = Rswift.ColorResource(bundle: R.hostingBundle, name: "Ghost2")
     /// Color `Viridian Green`.
     static let viridianGreen = Rswift.ColorResource(bundle: R.hostingBundle, name: "Viridian Green")
+    /// Color `gray`.
+    static let gray = Rswift.ColorResource(bundle: R.hostingBundle, name: "gray")
 
     #if os(iOS) || os(tvOS)
     /// `UIColor(named: "Athens Gray", bundle: ..., traitCollection: ...)`
@@ -238,6 +240,15 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func viridianGreen(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.viridianGreen, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "gray", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func gray(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.gray, compatibleWith: traitCollection)
     }
     #endif
 
@@ -323,7 +334,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 7 images.
+  /// This `R.image` struct is generated, and contains static references to 9 images.
   struct image {
     /// Image `AboutTab`.
     static let aboutTab = Rswift.ImageResource(bundle: R.hostingBundle, name: "AboutTab")
@@ -339,6 +350,10 @@ struct R: Rswift.Validatable {
     static let scanTab = Rswift.ImageResource(bundle: R.hostingBundle, name: "ScanTab")
     /// Image `SearchTab`.
     static let searchTab = Rswift.ImageResource(bundle: R.hostingBundle, name: "SearchTab")
+    /// Image `close`.
+    static let close = Rswift.ImageResource(bundle: R.hostingBundle, name: "close")
+    /// Image `temp_image_overlay`.
+    static let temp_image_overlay = Rswift.ImageResource(bundle: R.hostingBundle, name: "temp_image_overlay")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "AboutTab", bundle: ..., traitCollection: ...)`
@@ -389,13 +404,33 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "close", bundle: ..., traitCollection: ...)`
+    static func close(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.close, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "temp_image_overlay", bundle: ..., traitCollection: ...)`
+    static func temp_image_overlay(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.temp_image_overlay, compatibleWith: traitCollection)
+    }
+    #endif
+
     fileprivate init() {}
   }
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 7 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 16 localization keys.
     struct localizable {
+      /// Value: OK
+      static let ok = Rswift.StringResource(key: "ok", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Scanning not supported
+      static let scannerErrorTitle = Rswift.StringResource(key: "scanner.error.title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Your device does not support scanning a code from an item. Please use a device with a camera.
+      static let scannerErrorDescription = Rswift.StringResource(key: "scanner.error.description", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Главная
       static let tabMain = Rswift.StringResource(key: "tab.main", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Исследования
@@ -404,12 +439,63 @@ struct R: Rswift.Validatable {
       static let tabHistory = Rswift.StringResource(key: "tab.history", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Категории
       static let categoryTitle = Rswift.StringResource(key: "category.title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Нет доступа к камере
+      static let scannerPermissionCameraTitle = Rswift.StringResource(key: "scanner.permission.camera.title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: О нас
       static let tabAbout = Rswift.StringResource(key: "tab.about", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Отмена
+      static let cancel = Rswift.StringResource(key: "cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Поиск
       static let tabSearch = Rswift.StringResource(key: "tab.search", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Разрешить
+      static let scannerPermissionAllow = Rswift.StringResource(key: "scanner.permission.allow", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Разрешить
+      static let scannerPermissionDecline = Rswift.StringResource(key: "scanner.permission.decline", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Сканирование штрихкода
+      static let scannerTitle = Rswift.StringResource(key: "scanner.title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Сканировать
       static let tabScan = Rswift.StringResource(key: "tab.scan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Требуется разрешение для камеры
+      static let scannerPermissionCameraMessage = Rswift.StringResource(key: "scanner.permission.camera.message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: OK
+      static func ok(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("ok", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "ok"
+        }
+
+        return NSLocalizedString("ok", bundle: bundle, comment: "")
+      }
+
+      /// Value: Scanning not supported
+      static func scannerErrorTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("scanner.error.title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "scanner.error.title"
+        }
+
+        return NSLocalizedString("scanner.error.title", bundle: bundle, comment: "")
+      }
+
+      /// Value: Your device does not support scanning a code from an item. Please use a device with a camera.
+      static func scannerErrorDescription(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("scanner.error.description", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "scanner.error.description"
+        }
+
+        return NSLocalizedString("scanner.error.description", bundle: bundle, comment: "")
+      }
 
       /// Value: Главная
       static func tabMain(preferredLanguages: [String]? = nil) -> String {
@@ -463,6 +549,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("category.title", bundle: bundle, comment: "")
       }
 
+      /// Value: Нет доступа к камере
+      static func scannerPermissionCameraTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("scanner.permission.camera.title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "scanner.permission.camera.title"
+        }
+
+        return NSLocalizedString("scanner.permission.camera.title", bundle: bundle, comment: "")
+      }
+
       /// Value: О нас
       static func tabAbout(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -474,6 +573,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("tab.about", bundle: bundle, comment: "")
+      }
+
+      /// Value: Отмена
+      static func cancel(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("cancel", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "cancel"
+        }
+
+        return NSLocalizedString("cancel", bundle: bundle, comment: "")
       }
 
       /// Value: Поиск
@@ -489,6 +601,45 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("tab.search", bundle: bundle, comment: "")
       }
 
+      /// Value: Разрешить
+      static func scannerPermissionAllow(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("scanner.permission.allow", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "scanner.permission.allow"
+        }
+
+        return NSLocalizedString("scanner.permission.allow", bundle: bundle, comment: "")
+      }
+
+      /// Value: Разрешить
+      static func scannerPermissionDecline(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("scanner.permission.decline", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "scanner.permission.decline"
+        }
+
+        return NSLocalizedString("scanner.permission.decline", bundle: bundle, comment: "")
+      }
+
+      /// Value: Сканирование штрихкода
+      static func scannerTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("scanner.title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "scanner.title"
+        }
+
+        return NSLocalizedString("scanner.title", bundle: bundle, comment: "")
+      }
+
       /// Value: Сканировать
       static func tabScan(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -500,6 +651,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("tab.scan", bundle: bundle, comment: "")
+      }
+
+      /// Value: Требуется разрешение для камеры
+      static func scannerPermissionCameraMessage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("scanner.permission.camera.message", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "scanner.permission.camera.message"
+        }
+
+        return NSLocalizedString("scanner.permission.camera.message", bundle: bundle, comment: "")
       }
 
       fileprivate init() {}

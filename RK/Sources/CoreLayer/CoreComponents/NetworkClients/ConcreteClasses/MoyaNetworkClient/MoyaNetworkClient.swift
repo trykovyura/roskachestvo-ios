@@ -39,6 +39,7 @@ class MoyaNetworkClient: NetworkClient {
                 .eraseToAnyPublisher()
         }
         return URLSession.shared.dataTaskPublisher(for: urlRequest)
+                .print()
                 .tryMap { element -> Data in
                     guard let httpResponse = element.response as? HTTPURLResponse,
                           (200...299).contains(httpResponse.statusCode) else {
