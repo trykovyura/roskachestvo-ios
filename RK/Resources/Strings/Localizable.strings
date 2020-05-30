@@ -20,6 +20,9 @@
 "tab.about" = "О нас";
 
 // Scanner
+"scanner.intro.title" = "Сканировать штрих-код";
+"scanner.intro.description" = "Выполните поиск товара по его штрих-коду.";
+"scanner.intro.scan" = "Сканировать";
 "scanner.title" = "Сканирование штрихкода";
 "scanner.error.title" = "Scanning not supported";
 "scanner.error.description" = "Your device does not support scanning a code from an item. Please use a device with a camera.";
