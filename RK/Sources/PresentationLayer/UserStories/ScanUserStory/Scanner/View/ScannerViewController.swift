@@ -36,9 +36,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         label.isHidden = true
         return label
     }()
-    lazy var closeButton: UIButton = {
+    lazy var closeButton: UIButton = { [unowned self] in
         let button = UIButton()
         button.setImage(R.image.close(), for: .normal)
+        button.addTarget(self, action: #selector(closeButtonTrigger), for: .touchUpInside)
         return button
     }()
 
@@ -193,6 +194,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 }, receiveValue: { response in
                     print(response)
                 })
+    }
+
+    @objc func closeButtonTrigger(sender: UIButton) {
+        dismiss(animated: true)
     }
 
     override var prefersStatusBarHidden: Bool {
