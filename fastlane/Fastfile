@@ -30,15 +30,16 @@ platform :ios do
   end
 
   lane :register_new_devices_production do
-    match(type: "development", app_identifier: 'ru.trykov.roskachestvo', force_for_new_devices: true)
-    match(type: "adhoc", app_identifier: 'ru.trykov.roskachestvo', force_for_new_devices: true)
+    match(type: "development", force_for_new_devices: true)
+    match(type: "adhoc", force_for_new_devices: true)
+    match(type: "appstore", force_for_new_devices: true)
   end
 
   desc "Download certificates"
   lane :certificates do
-    match(type: "development", app_identifier: ["ru.trykov.roskachestvo"], readonly: true)
-    match(type: "adhoc", app_identifier: ["ru.trykov.roskachestvo"], readonly: true)
-    match(type: "appstore", app_identifier: ["ru.trykov.roskachestvo"], readonly: true)
+    match(type: "development", readonly: true)
+    match(type: "adhoc", readonly: true)
+    match(type: "appstore", readonly: true)
   end
 
   desc "Renew certificates for production scheme"
@@ -77,15 +78,6 @@ platform :ios do
           config_file: ".swiftlint.yml",     # The path of the configuration file (optional)
           ignore_exit_status: true    # Allow fastlane to continue even if SwiftLint returns a non-zero exit status
      )
-  end
-
-  desc "Post to slack upload Test Flight"
-  lane :post_to_slack do |options|
-    if ENV["SLACK_URL"] #get from bash_profile
-      message = options[:message]
-      success = options[:success]
-      slack(message: message + (success ? " :beers:" : " :bomb:"), channel: "#mobile_build", success: success)
-    end
   end
 
   desc "Increment build number on the iOS project and commit it"
@@ -160,7 +152,6 @@ platform :ios do
                         notes: default_changelog,
                 notifications: true)
     upload_dsyms()
-    post_to_jira(message: "Cборка #{version}(#{build}) доступна в Crashlytics")
   end
 
   desc "Upload to Firebase beta"
@@ -178,7 +169,6 @@ platform :ios do
                   firebase_cli_token: ENV["FIREBASE_TOKEN"],
                   release_notes: default_changelog
                   )
-    post_to_jira(message: "Cборка #{version}(#{build}) доступна в Firebase App Distribution")
   end
 
   desc "Upload to TestFlight"
@@ -186,7 +176,6 @@ platform :ios do
     version     = get_version_number(xcodeproj: "RK.xcodeproj", target: "RK")
     build       = ENV['CI_PIPELINE_ID'] ? ENV['CI_PIPELINE_ID'] : get_build_number(xcodeproj: "RK.xcodeproj")
     pilot(skip_waiting_for_build_processing: true)
-    post_to_jira(message: "Cборка #{version}(#{build}) доступна в TestFlight")
   end
 
   desc "Returns a default changelog."
@@ -209,8 +198,6 @@ platform :ios do
   desc "This will **not** send an email to all testers, it will only be uploaded to the new TestFlight. "
   desc "CI build set build number with TC, on local build increment by latest at Test Flight"
   lane :release do |values|
-    xcodegen
-    cocoapods(try_repo_update_on_error: true)
     if is_ci
       buildNumber = ENV['CI_PIPELINE_ID']
       UI.message"build number is here: #{buildNumber}"
@@ -227,59 +214,5 @@ platform :ios do
               clean: true
             )
   end
-
-  desc "Download dSYMs from iTunesConnect and uploads to Crashlytics"
-  lane :refresh_dsyms do
-    download_dsyms                  # Download dSYM files from iTC
-    upload_symbols_to_crashlytics   # Upload them to Crashlytics
-    clean_build_artifacts           # Delete the local dSYM files
-  end
-
-  desc "Upload dSYMs from local build"
-  lane :upload_dsyms do
-    upload_symbols_to_crashlytics(dsym_path: ENV["DSYM_OUTPUT_PATH"])
-  end
-
-  desc "Comment Jira Task about feature build"
-  lane :post_to_jira do |options|
-    ticket_id = git_branch.match('HEAL-\d*')[0]
-    UI.message"JIRA_TICKET_ID: #{ticket_id}"
-    jira(
-      url: "https://jira.renhealth.com",
-      username: ENV["JIRA_NAME"],
-      password: ENV["JIRA_PASSWORD"],
-      ticket_id: ticket_id,
-      comment_text: options[:message]
-    )
-  end
-
-  lane :post_to_teams do |options|
-    teams_url = ENV["TEAMS_URL"]
-    teams(title: options[:title],
-        message: options[:message],
-          facts:[
-                   {
-                     "name"=>"Platform",
-                     "value"=>"iOS"
-                   },
-                   {
-                     "name"=>"Branch",
-                     "value"=>git_branch
-                   }
-                 ],
-       teams_url: teams_url
-    )
-  end
-
-#### Error management ####
-
-error do |lane, exception|
-  case lane
-  when :analyze then post_to_teams(title: "Error", message: "Linter finished with errors")
-  when :unit_tests then post_to_teams(title: "Error", message: "UnitTests finished with errors")
-  when :ui_tests then post_to_teams(title: "Error", message: "UITests finished with errors")
-  else post_to_teams(title: "Error", message: "Finished with errors")
-  end
-end
 
 end

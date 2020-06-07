@@ -37,15 +37,16 @@ targets:
         IPHONEOS_DEPLOYMENT_TARGET: 13.0
         PRODUCT_BUNDLE_IDENTIFIER: "ru.trykov.roskachestvo"
         CODE_SIGN_STYLE: "Manual"
-        CODE_SIGN_IDENTITY: ""
         ENABLE_BITCODE: false
         DEVELOPMENT_TEAM: 7ZU2JEECEY
         CURRENT_PROJECT_VERSION: 1
         VERSIONING_SYSTEM: "apple-generic"
       configs:
         debug:
+          CODE_SIGN_IDENTITY: "Apple Development: Iurii Trykov (ZR4UPZM377)"
           PROVISIONING_PROFILE_SPECIFIER: "match Development ru.trykov.roskachestvo"
         release:
+          CODE_SIGN_IDENTITY: "Apple Distribution: Юрий Трыков (7ZU2JEECEY)"
           PROVISIONING_PROFILE_SPECIFIER: "match AppStore ru.trykov.roskachestvo"
     sources:
       - path: RK
