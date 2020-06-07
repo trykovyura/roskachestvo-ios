@@ -6,8 +6,6 @@ type("development") # The default type, can be: appstore, adhoc, enterprise or d
 
 app_identifier("ru.trykov.roskachestvo")
 
-git_basic_authorization Base64.encode64(#{ENV['GIT_BASIC_AUTHORIZATION']})
-
 # username("user@fastlane.tools") # Your Apple Developer Portal username
 
 # For all available options run `fastlane match --help`
