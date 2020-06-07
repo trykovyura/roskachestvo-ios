@@ -46,7 +46,9 @@ struct ScannerIntroScene: ConnectedView {
                         .padding([.leading, .trailing], 16)
                         .padding(.bottom, 40)
                         .sheet(isPresented: props.showingDetail) { () -> ScannerViewScene in
-                            ScannerViewScene()
+                            ScannerViewScene { barCode in
+                                print(barCode)
+                            }
                         }
             }
         }
