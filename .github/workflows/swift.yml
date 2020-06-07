@@ -16,6 +16,9 @@ jobs:
       - name: Prepare
         run: bundle install && bundle exec fastlane prepare
       - name: Certificates
+        env:
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
         run: bundle exec fastlane certificates
       - name: Build
         run: bundle exec fastlane gym
