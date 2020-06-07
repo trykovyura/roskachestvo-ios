@@ -16,6 +16,6 @@ jobs:
       - name: Prepare
         run: bundle install && bundle exec fastlane prepare
       - name: Build
-        run: swift build -v
+        run: bundle exec fastlane gym
       - name: Run tests
-        run: swift test -v
+        run: bundle exec fastlane scan
