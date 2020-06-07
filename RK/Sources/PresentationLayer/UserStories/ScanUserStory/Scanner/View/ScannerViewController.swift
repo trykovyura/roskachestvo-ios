@@ -8,12 +8,14 @@ import UIKit
 import Combine
 import SnapKit
 
+protocol ScannerViewControllerDelegate: class {
+    func barCode(_ value: String)
+}
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
-    let researchNetworkService = MainAssembler.sharedInstance.resolve(ResearchNetworkServiceType.self)
     let permissionService = MainAssembler.sharedInstance.resolve(PermissionServiceType.self)
-    var cancelable: AnyCancellable?
+    weak var delegate: ScannerViewControllerDelegate?
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -183,17 +185,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
 
     func found(code: String) {
-        print(code)
-        cancelable = researchNetworkService.searchProduct(code: code)
-                .receive(on: DispatchQueue.main)
-                .sink(receiveCompletion: { completion in
-                    switch completion {
-                    case .finished:()
-                    case .failure(let error): print(error)
-                    }
-                }, receiveValue: { response in
-                    print(response)
-                })
+        delegate?.barCode(code)
     }
 
     @objc func closeButtonTrigger(sender: UIButton) {
