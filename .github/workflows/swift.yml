@@ -13,8 +13,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-#      - name: Prepare
-#        run: bundle install && bundle exec fastlane prepare
+      - name: Prepare
+        run: bundle install && bundle exec fastlane prepare
       - name: Certificates
         run: bundle exec fastlane certificates
       - name: Build
