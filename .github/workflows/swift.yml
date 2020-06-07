@@ -1,0 +1,21 @@
+name: Swift
+
+on:
+  push:
+    branches: [ feature/* ]
+  pull_request:
+    branches: [ feature/* ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prepare
+        run: bundle exec fastlane prepare
+      - name: Build
+        run: swift build -v
+      - name: Run tests
+        run: swift test -v
