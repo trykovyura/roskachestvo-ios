@@ -1,4 +1,4 @@
-git_url("git@github.com:trykovyura/roskachestvo-ios-certificates.git")
+git_url("https://github.com/trykovyura/roskachestvo-ios-certificates.git")
 
 storage_mode("git")
 
