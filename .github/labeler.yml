@@ -3,6 +3,7 @@ repo:
   - '**'
 CI:
   -'.github/**/*'
+  -'.github/**'
   -'/.github/*'
   -'./.github/*'
   -'fastlane/**/*'
