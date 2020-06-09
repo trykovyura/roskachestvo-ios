@@ -1,0 +1,7 @@
+# Add 'repo' label to any root file changes
+repo:
+  - '**'
+CI:
+  -'.github/**/*'
+  -'.github/*'
+  -'fastlane/**/*'
