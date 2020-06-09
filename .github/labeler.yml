@@ -4,4 +4,5 @@ repo:
 CI:
   -'.github/**/*'
   -'/.github/*'
+  -'./.github/*'
   -'fastlane/**/*'
