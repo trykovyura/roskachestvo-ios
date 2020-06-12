@@ -74,7 +74,7 @@ platform :ios do
                                         }
               }
             )
-    upload_firebase_beta
+    upload_firebase
   end
 
   desc "Upload to Firebase beta"
