@@ -10,6 +10,7 @@ jobs:
   build:
 
     runs-on: self-hosted
+    timeout-minutes: 30
 
     steps:
       - uses: actions/checkout@v2
@@ -21,6 +22,6 @@ jobs:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
         run: bundle exec fastlane certificates
       - name: Build
-        run: bundle exec fastlane gym
+        run: bundle exec fastlane build_feature
       - name: Run tests
         run: bundle exec fastlane scan
