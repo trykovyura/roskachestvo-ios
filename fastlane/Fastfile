@@ -50,7 +50,7 @@ platform :ios do
   desc "Increment build number on the iOS project and commit it"
   lane :increment do
       if is_ci
-          buildNumber = ENV['CI_PIPELINE_ID']
+          buildNumber = ENV['GITHUB_RUN_ID']
           UI.message"build number is here: #{buildNumber}"
           increment_build_number(xcodeproj: 'RK.xcodeproj',
                                  build_number: buildNumber)
@@ -101,8 +101,6 @@ platform :ios do
         between: [ENV['GIT_PREVIOUS_SUCCESSFUL_COMMIT'] || "HEAD^^^^^", "HEAD"],
         pretty: "- %s"
     )
-    # HAX: strip emoji from changelog
-    changelog = changelog.sub(/[\u{1F300}-\u{1F6FF}]/, '')
     Actions.lane_context[SharedValues::FL_CHANGELOG] = changelog
     puts changelog
     UI.message"#{changelog}"
