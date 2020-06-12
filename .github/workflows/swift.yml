@@ -25,5 +25,3 @@ jobs:
         env:
           LOGIN_KEYCHAIN_PASSWORD: ${{ secrets.LOGIN_KEYCHAIN_PASSWORD }}
         run: bundle exec fastlane build_feature
-      - name: Run tests
-        run: bundle exec fastlane scan
