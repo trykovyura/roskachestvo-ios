@@ -24,4 +24,6 @@ jobs:
       - name: Build and Deploy
         env:
           LOGIN_KEYCHAIN_PASSWORD: ${{ secrets.LOGIN_KEYCHAIN_PASSWORD }}
+          FIREBASE_APP: ${{ secrets.FIREBASE_APP }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: bundle exec fastlane build_feature
