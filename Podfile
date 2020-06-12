@@ -17,6 +17,7 @@ target 'RK' do
 
   # Network
   pod 'Moya/RxSwift'
+  pod 'Firebase/Analytics'
 
   #UI
   pod 'SnapKit'

@@ -83,7 +83,7 @@ platform :ios do
   desc "If CI machine - use FIREBASE_TOKEN for firebase_cli_token params"
   lane :upload_firebase do |values|
     firebase_app_distribution(
-                  app: ENV["FIREBASE_BETA_APP"],
+                  app: ENV["FIREBASE_APP"],
                   groups: 'qa-heal',
                   firebase_cli_token: ENV["FIREBASE_TOKEN"],
                   release_notes: default_changelog
