@@ -21,12 +21,7 @@ jobs:
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
         run: bundle exec fastlane certificates
-      - name: Build
+      - name: Build and Deploy
         env:
           LOGIN_KEYCHAIN_PASSWORD: ${{ secrets.LOGIN_KEYCHAIN_PASSWORD }}
         run: bundle exec fastlane build_feature
-      - name: Deploy
-        env:
-          FIREBASE_APP: ${{ secrets.FIREBASE_APP }}
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: bundle exec fastlane upload_firebase
