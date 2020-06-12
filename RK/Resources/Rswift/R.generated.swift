@@ -255,7 +255,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 4 files.
+  /// This `R.file` struct is generated, and contains static references to 5 files.
   struct file {
     /// Resource file `Backpack-Bold.otf`.
     static let backpackBoldOtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Backpack-Bold", pathExtension: "otf")
@@ -263,6 +263,8 @@ struct R: Rswift.Validatable {
     static let backpackLightOtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Backpack-Light", pathExtension: "otf")
     /// Resource file `Backpack-Regular.otf`.
     static let backpackRegularOtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Backpack-Regular", pathExtension: "otf")
+    /// Resource file `GoogleService-Info.plist`.
+    static let googleServiceInfoPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "GoogleService-Info", pathExtension: "plist")
     /// Resource file `ProximaNovaBold.otf`.
     static let proximaNovaBoldOtf = Rswift.FileResource(bundle: R.hostingBundle, name: "ProximaNovaBold", pathExtension: "otf")
 
@@ -281,6 +283,12 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "Backpack-Regular", withExtension: "otf")`
     static func backpackRegularOtf(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.backpackRegularOtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "GoogleService-Info", withExtension: "plist")`
+    static func googleServiceInfoPlist(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.googleServiceInfoPlist
       return fileResource.bundle.url(forResource: fileResource)
     }
 

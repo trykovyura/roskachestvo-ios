@@ -11,9 +11,7 @@ default_platform(:ios)
 platform :ios do
 
   before_all do
-
     xcode_select("/Applications/Xcode.app")
-
   end
 
   desc "Generate project and install pods"
@@ -24,116 +22,48 @@ platform :ios do
 
   desc "Register new devices"
   lane :register_new_devices do
-    register_devices(devices_file: "./fastlane/devices.txt", username: "me@trykov.ru")
+    register_devices(devices_file: "./fastlane/devices.txt")
     register_new_devices_production
     register_new_devices_beta
   end
 
   lane :register_new_devices_production do
-    match(type: "development", app_identifier: 'ru.trykov.roskachestvo', force_for_new_devices: true)
-    match(type: "adhoc", app_identifier: 'ru.trykov.roskachestvo', force_for_new_devices: true)
+    match(type: "development", force_for_new_devices: true)
+    match(type: "adhoc", force_for_new_devices: true)
+    match(type: "appstore", force_for_new_devices: true)
   end
 
   desc "Download certificates"
   lane :certificates do
-    match(type: "development", app_identifier: ["ru.trykov.roskachestvo"], readonly: true)
-    match(type: "adhoc", app_identifier: ["ru.trykov.roskachestvo"], readonly: true)
-    match(type: "appstore", app_identifier: ["ru.trykov.roskachestvo"], readonly: true)
+    match(type: "development", readonly: true)
+    match(type: "adhoc", readonly: true)
+    match(type: "appstore", readonly: true)
   end
 
   desc "Renew certificates for production scheme"
   lane :renew_production_certificates do
-    app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
-    match(type: "development",
-          app_identifier: app_identifier,
-          force_for_new_devices: true)
-    match(type: "adhoc",
-          app_identifier: app_identifier,
-          force: true)
-    match(type: "appstore",
-          app_identifier: app_identifier,
-          force: true)
-  end
-
-  desc "Renew certificates for beta scheme"
-  lane :renew_beta_certificates do
-    app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
-    match(type: "development",
-          app_identifier: app_identifier,
-          force_for_new_devices: true)
-    match(type: "adhoc",
-          app_identifier: app_identifier,
-          force: true)
-    match(type: "appstore",
-          app_identifier: app_identifier,
-          force: true)
-  end
-
-  desc "Run the static analyzer on the iOS project"
-  lane :analyze do
-    swiftlint(
-          mode: :lint,      # SwiftLint mode: :lint (default) or :autocorrect
-          output_file: "swiftlint.result.json", # The path of the output file (optional)
-          config_file: ".swiftlint.yml",     # The path of the configuration file (optional)
-          ignore_exit_status: true    # Allow fastlane to continue even if SwiftLint returns a non-zero exit status
-     )
-  end
-
-  desc "Post to slack upload Test Flight"
-  lane :post_to_slack do |options|
-    if ENV["SLACK_URL"] #get from bash_profile
-      message = options[:message]
-      success = options[:success]
-      slack(message: message + (success ? " :beers:" : " :bomb:"), channel: "#mobile_build", success: success)
-    end
+    match(type: "development", force_for_new_devices: true)
+    match(type: "adhoc", force: true)
+    match(type: "appstore", force: true)
   end
 
   desc "Increment build number on the iOS project and commit it"
   lane :increment do
-    project_file = 'RK.xcodeproj'
-    # Ensure that your git status is not dirty
-    ensure_git_status_clean
-
-    # Increment the build number (not the version number)
-    # Providing the xcodeproj is optional
-    increment_build_number(xcodeproj: project_file,
-                            build_number: ENV['CI_PIPELINE_ID'])
-
-    # Commit the version bump
-    commit_version_bump(
-          message: 'Version Bump by fastlane',
-          xcodeproj: project_file
-    )
-
-    # Push the new commit and tag back to your git remote
-    push_to_git_remote
-  end
-
-  desc "Create new screenshots for the App Store in all languages and device types"
-  desc "Additionally, this will add device frames around the screenshots and add the correct titles"
-  lane :screenshots do
-    snapshot
-    frameit(white: true, path: './fastlane/screenshots')
-  end
-
-  desc "Uploads metadata only - no ipa file will be uploaded"
-  desc "You'll get a summary of the collected metadata before it's uploaded"
-  lane :upload_metadata do
-    deliver(metadata_only: true)
+      if is_ci
+          buildNumber = ENV['GITHUB_RUN_ID']
+          UI.message"build number is here: #{buildNumber}"
+          increment_build_number(xcodeproj: 'RK.xcodeproj',
+                                 build_number: buildNumber)
+      end
   end
 
   desc "Build scheme in debug mode and upload to Crashlytics"
-  lane :beta do |values|
+  lane :build_feature do |values|
     xcodegen
     cocoapods(try_repo_update_on_error: true)
-    buildNumber = ENV['CI_PIPELINE_ID']
-    UI.message"build number is here: #{buildNumber}"
-
-    increment_build_number(xcodeproj: 'RK.xcodeproj',
-                          build_number: buildNumber)
-
+    increment
+    unlock_keychain_ci
     build_app(
-              scheme: "RK-beta",
               export_method: 'ad-hoc',
               export_xcargs: "-allowProvisioningUpdates",
               export_options: {
@@ -142,25 +72,9 @@ platform :ios do
                     provisioningProfiles: {
                                           "ru.trykov.roskachestvo" => "match AdHoc ru.trykov.roskachestvo"
                                         }
-              },
-              clean: true
+              }
             )
-  end
-
-  desc "Upload to Crashlytics"
-  lane :upload_crashlytics do |values|
-    version     = get_version_number(xcodeproj: "RK.xcodeproj", target: "RK")
-    build       = ENV['CI_PIPELINE_ID'] ? ENV['CI_PIPELINE_ID'] : get_build_number(xcodeproj: "RK.xcodeproj")
-    emails = values[:test_email] ? values[:test_email] : nil
-    groups = values[:test_email] ? nil : ['qa-heal'] # You can define groups on the web and reference them here
-    crashlytics(    api_token: ENV["CRASHLYTICS_API_TOKEN"],
-                 build_secret: ENV["CRASHLYTICS_SECRET"],
-                       emails: emails,
-                       groups: 'groups',
-                        notes: default_changelog,
-                notifications: true)
-    upload_dsyms()
-    post_to_jira(message: "Cборка #{version}(#{build}) доступна в Crashlytics")
+    upload_firebase
   end
 
   desc "Upload to Firebase beta"
@@ -169,24 +83,17 @@ platform :ios do
   desc "Login local machine 'firebase login' or ci 'firebase login:ci'"
   desc "If CI machine - use FIREBASE_TOKEN for firebase_cli_token params"
   lane :upload_firebase do |values|
-    version     = get_version_number(xcodeproj: "RK.xcodeproj", target: "RK")
-    build       = ENV['CI_PIPELINE_ID'] ? ENV['CI_PIPELINE_ID'] : get_build_number(xcodeproj: "RK.xcodeproj")
-    groups = values[:test_email] ? nil : 'qa-heal' # You can define groups on the web and reference them here
     firebase_app_distribution(
-                  app: ENV["FIREBASE_BETA_APP"],
-                  groups: groups,
+                  app: ENV["FIREBASE_APP"],
+                  groups: 'qa-heal',
                   firebase_cli_token: ENV["FIREBASE_TOKEN"],
                   release_notes: default_changelog
                   )
-    post_to_jira(message: "Cборка #{version}(#{build}) доступна в Firebase App Distribution")
   end
 
   desc "Upload to TestFlight"
   lane :upload_testflight do
-    version     = get_version_number(xcodeproj: "RK.xcodeproj", target: "RK")
-    build       = ENV['CI_PIPELINE_ID'] ? ENV['CI_PIPELINE_ID'] : get_build_number(xcodeproj: "RK.xcodeproj")
-    pilot(skip_waiting_for_build_processing: true)
-    post_to_jira(message: "Cборка #{version}(#{build}) доступна в TestFlight")
+      pilot(skip_waiting_for_build_processing: true)
   end
 
   desc "Returns a default changelog."
@@ -195,12 +102,8 @@ platform :ios do
         between: [ENV['GIT_PREVIOUS_SUCCESSFUL_COMMIT'] || "HEAD^^^^^", "HEAD"],
         pretty: "- %s"
     )
-    # HAX: strip emoji from changelog
-    changelog = changelog.sub(/[\u{1F300}-\u{1F6FF}]/, '')
     Actions.lane_context[SharedValues::FL_CHANGELOG] = changelog
     puts changelog
-    # Добавляем имя ветки в начало changelog'a
-    changelog = "Задача в JIRA: #{git_branch}\n" + changelog
     UI.message"#{changelog}"
     changelog
   end
@@ -208,78 +111,19 @@ platform :ios do
   desc "Build, sign and upload a new beta build to Apple TestFlight"
   desc "This will **not** send an email to all testers, it will only be uploaded to the new TestFlight. "
   desc "CI build set build number with TC, on local build increment by latest at Test Flight"
-  lane :release do |values|
-    xcodegen
-    cocoapods(try_repo_update_on_error: true)
-    if is_ci
-      buildNumber = ENV['CI_PIPELINE_ID']
-      UI.message"build number is here: #{buildNumber}"
-      increment_build_number(xcodeproj: 'RK.xcodeproj',
-                             build_number: buildNumber)
-    else
+  lane :build_release do |values|
+      xcodegen
+      cocoapods(try_repo_update_on_error: true)
       increment
-    end
-    app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
-    apple_id = CredentialsManager::AppfileConfig.try_fetch_value(:apple_id)
-    build_app(
-              scheme: "RK",
-              export_method: "app-store",
-              clean: true
-            )
+      unlock_keychain_ci
+      build_app(export_method: "app-store")
   end
-
-  desc "Download dSYMs from iTunesConnect and uploads to Crashlytics"
-  lane :refresh_dsyms do
-    download_dsyms                  # Download dSYM files from iTC
-    upload_symbols_to_crashlytics   # Upload them to Crashlytics
-    clean_build_artifacts           # Delete the local dSYM files
+  desc "Разблокировать связку ключей macOs"
+  desc "Единообразный пароль должен быть для разных устойств"
+  lane :unlock_keychain_ci do |values|
+      unlock_keychain(
+          path: "login.keychain",
+          password: ENV["LOGIN_KEYCHAIN_PASSWORD"]
+      )
   end
-
-  desc "Upload dSYMs from local build"
-  lane :upload_dsyms do
-    upload_symbols_to_crashlytics(dsym_path: ENV["DSYM_OUTPUT_PATH"])
-  end
-
-  desc "Comment Jira Task about feature build"
-  lane :post_to_jira do |options|
-    ticket_id = git_branch.match('HEAL-\d*')[0]
-    UI.message"JIRA_TICKET_ID: #{ticket_id}"
-    jira(
-      url: "https://jira.renhealth.com",
-      username: ENV["JIRA_NAME"],
-      password: ENV["JIRA_PASSWORD"],
-      ticket_id: ticket_id,
-      comment_text: options[:message]
-    )
-  end
-
-  lane :post_to_teams do |options|
-    teams_url = ENV["TEAMS_URL"]
-    teams(title: options[:title],
-        message: options[:message],
-          facts:[
-                   {
-                     "name"=>"Platform",
-                     "value"=>"iOS"
-                   },
-                   {
-                     "name"=>"Branch",
-                     "value"=>git_branch
-                   }
-                 ],
-       teams_url: teams_url
-    )
-  end
-
-#### Error management ####
-
-error do |lane, exception|
-  case lane
-  when :analyze then post_to_teams(title: "Error", message: "Linter finished with errors")
-  when :unit_tests then post_to_teams(title: "Error", message: "UnitTests finished with errors")
-  when :ui_tests then post_to_teams(title: "Error", message: "UITests finished with errors")
-  else post_to_teams(title: "Error", message: "Finished with errors")
-  end
-end
-
 end
