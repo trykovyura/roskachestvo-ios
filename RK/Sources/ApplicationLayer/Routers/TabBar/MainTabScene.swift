@@ -26,25 +26,13 @@ struct MainTabScene: ConnectedView {
                         R.image.mainTab.image
                         R.string.localizable.tabMain.text
                     }.tag(1)
-            Text("Second Section!")
-                    .padding(0.0)
-                    .tabItem {
-                        R.image.searchTab.image
-                        R.string.localizable.tabSearch.text
-                    }.tag(2)
             ScannerIntroScene()
                     .padding(0.0)
                     .tabItem {
                         R.image.scanTab.image
                         R.string.localizable.tabScan.text
                     }.tag(3)
-            Text("History")
-                    .padding(0.0)
-                    .tabItem {
-                        R.image.historyTab.image
-                        R.string.localizable.tabHistory.text
-                    }.tag(4)
-            Text("About")
+            AboutViewScene()
                     .padding(0.0)
                     .tabItem {
                         R.image.aboutTab.image

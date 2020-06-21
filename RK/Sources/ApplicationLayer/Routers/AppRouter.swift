@@ -4,7 +4,6 @@
 //
 
 import UIKit
-import ESTabBarController_swift
 import SwiftUI
 
 final class AppRouter {

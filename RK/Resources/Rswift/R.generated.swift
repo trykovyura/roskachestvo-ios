@@ -342,7 +342,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 10 images.
+  /// This `R.image` struct is generated, and contains static references to 11 images.
   struct image {
     /// Image `AboutTab`.
     static let aboutTab = Rswift.ImageResource(bundle: R.hostingBundle, name: "AboutTab")
@@ -352,6 +352,8 @@ struct R: Rswift.Validatable {
     static let historyTab = Rswift.ImageResource(bundle: R.hostingBundle, name: "HistoryTab")
     /// Image `MainTab`.
     static let mainTab = Rswift.ImageResource(bundle: R.hostingBundle, name: "MainTab")
+    /// Image `Octocat`.
+    static let octocat = Rswift.ImageResource(bundle: R.hostingBundle, name: "Octocat")
     /// Image `ScanTabFull`.
     static let scanTabFull = Rswift.ImageResource(bundle: R.hostingBundle, name: "ScanTabFull")
     /// Image `ScanTab`.
@@ -390,6 +392,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "MainTab", bundle: ..., traitCollection: ...)`
     static func mainTab(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.mainTab, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "Octocat", bundle: ..., traitCollection: ...)`
+    static func octocat(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.octocat, compatibleWith: traitCollection)
     }
     #endif
 
@@ -440,14 +449,28 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 19 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 29 localization keys.
     struct localizable {
+      /// Value:  Доступ к материалам осуществляется через публичное API.
+      static let aboutSection3Suffix = Rswift.StringResource(key: "about.section.3.suffix", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value:  Замечания, пожелания, доработки приветствуются.
+      static let aboutSection2Suffix = Rswift.StringResource(key: "about.section.2.suffix", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: OK
       static let ok = Rswift.StringResource(key: "ok", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Scanning not supported
       static let scannerErrorTitle = Rswift.StringResource(key: "scanner.error.title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Your device does not support scanning a code from an item. Please use a device with a camera.
       static let scannerErrorDescription = Rswift.StringResource(key: "scanner.error.description", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: github.
+      static let aboutSection2Link = Rswift.StringResource(key: "about.section.2.link", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: https://github.com/trykovyura/roskachestvo-ios
+      static let githubLink = Rswift.StringResource(key: "github.link", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: https://rskrf.ru
+      static let rkLink = Rswift.StringResource(key: "rk.link", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: https://rskrf.ru/about/dev/
+      static let rkApiLink = Rswift.StringResource(key: "rk.api.link", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Все материалы предоставлены 
+      static let aboutSection3Prefix = Rswift.StringResource(key: "about.section.3.prefix", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Выполните поиск товара по его штрих-коду.
       static let scannerIntroDescription = Rswift.StringResource(key: "scanner.intro.description", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Главная
@@ -466,10 +489,14 @@ struct R: Rswift.Validatable {
       static let cancel = Rswift.StringResource(key: "cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Поиск
       static let tabSearch = Rswift.StringResource(key: "tab.search", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Приложение с открытым исходным кодом на 
+      static let aboutSection2Prefix = Rswift.StringResource(key: "about.section.2.prefix", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Разрешить
       static let scannerPermissionAllow = Rswift.StringResource(key: "scanner.permission.allow", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Разрешить
       static let scannerPermissionDecline = Rswift.StringResource(key: "scanner.permission.decline", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Роскачеством.
+      static let aboutSection3Link = Rswift.StringResource(key: "about.section.3.link", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Сканирование штрихкода
       static let scannerTitle = Rswift.StringResource(key: "scanner.title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Сканировать
@@ -478,8 +505,36 @@ struct R: Rswift.Validatable {
       static let tabScan = Rswift.StringResource(key: "tab.scan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Сканировать штрих-код
       static let scannerIntroTitle = Rswift.StringResource(key: "scanner.intro.title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Спасибо за интерес к проекту и качественным продуктам :). Мы считаем, что это полезная инициатива и максимальных эффект будет в удобном приложение.
+      static let aboutSection1Text = Rswift.StringResource(key: "about.section.1.text", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Требуется разрешение для камеры
       static let scannerPermissionCameraMessage = Rswift.StringResource(key: "scanner.permission.camera.message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value:  Доступ к материалам осуществляется через публичное API.
+      static func aboutSection3Suffix(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("about.section.3.suffix", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "about.section.3.suffix"
+        }
+
+        return NSLocalizedString("about.section.3.suffix", bundle: bundle, comment: "")
+      }
+
+      /// Value:  Замечания, пожелания, доработки приветствуются.
+      static func aboutSection2Suffix(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("about.section.2.suffix", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "about.section.2.suffix"
+        }
+
+        return NSLocalizedString("about.section.2.suffix", bundle: bundle, comment: "")
+      }
 
       /// Value: OK
       static func ok(preferredLanguages: [String]? = nil) -> String {
@@ -518,6 +573,71 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("scanner.error.description", bundle: bundle, comment: "")
+      }
+
+      /// Value: github.
+      static func aboutSection2Link(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("about.section.2.link", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "about.section.2.link"
+        }
+
+        return NSLocalizedString("about.section.2.link", bundle: bundle, comment: "")
+      }
+
+      /// Value: https://github.com/trykovyura/roskachestvo-ios
+      static func githubLink(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("github.link", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "github.link"
+        }
+
+        return NSLocalizedString("github.link", bundle: bundle, comment: "")
+      }
+
+      /// Value: https://rskrf.ru
+      static func rkLink(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("rk.link", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "rk.link"
+        }
+
+        return NSLocalizedString("rk.link", bundle: bundle, comment: "")
+      }
+
+      /// Value: https://rskrf.ru/about/dev/
+      static func rkApiLink(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("rk.api.link", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "rk.api.link"
+        }
+
+        return NSLocalizedString("rk.api.link", bundle: bundle, comment: "")
+      }
+
+      /// Value: Все материалы предоставлены 
+      static func aboutSection3Prefix(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("about.section.3.prefix", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "about.section.3.prefix"
+        }
+
+        return NSLocalizedString("about.section.3.prefix", bundle: bundle, comment: "")
       }
 
       /// Value: Выполните поиск товара по его штрих-коду.
@@ -637,6 +757,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("tab.search", bundle: bundle, comment: "")
       }
 
+      /// Value: Приложение с открытым исходным кодом на 
+      static func aboutSection2Prefix(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("about.section.2.prefix", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "about.section.2.prefix"
+        }
+
+        return NSLocalizedString("about.section.2.prefix", bundle: bundle, comment: "")
+      }
+
       /// Value: Разрешить
       static func scannerPermissionAllow(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -661,6 +794,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("scanner.permission.decline", bundle: bundle, comment: "")
+      }
+
+      /// Value: Роскачеством.
+      static func aboutSection3Link(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("about.section.3.link", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "about.section.3.link"
+        }
+
+        return NSLocalizedString("about.section.3.link", bundle: bundle, comment: "")
       }
 
       /// Value: Сканирование штрихкода
@@ -713,6 +859,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("scanner.intro.title", bundle: bundle, comment: "")
+      }
+
+      /// Value: Спасибо за интерес к проекту и качественным продуктам :). Мы считаем, что это полезная инициатива и максимальных эффект будет в удобном приложение.
+      static func aboutSection1Text(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("about.section.1.text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "about.section.1.text"
+        }
+
+        return NSLocalizedString("about.section.1.text", bundle: bundle, comment: "")
       }
 
       /// Value: Требуется разрешение для камеры
