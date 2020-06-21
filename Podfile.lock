@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (4.9.1)
-  - ESTabBarController-swift (2.6.5)
   - Firebase/Analytics (6.24.0):
     - Firebase/Core
   - Firebase/Core (6.24.0):
@@ -92,11 +91,11 @@ PODS:
   - SkeletonView (1.4.2)
   - SnapKit (5.0.1)
   - SwiftLint (0.30.1)
+  - SwiftRichString (3.7.1)
   - Swinject (2.5.0)
   - ViperMcFlurry (1.5.2)
 
 DEPENDENCIES:
-  - ESTabBarController-swift (~> 2.6.4)
   - Firebase/Analytics
   - IGListKit
   - Kingfisher
@@ -107,13 +106,13 @@ DEPENDENCIES:
   - SkeletonView (~> 1.4.1)
   - SnapKit
   - SwiftLint (~> 0.30.1)
+  - SwiftRichString
   - Swinject (~> 2.5.0)
   - ViperMcFlurry (~> 1.5.2)
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - ESTabBarController-swift
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -138,12 +137,12 @@ SPEC REPOS:
     - SkeletonView
     - SnapKit
     - SwiftLint
+    - SwiftRichString
     - Swinject
     - ViperMcFlurry
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  ESTabBarController-swift: f31cd3e30bde23619d3b300266f27864d96ffb58
   Firebase: b28e55c60efd98963cd9011fe2fac5a10c2ba124
   FirebaseAnalytics: 7386fc2176e3f93ad8ef34b5b1f2b33a891e4962
   FirebaseCore: e610482f64097b0e9f056cd97bc6b33dfabcbb6a
@@ -168,9 +167,10 @@ SPEC CHECKSUMS:
   SkeletonView: c2523c3c8c6510e273e49a3bf364a434744c3914
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
+  SwiftRichString: 9a6a70b4fe2cf428e38348b5ada5400da74621fd
   Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
   ViperMcFlurry: 701bc3ad8d188b1f1e157ec0ddf4e77184de88b5
 
-PODFILE CHECKSUM: ee9a364b835c3b7ee4750d429a7dbf454a42d4c2
+PODFILE CHECKSUM: 41a9d1475559ba3342559f5a8a2bf36501413dac
 
 COCOAPODS: 1.9.1

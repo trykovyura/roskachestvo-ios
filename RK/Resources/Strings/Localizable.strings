@@ -30,3 +30,15 @@
 "scanner.permission.decline" = "Разрешить";
 "scanner.permission.camera.title" = "Нет доступа к камере";
 "scanner.permission.camera.message" = "Требуется разрешение для камеры";
+
+// About
+"about.section.1.text" = "Спасибо за интерес к проекту и качественным продуктам :). Мы считаем, что это полезная инициатива и максимальных эффект будет в удобном приложение.";
+"about.section.2.prefix" = "Приложение с открытым исходным кодом на ";
+"about.section.2.link" = "github.";
+"about.section.2.suffix" = " Замечания, пожелания, доработки приветствуются.";
+"about.section.3.prefix" = "Все материалы предоставлены ";
+"about.section.3.link" = "Роскачеством.";
+"about.section.3.suffix" = " Доступ к материалам осуществляется через публичное API.";
+"github.link" = "https://github.com/trykovyura/roskachestvo-ios";
+"rk.link" = "https://rskrf.ru";
+"rk.api.link" = "https://rskrf.ru/about/dev/";
