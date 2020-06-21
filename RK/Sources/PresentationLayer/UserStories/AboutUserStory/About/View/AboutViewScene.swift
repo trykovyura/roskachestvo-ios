@@ -3,7 +3,6 @@
 //
 
 import SwiftUI
-import SwiftRichString
 
 struct AboutViewScene: ConnectedView {
     struct Props {
