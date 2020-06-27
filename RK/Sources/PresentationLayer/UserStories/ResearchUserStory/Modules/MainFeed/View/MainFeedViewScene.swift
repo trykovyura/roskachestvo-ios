@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import struct Kingfisher.KFImage
+import SkeletonUI
 
 struct MainFeedViewScene: ConnectedView {
     struct Props {
@@ -16,7 +17,7 @@ struct MainFeedViewScene: ConnectedView {
     }
 
     func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
-        let categories = state.categories
+        let categories = [CategoriesDTO]()//state.categories
         let appearTrigger = { dispatch(Actions.CategoryAction.start) }
         return Props(categories: categories, appearTrigger: appearTrigger)
     }
@@ -29,7 +30,12 @@ struct MainFeedViewScene: ConnectedView {
                         ResearchCellView(viewModel: ResearchCellViewModel(model: research))
                     }
                 }
-            }.onAppear(perform: props.appearTrigger)
+                        .skeleton(with: props.categories.isEmpty)
+                        .shape(type: .rectangle)
+                        .multiline(lines: 20)
+                        .animation(type: .linear())
+            }
+                    .onAppear(perform: props.appearTrigger)
         }
     }
 }
