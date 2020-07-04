@@ -6,6 +6,6 @@ extension Actions {
     enum CategoryAction: Action {
         case start
         case error(Error)
-        case success([CategoriesDTO])
+        case success([CategoriesVO])
     }
 }

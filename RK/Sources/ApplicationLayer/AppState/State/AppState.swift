@@ -4,7 +4,7 @@
 
 struct AppState: Reducable {
     let selectedTab: Int
-    let categories: [CategoriesDTO]
+    let categories: [CategoriesVO]
     let showingDetailScanner: Bool
 }
 extension Reduce {
@@ -24,6 +24,8 @@ extension Reduce {
             switch action {
             case Actions.CategoryAction.success(let categories):
                 return categories
+            case Actions.CategoryAction.error(let error):
+                return state
             default:()
                 return state
             }
