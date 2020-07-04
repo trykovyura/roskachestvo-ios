@@ -14,6 +14,7 @@ class MiddlewaresCreator {
             case Actions.CategoryAction.start:
                 self.categoriesWithResearches = api.categoriesWithResearches()
                         .receive(on: DispatchQueue.main)
+                        .map { $0.compactMap(CategoriesVO.init)}
                         .sink(receiveCompletion: { completion in
                             switch completion {
                             case .finished:()

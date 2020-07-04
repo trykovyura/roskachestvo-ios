@@ -24,6 +24,7 @@ target 'RK' do
   pod 'Kingfisher'
   pod 'Kingfisher/SwiftUI'
   pod 'SkeletonView', '~> 1.4.1'
+  pod 'SkeletonUI'
 
   target 'RKTests' do
     inherit! :search_paths

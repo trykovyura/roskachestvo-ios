@@ -342,7 +342,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 11 images.
+  /// This `R.image` struct is generated, and contains static references to 18 images.
   struct image {
     /// Image `AboutTab`.
     static let aboutTab = Rswift.ImageResource(bundle: R.hostingBundle, name: "AboutTab")
@@ -364,6 +364,20 @@ struct R: Rswift.Validatable {
     static let searchTab = Rswift.ImageResource(bundle: R.hostingBundle, name: "SearchTab")
     /// Image `close`.
     static let close = Rswift.ImageResource(bundle: R.hostingBundle, name: "close")
+    /// Image `clothes`.
+    static let clothes = Rswift.ImageResource(bundle: R.hostingBundle, name: "clothes")
+    /// Image `drinks`.
+    static let drinks = Rswift.ImageResource(bundle: R.hostingBundle, name: "drinks")
+    /// Image `food`.
+    static let food = Rswift.ImageResource(bundle: R.hostingBundle, name: "food")
+    /// Image `house`.
+    static let house = Rswift.ImageResource(bundle: R.hostingBundle, name: "house")
+    /// Image `shoes`.
+    static let shoes = Rswift.ImageResource(bundle: R.hostingBundle, name: "shoes")
+    /// Image `technics`.
+    static let technics = Rswift.ImageResource(bundle: R.hostingBundle, name: "technics")
+    /// Image `technology`.
+    static let technology = Rswift.ImageResource(bundle: R.hostingBundle, name: "technology")
     /// Image `temp_image_overlay`.
     static let temp_image_overlay = Rswift.ImageResource(bundle: R.hostingBundle, name: "temp_image_overlay")
 
@@ -434,6 +448,55 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "close", bundle: ..., traitCollection: ...)`
     static func close(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.close, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "clothes", bundle: ..., traitCollection: ...)`
+    static func clothes(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.clothes, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "drinks", bundle: ..., traitCollection: ...)`
+    static func drinks(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.drinks, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "food", bundle: ..., traitCollection: ...)`
+    static func food(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.food, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "house", bundle: ..., traitCollection: ...)`
+    static func house(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.house, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "shoes", bundle: ..., traitCollection: ...)`
+    static func shoes(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.shoes, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "technics", bundle: ..., traitCollection: ...)`
+    static func technics(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.technics, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "technology", bundle: ..., traitCollection: ...)`
+    static func technology(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.technology, compatibleWith: traitCollection)
     }
     #endif
 
