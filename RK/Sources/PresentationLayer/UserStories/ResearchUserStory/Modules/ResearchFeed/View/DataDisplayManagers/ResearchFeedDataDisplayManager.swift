@@ -21,14 +21,14 @@ class ResearchFeedDataDisplayManager: NSObject {
 
      func configure(researches: [ResearchesDTO]) {
          viewModels.removeAll()
-         let researches: [ResearchFeedSectionViewModel] = researches.map { research in
-             let viewModel = ResearchCellViewModel(id: research.id ?? "",
-                     name: research.name ?? "",
-                     image: research.image?.src ?? "",
-                     summary: research.summary)
-             return ResearchFeedSectionViewModel(viewModel: viewModel)
-         }
-         viewModels.append(contentsOf: researches)
+//         let researches: [ResearchFeedSectionViewModel] = researches.map { research in
+//             let viewModel = ResearchCellViewModel(id: research.id ?? "",
+//                     name: research.name ?? "",
+//                     image: research.image?.src ?? "",
+//                     summary: research.summary)
+//             return ResearchFeedSectionViewModel(viewModel: viewModel)
+//         }
+//         viewModels.append(contentsOf: researches)
      }
 }
 

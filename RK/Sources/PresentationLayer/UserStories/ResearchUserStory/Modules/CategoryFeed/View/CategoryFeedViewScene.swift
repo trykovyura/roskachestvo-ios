@@ -54,6 +54,9 @@ struct CategoryCellView: View {
                     .multiline(lines: 3, scales: [1: 0.5, 2: 0.25])
                     .appearance(type: .gradient())
                     .animation(type: .linear())
+            NavigationLink(destination: ResearchFeedView(categoryId: viewModel.id)) {
+                EmptyView()
+            }
         }
         .background(Color.white)
         .frame(height: 135)

@@ -41,17 +41,17 @@ class ResearchCell: UICollectionViewCell, ListBindable {
     }()
 
     func bindViewModel(_ viewModel: Any) {
-        guard let viewModel = viewModel as? ResearchCellViewModel else {
-            return
-        }
-        nameLabel.text = viewModel.name
-        if let urlString = viewModel.image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-            let url = URL(string: urlString) {
-            imageView.kf.setImage(with: url)
-        } else {
-            imageView.image = nil
-        }
-        bottomBar.configure(with: viewModel.summary)
+//        guard let viewModel = viewModel as? ResearchCellViewModel else {
+//            return
+//        }
+//        nameLabel.text = viewModel.name
+//        if let urlString = viewModel.image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+//            let url = URL(string: urlString) {
+//            imageView.kf.setImage(with: url)
+//        } else {
+//            imageView.image = nil
+//        }
+//        bottomBar.configure(with: viewModel.summary)
     }
 
     override init(frame: CGRect) {

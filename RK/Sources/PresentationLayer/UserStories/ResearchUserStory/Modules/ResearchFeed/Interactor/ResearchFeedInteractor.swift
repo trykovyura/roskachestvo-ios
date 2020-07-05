@@ -7,12 +7,15 @@
 //
 
 import RxSwift
+import Combine
 
 class ResearchFeedInteractor: ResearchFeedInteractorInput {
 
     weak var output: ResearchFeedInteractorOutput!
 
     let researchNetworkService: ResearchNetworkServiceType
+    var researchesRequest: AnyCancellable?
+    var researchesByCategoriesRequest: AnyCancellable?
 
     init(researchNetworkService: ResearchNetworkServiceType) {
         self.researchNetworkService = researchNetworkService
@@ -29,32 +32,36 @@ class ResearchFeedInteractor: ResearchFeedInteractorInput {
     }
 
     func researches() {
-//        researchNetworkService.researches()
-//                .observeOn(MainScheduler.instance)
-//                .subscribe(
-//                        onNext: { [weak self] response in
-//                            self?.output.didObtainResearches(response)
-//                        }, onError: { [weak self] _ in
-//                    self?.output.didFailObtainResearches()
-//                })
-//                .disposed(by: disposeBag)
+        researchesRequest = researchNetworkService.researches()
+        .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { [weak self] completion in
+                    switch completion {
+                    case .finished:()
+                    case .failure:
+                        self?.output.didFailObtainResearches()
+                    }
+                }, receiveValue: { [weak self] response in
+                    self?.output.didObtainResearches(response)
+                })
     }
 
     func researchesByCategory(categoryId: Int) {
-//        researchNetworkService.categoriesWithResearches()
-//                .flatMap { categories -> Observable<[ResearchesDTO]> in
-//                    let categories = categories.filter { (object: CategoriesDTO) -> Bool in
-//                        object.id == categoryId
-//                    }
-//                    return Observable.just(categories.first?.researches ?? [])
-//                }
-//                .observeOn(MainScheduler.instance)
-//                .subscribe(
-//                        onNext: { [weak self] response in
-//                            self?.output.didObtainResearches(response)
-//                        }, onError: { [weak self] _ in
-//                    self?.output.didFailObtainResearches()
-//                })
-//                .disposed(by: disposeBag)
+        researchesByCategoriesRequest = researchNetworkService.categoriesWithResearches()
+                .map { categories in
+                    let categories = categories.filter { (object: CategoriesDTO) -> Bool in
+                        object.id == categoryId
+                    }
+                    return categories.first?.researches ?? []
+                }
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { [weak self] completion in
+                    switch completion {
+                    case .finished:()
+                    case .failure:
+                        self?.output.didFailObtainResearches()
+                    }
+                }, receiveValue: { [weak self] response in
+                    self?.output.didObtainResearches(response)
+                })
     }
 }

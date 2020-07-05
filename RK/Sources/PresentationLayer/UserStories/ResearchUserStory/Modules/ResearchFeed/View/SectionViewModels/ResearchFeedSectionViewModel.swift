@@ -10,9 +10,9 @@ import IGListKit
 
 class ResearchFeedSectionViewModel: NSObject {
 
-    let viewModel: ResearchCellViewModel
+    let viewModel: ListDiffable
 
-    init(viewModel: ResearchCellViewModel) {
+    init(viewModel: ListDiffable) {
        self.viewModel = viewModel
     }
 }
