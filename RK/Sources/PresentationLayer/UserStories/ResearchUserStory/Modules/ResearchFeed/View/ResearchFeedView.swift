@@ -34,8 +34,7 @@ struct ResearchCellView: View {
             Text(viewModel.name)
                     .font(.system(size: 17.0))
             KFImage(viewModel.image)
-                    .onFailure(perform: { _ in
-                    })
+                    .placeholder { R.image.octocat.image }
                     .resizable()
                     .frame(height: 95)
                     .frame(minWidth: 0, maxWidth: .infinity)

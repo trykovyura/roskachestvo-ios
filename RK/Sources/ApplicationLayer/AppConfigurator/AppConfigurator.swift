@@ -17,5 +17,6 @@ class AppConfigurator {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().isTranslucent = true
         UITableView.appearance().separatorStyle = .none
+        UITableView.appearance().backgroundColor = R.color.background()
     }
 }
