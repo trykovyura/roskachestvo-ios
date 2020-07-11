@@ -8,6 +8,7 @@ struct CategoriesVO: Equatable, Identifiable {
     let id: Int
     let type: CategoryType
     let name: String
+    let researches: [ResearchesVO]
 }
 extension CategoriesVO {
     init?(dto: CategoriesDTO) {
@@ -17,5 +18,6 @@ extension CategoriesVO {
         self.id = id
         self.type = CategoryType(rawValue: id)
         self.name = dto.name ?? ""
+        self.researches = dto.researches?.compactMap(ResearchesVO.init) ?? []
     }
 }

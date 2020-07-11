@@ -90,7 +90,7 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
-  /// This `R.segue` struct is generated, and contains static references to 2 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 1 view controllers.
   struct segue {
     /// This struct is generated for `ResearchDetailsViewController`, and contains static references to 1 segues.
     struct researchDetailsViewController {
@@ -109,29 +109,12 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This struct is generated for `ResearchFeedViewController`, and contains static references to 1 segues.
-    struct researchFeedViewController {
-      /// Segue identifier `openResearchDetailsSegue`.
-      static let openResearchDetailsSegue: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, ResearchFeedViewController, ResearchDetailsViewController> = Rswift.StoryboardSegueIdentifier(identifier: "openResearchDetailsSegue")
-
-      #if os(iOS) || os(tvOS)
-      /// Optionally returns a typed version of segue `openResearchDetailsSegue`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func openResearchDetailsSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, ResearchFeedViewController, ResearchDetailsViewController>? {
-        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.researchFeedViewController.openResearchDetailsSegue, segue: segue)
-      }
-      #endif
-
-      fileprivate init() {}
-    }
-
     fileprivate init() {}
   }
   #endif
 
   #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 5 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 4 storyboards.
   struct storyboard {
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
@@ -141,8 +124,6 @@ struct R: Rswift.Validatable {
     static let productDetails = _R.storyboard.productDetails()
     /// Storyboard `ResearchDetails`.
     static let researchDetails = _R.storyboard.researchDetails()
-    /// Storyboard `ResearchFeed`.
-    static let researchFeed = _R.storyboard.researchFeed()
 
     #if os(iOS) || os(tvOS)
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
@@ -172,18 +153,11 @@ struct R: Rswift.Validatable {
     }
     #endif
 
-    #if os(iOS) || os(tvOS)
-    /// `UIStoryboard(name: "ResearchFeed", bundle: ...)`
-    static func researchFeed(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.researchFeed)
-    }
-    #endif
-
     fileprivate init() {}
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 6 colors.
+  /// This `R.color` struct is generated, and contains static references to 8 colors.
   struct color {
     /// Color `Athens Gray`.
     static let athensGray = Rswift.ColorResource(bundle: R.hostingBundle, name: "Athens Gray")
@@ -195,8 +169,12 @@ struct R: Rswift.Validatable {
     static let ghost2 = Rswift.ColorResource(bundle: R.hostingBundle, name: "Ghost2")
     /// Color `Viridian Green`.
     static let viridianGreen = Rswift.ColorResource(bundle: R.hostingBundle, name: "Viridian Green")
+    /// Color `background`.
+    static let background = Rswift.ColorResource(bundle: R.hostingBundle, name: "background")
     /// Color `gray`.
     static let gray = Rswift.ColorResource(bundle: R.hostingBundle, name: "gray")
+    /// Color `terracotta`.
+    static let terracotta = Rswift.ColorResource(bundle: R.hostingBundle, name: "terracotta")
 
     #if os(iOS) || os(tvOS)
     /// `UIColor(named: "Athens Gray", bundle: ..., traitCollection: ...)`
@@ -244,11 +222,29 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "background", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func background(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.background, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIColor(named: "gray", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
     static func gray(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.gray, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "terracotta", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func terracotta(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.terracotta, compatibleWith: traitCollection)
     }
     #endif
 
@@ -991,9 +987,6 @@ struct _R: Rswift.Validatable {
       #if os(iOS) || os(tvOS)
       try researchDetails.validate()
       #endif
-      #if os(iOS) || os(tvOS)
-      try researchFeed.validate()
-      #endif
     }
 
     #if os(iOS) || os(tvOS)
@@ -1048,22 +1041,6 @@ struct _R: Rswift.Validatable {
 
       let bundle = R.hostingBundle
       let name = "ResearchDetails"
-
-      static func validate() throws {
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    struct researchFeed: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = ResearchFeedViewController
-
-      let bundle = R.hostingBundle
-      let name = "ResearchFeed"
 
       static func validate() throws {
         if #available(iOS 11.0, tvOS 11.0, *) {
