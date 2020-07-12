@@ -14,9 +14,9 @@ struct ResearchCellViewModel {
 }
 extension ResearchCellViewModel {
     init(vo: ResearchesVO) {
-        self.id = vo.id
+        self.id = vo.id.description
         self.name = vo.name
-        self.image = URL(string: "https://roskachestvo.gov.ru" + (vo.image?.src ?? ""))
+        self.image = URL(string: Constants.imagePrefix + (vo.image?.src ?? ""))
         self.summary = vo.summary
     }
 }

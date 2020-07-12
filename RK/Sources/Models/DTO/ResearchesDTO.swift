@@ -6,9 +6,9 @@
 import Foundation
 
 struct ResearchesDTO: Codable {
-    let id: String?
+    let id: Int?
     let name: String?
-    let category: String?
+    let category: Int?
     let url: String?
     let utime: Int64?
     let image: ImageDTO?

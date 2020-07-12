@@ -12,7 +12,7 @@ class ProductCellViewModel {
     init(id: String, name: String, image: String?) {
         self.id = id
         self.name = name
-        self.image = "https://roskachestvo.gov.ru" + (image ?? "")
+        self.image = Constants.imagePrefix + (image ?? "")
     }
 }
 

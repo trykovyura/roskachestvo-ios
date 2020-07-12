@@ -8,7 +8,7 @@ import Foundation
 struct ResearchDTO: Codable {
     let name: String?
     let url: String?
-    let category: String?
+    let category: Int?
     let anons: String?
     let productIds: [String]?
     let image: ImageDTO?
