@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import Combine
 
 class ResearchDetailsInteractor: ResearchDetailsInteractorInput {
 
@@ -15,17 +16,19 @@ class ResearchDetailsInteractor: ResearchDetailsInteractorInput {
     var researchNetworkService: ResearchNetworkServiceType!
 
     let disposeBag = DisposeBag()
+    var research: AnyCancellable?
 
     func researchDetails(with researchId: String) {
-//        researchNetworkService.research(id: researchId)
-//                .observeOn(MainScheduler.instance)
-//                .subscribe(
-//                        onNext: { [weak self] research in
-//                            self?.output.didObtainResearchDetails(research: research)
-//                        }, onError: { [weak self] error in
-//                            print(error)
-//                            self?.output.didFailObtainResearchDetails()
-//                        })
-//                .disposed(by: disposeBag)
+        self.research = researchNetworkService.research(id: researchId)
+                .print()
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { [weak self] completion in
+                    switch completion {
+                    case .finished:()
+                    case .failure: self?.output.didFailObtainResearchDetails()
+                    }
+                }, receiveValue: { [weak self] response in
+                    self?.output.didObtainResearchDetails(research: response)
+                })
     }
 }
