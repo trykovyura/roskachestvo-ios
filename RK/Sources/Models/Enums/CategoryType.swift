@@ -8,24 +8,31 @@ import Rswift
 enum CategoryType: Int {
     case technics
     case technology
+    case digital
     case drinks
     case food
     case clothing
     case shoes
     case house
+    case beautyAndHealth
+    case kids
     case unknown
 }
 
 extension CategoryType: Equatable {
+    //swiftlint:disable cyclomatic_complexity
     init(rawValue: Int) {
         switch rawValue {
         case 358: self = .technics
-        case 359: self = .technology
-        case 311: self = .drinks
-        case 9: self = .food
-        case 74: self = .clothing
-        case 291: self = .shoes
-        case 11: self = .house
+        case 3: self = .technology
+        case 30: self = .digital
+        case 28: self = .drinks
+        case 8: self = .food
+        case 7: self = .clothing
+        case 6: self = .shoes
+        case 5: self = .house
+        case 9: self = .beautyAndHealth
+        case 606: self = .kids
         default: self = .unknown
         }
     }
@@ -46,6 +53,13 @@ extension CategoryType: Equatable {
             return R.image.shoes // https://www.pexels.com/ru-ru/photo/609771/
         case .house:
             return R.image.house // https://www.pexels.com/ru-ru/photo/3626588/
+        case .digital:
+            // https://www.pexels.com/ru-ru/photo/facebook-linkedin-world-wide-web-youtube-267350/
+            return R.image.digital
+        case .beautyAndHealth:
+            return R.image.health // https://www.pexels.com/ru-ru/photo/3188/
+        case .kids:
+            return R.image.kids
         case .unknown:
             return R.image.octocat
         }

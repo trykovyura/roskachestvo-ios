@@ -22,7 +22,7 @@ extension RoskachestvoAPI: TargetType {
     }
 
     var baseURL: URL {
-        return URL(string: "https://roskachestvo.gov.ru/api")!
+        return URL(string: "https://rskrf.ru/api")!
     }
 
     /// The path to be appended to `baseURL` to form the full `URL`.

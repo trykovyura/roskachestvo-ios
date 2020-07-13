@@ -5,9 +5,9 @@
 import Foundation
 
 struct ResearchesVO: Equatable, Identifiable {
-    let id: String
+    let id: Int
     let name: String
-    let category: String?
+    let category: Int?
     let url: String?
     let utime: Int64?
     let image: ImageVO?

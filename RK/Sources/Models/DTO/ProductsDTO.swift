@@ -9,10 +9,10 @@ struct ProductsDTO: Codable {
     let status: ProductType?
     let barcode: String?
     let trademark: String?
-    let id: String?
+    let id: Int?
     let name: String?
     let producer: String?
-    let category: String?
+    let category: Int?
     let url: String?
     let image: ImageDTO?
 }

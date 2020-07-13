@@ -22,7 +22,7 @@ class ResearchDetailsDataDisplayManager: NSObject {
          viewModels.removeAll()
          let viewModel = ResearchDetailsCellViewModel(id: "id", name: research.anons ?? "")
          let products = research.products?.map { product in
-             ProductCellViewModel(id: product.id ?? "",
+             ProductCellViewModel(id: product.id?.description ?? "",
                      name: product.name ?? "",
                      image: product.image?.src ?? "")
          }
