@@ -16,6 +16,9 @@ platform :ios do
 
   desc "Generate project and install pods"
   lane :prepare do
+    sh("echo $PWD")
+    sh("mkdir -p ../RK/Resources/Rswift/")
+    sh("touch ../RK/Resources/Rswift/R.generated.swift")
     xcodegen
     cocoapods(try_repo_update_on_error: true)
   end
