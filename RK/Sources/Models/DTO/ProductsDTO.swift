@@ -11,7 +11,7 @@ struct ProductsDTO: Codable {
     let trademark: String?
     let id: Int?
     let name: String?
-    let producer: String?
+    let producer: Producer?
     let category: Int?
     let url: String?
     let image: ImageDTO?

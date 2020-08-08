@@ -3,19 +3,28 @@
 //
 
 import SwiftUI
+import SkeletonUI
 
-struct ResearchDetailsView: UIViewControllerRepresentable {
+struct ResearchDetailsView: ConnectedView {
 
     let researchId: String
 
-    func makeUIViewController(context: Context) -> ResearchDetailsViewController {
-        let vc: ResearchDetailsViewController = R.storyboard.researchDetails.instantiateInitialViewController()!
-        if let presenter = vc.output as? ResearchDetailsPresenter {
-            presenter.researchId = researchId
-        }
-        return vc
+    struct Props {
+        let research: ResearchVO?
+        let appearTrigger: () -> Void
     }
 
-    func updateUIViewController(_ uiViewController: ResearchDetailsViewController, context: Context) {
+    func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
+        let research = state.research?.id == self.researchId ? state.research : nil
+        let appearTrigger = {
+            dispatch(Actions.ResearchDetailsAction.start(researchId: self.researchId))
+        }
+        return Props(research: research, appearTrigger: appearTrigger)
+    }
+
+    static func body(props: Props) -> some View {
+        SkeletonList(with: props.research?.products ?? [], quantity: 6) { (loading: Bool, product: ProductsVO?) in
+            TextView(name: product?.name ?? "", loading: loading)
+        }.onAppear(perform: props.appearTrigger)
     }
 }

@@ -53,6 +53,9 @@ xcuserdata/
 *.xccheckout
 *.xcscmblueprint
 
+### R.swift ###
+*.generated.swift
+
 ### CocoaPods ###
 /Pods
 /Carthage
@@ -81,5 +84,4 @@ fastlane/test_output
 *.mobileprovision
 *.ipa
 *.zip
-/roskachestvo-ios/Resources/Rswift/R.generated.swift
 /RK/SupportingFiles/Info.plist
