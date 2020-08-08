@@ -45,6 +45,7 @@ class MoyaNetworkClient: NetworkClient {
                           (200...299).contains(httpResponse.statusCode) else {
                         throw URLError(.badServerResponse)
                     }
+                    print(String(data: element.data, encoding: String.Encoding.utf8) ?? "No data")
                     return element.data
                 }
                 .mapError { error in

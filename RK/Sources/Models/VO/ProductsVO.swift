@@ -10,7 +10,7 @@ struct ProductsVO: Equatable, Identifiable {
     let status: ProductType
     let barcode: String?
     let trademark: String?
-    let producer: String?
+    let producer: Producer?
     let category: Int?
     let url: String?
     let image: ImageVO?
