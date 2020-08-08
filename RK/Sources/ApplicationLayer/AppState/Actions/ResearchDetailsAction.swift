@@ -5,7 +5,7 @@
 import Foundation
 
 extension Actions {
-    enum ResearchDetailsAction: Action {
+    enum ResearchFeedAction: Action {
         case start(researchId: String)
         case error(Error)
         case success(ResearchVO)

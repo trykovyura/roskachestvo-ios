@@ -7,6 +7,7 @@ struct AppState: Reducable {
     let categories: [CategoriesVO]
     let showingDetailScanner: Bool
     let research: ResearchVO?
+    let product: ProductVO?
 }
 extension Reduce {
 
@@ -14,7 +15,8 @@ extension Reduce {
         AppState(selectedTab: Reduce.selectedTab(state.selectedTab, action),
                 categories: Reduce.categories(state.categories, action),
                 showingDetailScanner: Reduce.showingDetailScanner(state.showingDetailScanner, action),
-                research: Reduce.research(state.research, action))
+                research: Reduce.research(state.research, action),
+                product: Reduce.product(state.product, action))
     }
     static let selectedTab = AppState.reduce.selectedTab.withRules { match in
         match.on(Actions.ToggleTabSelect.self) { _, action in
@@ -34,11 +36,23 @@ extension Reduce {
         }
     }
     static let research = AppState.reduce.research.withRules { match in
-        match.on(Actions.ResearchDetailsAction.self) { state, action in
+        match.on(Actions.ResearchFeedAction.self) { state, action in
             switch action {
-            case Actions.ResearchDetailsAction.success(let research):
+            case Actions.ResearchFeedAction.success(let research):
                 return research
-            case Actions.ResearchDetailsAction.error(let error):
+            case Actions.ResearchFeedAction.error(let error):
+                return state
+            default:()
+                return state
+            }
+        }
+    }
+    static let product = AppState.reduce.product.withRules { match in
+        match.on(Actions.ProductDetailsAction.self) { state, action in
+            switch action {
+            case Actions.ProductDetailsAction.success(let product):
+                return product
+            case Actions.ProductDetailsAction.error(let error):
                 return state
             default:()
                 return state
