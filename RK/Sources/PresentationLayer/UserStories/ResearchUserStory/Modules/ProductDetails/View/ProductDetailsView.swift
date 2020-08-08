@@ -4,6 +4,7 @@
 
 import SwiftUI
 import SkeletonUI
+import UIKit
 
 struct ProductDetailsView: ConnectedView {
 
@@ -11,6 +12,7 @@ struct ProductDetailsView: ConnectedView {
 
     struct Props {
         let product: ProductVO?
+        let title: String?
         let appearTrigger: () -> Void
     }
 
@@ -19,13 +21,18 @@ struct ProductDetailsView: ConnectedView {
         let appearTrigger = {
             dispatch(Actions.ProductDetailsAction.start(productId: self.productId))
         }
-        return Props(product: product, appearTrigger: appearTrigger)
+        return Props(product: product, title: state.product?.name, appearTrigger: appearTrigger)
     }
 
     static func body(props: Props) -> some View {
-        SkeletonList(with: props.product?.indicators ?? [],
-                quantity: 6) { (loading: Bool, indicator: ProductIndicatorVO?) in
-            TextView(name: indicator?.name ?? indicator?.value ?? "", loading: loading)
-        }.onAppear(perform: props.appearTrigger)
+        VStack {
+            Unwrap(props.title) { title in
+                AttributedText(title)
+            }
+            SkeletonList(with: props.product?.indicators ?? [],
+                    quantity: 6) { (loading: Bool, indicator: ProductIndicatorVO?) in
+                TextViewCell(name: indicator?.name ?? indicator?.value ?? "", loading: loading)
+            }.onAppear(perform: props.appearTrigger)
+        }
     }
 }

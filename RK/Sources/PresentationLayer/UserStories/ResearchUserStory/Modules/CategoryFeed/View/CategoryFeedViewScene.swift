@@ -41,7 +41,7 @@ struct CategoryCellView: View {
     var body: some View {
         VStack {
             ImageView(image: viewModel.image, loading: viewModel.loading)
-            TextView(name: viewModel.name, loading: viewModel.loading)
+            TextViewCell(name: viewModel.name, loading: viewModel.loading)
             NavigationLink(destination: ResearchFeedView(categoryId: viewModel.id)) {
                 EmptyView()
             }
@@ -64,7 +64,7 @@ struct ImageView: View {
                 .frame(minWidth: 0, maxWidth: .infinity)
     }
 }
-struct TextView: View {
+struct TextViewCell: View {
     let name: String
     let loading: Bool
 

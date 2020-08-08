@@ -11,6 +11,7 @@ struct ProductFeedView: ConnectedView {
 
     struct Props {
         let research: ResearchVO?
+        let title: String?
         let appearTrigger: () -> Void
     }
 
@@ -19,15 +20,20 @@ struct ProductFeedView: ConnectedView {
         let appearTrigger = {
             dispatch(Actions.ResearchFeedAction.start(researchId: self.researchId))
         }
-        return Props(research: research, appearTrigger: appearTrigger)
+        return Props(research: research, title: state.research?.anons, appearTrigger: appearTrigger)
     }
 
     static func body(props: Props) -> some View {
-        SkeletonList(with: props.research?.products ?? [], quantity: 6) { (loading: Bool, product: ProductsVO?) in
-            TextView(name: product?.name ?? "", loading: loading)
-            NavigationLink(destination: ProductDetailsView(productId: product?.id ?? 0)) {
-                EmptyView()
+        VStack {
+            Unwrap(props.title) { title in
+                TextView(text: title)
             }
-        }.onAppear(perform: props.appearTrigger)
+            SkeletonList(with: props.research?.products ?? [], quantity: 6) { (loading: Bool, product: ProductsVO?) in
+                TextViewCell(name: product?.name ?? "", loading: loading)
+                NavigationLink(destination: ProductDetailsView(productId: product?.id ?? 0)) {
+                    EmptyView()
+                }
+            }.onAppear(perform: props.appearTrigger)
+        }
     }
 }
