@@ -39,7 +39,7 @@ struct ResearchCellView: View {
                     .frame(height: 95)
                     .frame(minWidth: 0, maxWidth: .infinity)
 //            SummaryView(summary: viewModel.summary)
-            NavigationLink(destination: ResearchDetailsView(researchId: viewModel.id)) {
+            NavigationLink(destination: ProductFeedView(researchId: viewModel.id)) {
                 EmptyView()
             }
         }

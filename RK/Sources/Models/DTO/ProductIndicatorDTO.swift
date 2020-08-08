@@ -18,9 +18,9 @@ struct ProductIndicatorDTO: Codable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.group = try container.decode(String.self, forKey: .group)
-        self.name = try container.decode(String.self, forKey: .name)
-        if let number = try? container.decode(Double.self, forKey: .value) {
+        self.group = try container.decodeIfPresent(String.self, forKey: .group)
+        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+        if let number = try? container.decodeIfPresent(Double.self, forKey: .value) {
             value = String(number)
         } else {
             value = try container.decode(String.self, forKey: .value)

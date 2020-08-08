@@ -8,7 +8,7 @@ import Moya
 
 protocol ResearchNetworkServiceType: class {
     func searchProduct(code: String) -> AnyPublisher<[SearchProductDTO], Error>
-    func product(id: String) -> AnyPublisher<ProductDTO, Error>
+    func product(id: Int) -> AnyPublisher<ProductDTO, Error>
     func products() -> AnyPublisher<[ProductsDTO], Error>
     func categories() -> AnyPublisher<[CategoryDTO], Error>
     func categoriesWithResearches() -> AnyPublisher<[CategoriesDTO], Error>
@@ -33,7 +33,7 @@ class ResearchNetworkService: ResearchNetworkServiceType {
                 .eraseToAnyPublisher()
     }
 
-    func product(id: String) -> AnyPublisher<ProductDTO, Error> {
+    func product(id: Int) -> AnyPublisher<ProductDTO, Error> {
         return networkClient.request(MultiTarget(RoskachestvoAPI.product(id: id)))
                 .decode(type: ProductDTO.self, decoder: JSONDecoder())
                 .print()
