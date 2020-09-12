@@ -20,11 +20,39 @@ struct ResearchFeedView: ConnectedView {
     }
 
     static func body(props: Props) -> some View {
-        List(props.researches) { (researches: ResearchesVO) in
-            ResearchCellView(viewModel: ResearchCellViewModel(vo: researches))
-                    .navigationBarTitle(R.string.localizable.researchTitle())
-                    .font(.largeTitle)
-        }
+//        ScrollView {
+
+            // Custom Grid View
+            UIGrid(columns: 2, list: props.researches) { researches in
+                ResearchCellView(viewModel: ResearchCellViewModel(vo: researches))
+                        .navigationBarTitle(R.string.localizable.researchTitle())
+                        .font(.largeTitle)
+                        .cornerRadius(4)
+                        .shadow(radius: 4)
+
+            }
+//        }
+//        ForEach(Array(props.researches.enumerated()), id: \.offset) { _, researches in
+//            HStack(spacing: 20) {
+//                VStack {
+//                    ResearchCellView(viewModel: ResearchCellViewModel(vo: researches))
+//                            .navigationBarTitle(R.string.localizable.researchTitle())
+//                            .font(.largeTitle)
+//                            .cornerRadius(4)
+//                            .shadow(radius: 4)
+//                }
+//                        .frame(minWidth: 0, maxWidth: .infinity)
+//
+//                VStack {
+//                    ResearchCellView(viewModel: ResearchCellViewModel(vo: researches))
+//                            .navigationBarTitle(R.string.localizable.researchTitle())
+//                            .font(.largeTitle)
+//                            .cornerRadius(4)
+//                            .shadow(radius: 4)
+//                }
+//                        .frame(minWidth: 0, maxWidth: .infinity)
+//            }
+//        }
     }
 }
 struct ResearchCellView: View {
@@ -32,7 +60,7 @@ struct ResearchCellView: View {
     var body: some View {
         VStack {
             Text(viewModel.name)
-                    .font(.system(size: 17.0))
+                    .font(.system(size: 12.0, weight: .medium))
             KFImage(viewModel.image)
                     .placeholder { R.image.octocat.image }
                     .resizable()
