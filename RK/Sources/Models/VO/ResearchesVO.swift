@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct ResearchesVO: Equatable, Identifiable {
+struct ResearchesVO {
     let id: Int
     let name: String
     let category: Int?
@@ -25,5 +25,15 @@ extension ResearchesVO {
         self.utime = dto.utime
         self.image = dto.image.flatMap(ImageVO.init)
         self.summary = dto.summary.flatMap(ResearchSummaryVO.init)
+    }
+}
+
+extension ResearchesVO: Hashable, Identifiable {
+    static func == (lhs: ResearchesVO, rhs: ResearchesVO) -> Bool {
+        lhs.id == rhs.id && lhs.name == rhs.name && lhs.category == rhs.category
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

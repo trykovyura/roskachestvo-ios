@@ -11,6 +11,7 @@
 
 "category.title"="Категории";
 "research.title"="Исследования";
+"product.title"="Продукт";
 
 // TabBar
 "tab.main" = "Главная";

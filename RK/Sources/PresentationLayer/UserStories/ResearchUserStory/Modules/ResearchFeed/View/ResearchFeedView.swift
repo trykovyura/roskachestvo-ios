@@ -21,53 +21,12 @@ struct ResearchFeedView: ConnectedView {
 
     static func body(props: Props) -> some View {
         List(props.researches) { (researches: ResearchesVO) in
-            ResearchCellView(viewModel: ResearchCellViewModel(vo: researches))
+            FeedCellView(viewModel: FeedCellViewModel(vo: researches, loading: false),
+                    destination: AnyView(ProductFeedView(researchId: researches.id.description)))
                     .navigationBarTitle(R.string.localizable.researchTitle())
                     .font(.largeTitle)
+                    .cornerRadius(4)
+                    .shadow(radius: 4)
         }
-    }
-}
-struct ResearchCellView: View {
-    let viewModel: ResearchCellViewModel
-    var body: some View {
-        VStack {
-            Text(viewModel.name)
-                    .font(.system(size: 17.0))
-            KFImage(viewModel.image)
-                    .placeholder { R.image.octocat.image }
-                    .resizable()
-                    .frame(height: 95)
-                    .frame(minWidth: 0, maxWidth: .infinity)
-//            SummaryView(summary: viewModel.summary)
-            NavigationLink(destination: ProductFeedView(researchId: viewModel.id)) {
-                EmptyView()
-            }
-        }
-                .background(Color.white)
-                .frame(height: 135)
-    }
-}
-struct SummaryView: View {
-    let summary: ResearchSummaryVO?
-    var body: some View {
-        guard let summary = summary else {
-            return AnyView(EmptyView())
-        }
-        return AnyView(HStack {
-            Text(summary.quality)
-                    .font(.system(size: 17.0))
-                    .foregroundColor(R.color.terracotta.color)
-            Text(summary.highQuality)
-                    .font(.system(size: 17.0))
-                    .foregroundColor(R.color.terracotta.color)
-            Text(summary.withSign)
-                    .font(.system(size: 17.0))
-                    .foregroundColor(R.color.terracotta.color)
-            Text(summary.withViolation)
-                    .font(.system(size: 17.0))
-                    .foregroundColor(R.color.terracotta.color)
-        }
-                .background(Color.white)
-                .frame(height: 40))
     }
 }
