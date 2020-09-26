@@ -24,10 +24,12 @@ struct ProductFeedView: ConnectedView {
 
     static func body(props: Props) -> some View {
         SkeletonList(with: props.research?.products ?? [], quantity: 6) { (loading: Bool, product: ProductsVO?) in
-            TextView(name: product?.name ?? "", loading: loading)
-            NavigationLink(destination: ProductDetailsView(productId: product?.id ?? 0)) {
-                EmptyView()
-            }
+            FeedCellView(viewModel: FeedCellViewModel(vo: product, loading: loading),
+                    destination: AnyView(EmptyView()))
+                    .navigationBarTitle(R.string.localizable.productTitle())
+                    .font(.largeTitle)
+                    .cornerRadius(4)
+                    .shadow(radius: 4)
         }.onAppear(perform: props.appearTrigger)
     }
 }

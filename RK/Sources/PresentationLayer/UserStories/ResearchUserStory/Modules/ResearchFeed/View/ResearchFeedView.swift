@@ -20,82 +20,13 @@ struct ResearchFeedView: ConnectedView {
     }
 
     static func body(props: Props) -> some View {
-//        ScrollView {
-
-            // Custom Grid View
-            UIGrid(columns: 2, list: props.researches) { researches in
-                ResearchCellView(viewModel: ResearchCellViewModel(vo: researches))
-                        .navigationBarTitle(R.string.localizable.researchTitle())
-                        .font(.largeTitle)
-                        .cornerRadius(4)
-                        .shadow(radius: 4)
-
-            }
-//        }
-//        ForEach(Array(props.researches.enumerated()), id: \.offset) { _, researches in
-//            HStack(spacing: 20) {
-//                VStack {
-//                    ResearchCellView(viewModel: ResearchCellViewModel(vo: researches))
-//                            .navigationBarTitle(R.string.localizable.researchTitle())
-//                            .font(.largeTitle)
-//                            .cornerRadius(4)
-//                            .shadow(radius: 4)
-//                }
-//                        .frame(minWidth: 0, maxWidth: .infinity)
-//
-//                VStack {
-//                    ResearchCellView(viewModel: ResearchCellViewModel(vo: researches))
-//                            .navigationBarTitle(R.string.localizable.researchTitle())
-//                            .font(.largeTitle)
-//                            .cornerRadius(4)
-//                            .shadow(radius: 4)
-//                }
-//                        .frame(minWidth: 0, maxWidth: .infinity)
-//            }
-//        }
-    }
-}
-struct ResearchCellView: View {
-    let viewModel: ResearchCellViewModel
-    var body: some View {
-        VStack {
-            Text(viewModel.name)
-                    .font(.system(size: 12.0, weight: .medium))
-            KFImage(viewModel.image)
-                    .placeholder { R.image.octocat.image }
-                    .resizable()
-                    .frame(height: 95)
-                    .frame(minWidth: 0, maxWidth: .infinity)
-//            SummaryView(summary: viewModel.summary)
-            NavigationLink(destination: ProductFeedView(researchId: viewModel.id)) {
-                EmptyView()
-            }
+        List(props.researches) { (researches: ResearchesVO) in
+            FeedCellView(viewModel: FeedCellViewModel(vo: researches, loading: false),
+                    destination: AnyView(ProductFeedView(researchId: researches.id.description)))
+                    .navigationBarTitle(R.string.localizable.researchTitle())
+                    .font(.largeTitle)
+                    .cornerRadius(4)
+                    .shadow(radius: 4)
         }
-                .background(Color.white)
-                .frame(height: 135)
-    }
-}
-struct SummaryView: View {
-    let summary: ResearchSummaryVO?
-    var body: some View {
-        guard let summary = summary else {
-            return AnyView(EmptyView())
-        }
-        return AnyView(HStack {
-            Text(summary.quality)
-                    .font(.system(size: 17.0))
-                    .foregroundColor(R.color.terracotta.color)
-            Text(summary.highQuality)
-                    .font(.system(size: 17.0))
-                    .foregroundColor(R.color.terracotta.color)
-            Text(summary.withSign)
-                    .font(.system(size: 17.0))
-                    .foregroundColor(R.color.terracotta.color)
-            Text(summary.withViolation)
-                    .font(.system(size: 17.0))
-                    .foregroundColor(R.color.terracotta.color)
-        }
-                .background(Color.white)
-                .frame(height: 40))
     }
 }
