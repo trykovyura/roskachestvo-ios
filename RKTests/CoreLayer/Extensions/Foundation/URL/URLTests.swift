@@ -10,17 +10,16 @@ final class URLTests: XCTestCase {
     func test_apple() {
         // Given
         let image = "/goods/kefir-massovaya-dolya-zhira-2-5--7056b4/"
-        let url = URL(string: image)
         // When
-        let successURL = url?.apply(host: Constants.imageHost)
+        let successURL = image.imageURL()
         // Then
-        XCTAssertNotNil(successURL?.host)
-        XCTAssertEqual(successURL?.host, Constants.imageHost)
-        guard let pathComponents = successURL?.pathComponents else {
+        guard let imageURL = successURL else {
             XCTFail()
             return
         }
-        XCTAssertTrue(pathComponents.contains("goods"))
-        XCTAssertTrue(pathComponents.contains("kefir-massovaya-dolya-zhira-2-5--7056b4"))
+        XCTAssertNotNil(imageURL.host)
+        XCTAssertTrue(imageURL.absoluteString.starts(with: Constants.imageHost))
+        XCTAssertTrue(imageURL.pathComponents.contains("goods"))
+        XCTAssertTrue(imageURL.pathComponents.contains("kefir-massovaya-dolya-zhira-2-5--7056b4"))
     }
 }

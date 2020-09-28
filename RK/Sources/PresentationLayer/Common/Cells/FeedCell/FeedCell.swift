@@ -42,8 +42,7 @@ struct ImageCacheView: View {
                 .placeholder { R.image.octocat.image }
                 .resizable()
                 .frame(height: 95)
-                .frame(minWidth: 0, maxWidth: .infinity)
-                .aspectRatio(contentMode: .fit)
+                .scaledToFit()
     }
 }
 struct ImageDataView: View {

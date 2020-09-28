@@ -26,7 +26,7 @@ struct ProductFeedView: ConnectedView {
         SkeletonList(with: props.research?.products ?? [], quantity: 6) { (loading: Bool, product: ProductsVO?) in
             FeedCellView(viewModel: FeedCellViewModel(vo: product, loading: loading),
                     destination: AnyView(EmptyView()))
-                    .navigationBarTitle(R.string.localizable.productTitle())
+                    .navigationBarTitle(R.string.localizable.productsTitle())
                     .font(.largeTitle)
                     .cornerRadius(4)
                     .shadow(radius: 4)
