@@ -52,6 +52,10 @@ targets:
       - path: RK
         excludes:
           - SupportingFiles/Info.plist
+    scheme:
+      testTargets:
+        - RKTests
+      gatherCoverageData: true
     preBuildScripts:
       - script: "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --strict\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n"
         name: Swiftlint
@@ -87,7 +91,7 @@ targets:
       base:
         SWIFT_VERSION: 5.0
         DEVELOPMENT_TEAM: 7ZU2JEECEY
-        TEST_HOST: ""
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/RK.app/RK
         TARGETED_DEVICE_FAMILY: 1
     dependencies:
       - target: RK

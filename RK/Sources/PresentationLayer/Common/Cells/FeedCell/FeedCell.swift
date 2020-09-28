@@ -43,6 +43,7 @@ struct ImageCacheView: View {
                 .resizable()
                 .frame(height: 95)
                 .frame(minWidth: 0, maxWidth: .infinity)
+                .aspectRatio(contentMode: .fit)
     }
 }
 struct ImageDataView: View {

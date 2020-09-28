@@ -24,7 +24,7 @@ extension FeedCellViewModel {
     init(vo: ResearchesVO?, loading: Bool) {
         self.id = vo?.id ?? 0
         self.name = vo?.name ?? ""
-        self.imageURL = URL(string: Constants.imagePrefix + (vo?.image?.src ?? ""))
+        self.imageURL = vo?.image?.src?.asURL()?.applyHost()
         self.image = nil
         self.loading = loading
     }
@@ -32,7 +32,7 @@ extension FeedCellViewModel {
     init(vo: ProductsVO?, loading: Bool) {
         self.id = vo?.id ?? 0
         self.name = vo?.name ?? ""
-        self.imageURL = URL(string: Constants.imagePrefix + (vo?.image?.src ?? ""))
+        self.imageURL = vo?.image?.src?.asURL()?.applyHost()
         self.image = nil
         self.loading = loading
     }
