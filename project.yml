@@ -29,7 +29,7 @@ targets:
     type: application
     platform: iOS
     deploymentTarget:
-      iOS: 13.0
+      iOS: 14.0
     settings:
       base:
         SWIFT_VERSION: 5.0

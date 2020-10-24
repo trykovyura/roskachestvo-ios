@@ -14,3 +14,9 @@ extension ProductPropertyVO {
         self.value = dto.value
     }
 }
+
+extension ProductPropertyVO: Identifiable {
+    var id: String {
+        name ?? UUID().uuidString
+    }
+}

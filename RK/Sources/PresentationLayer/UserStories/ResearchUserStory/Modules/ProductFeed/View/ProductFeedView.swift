@@ -25,7 +25,7 @@ struct ProductFeedView: ConnectedView {
     static func body(props: Props) -> some View {
         SkeletonList(with: props.research?.products ?? [], quantity: 6) { (loading: Bool, product: ProductsVO?) in
             FeedCellView(viewModel: FeedCellViewModel(vo: product, loading: loading),
-                    destination: AnyView(EmptyView()))
+                    destination: AnyView(ProductDetailsView(productId: product?.id)))
                     .navigationBarTitle(R.string.localizable.productsTitle())
                     .font(.largeTitle)
                     .cornerRadius(4)
