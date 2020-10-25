@@ -42,10 +42,10 @@ targets:
         VERSIONING_SYSTEM: "apple-generic"
       configs:
         debug:
-          CODE_SIGN_IDENTITY: "Apple Development: Iurii Trykov (ZR4UPZM377)"
+          CODE_SIGN_IDENTITY: "Apple Development: Created via API (744W5CQ5P7)"
           PROVISIONING_PROFILE_SPECIFIER: "match Development ru.trykov.roskachestvo"
         release:
-          CODE_SIGN_IDENTITY: "Apple Distribution: Юрий Трыков (7ZU2JEECEY)"
+          CODE_SIGN_IDENTITY: "iPhone Distribution: Юрий Трыков (7ZU2JEECEY)"
           PROVISIONING_PROFILE_SPECIFIER: "match AppStore ru.trykov.roskachestvo"
     sources:
       - path: RK
