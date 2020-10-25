@@ -31,8 +31,8 @@ packages:
     url: https://github.com/onevcat/Kingfisher
   SkeletonUI:
     url: https://github.com/CSolanaM/SkeletonUI
-#  RSwiftLibrary:
-#    url: "https://github.com/mac-cain13/R.swift.Library"
+  RSwiftLibrary:
+    url: "https://github.com/mac-cain13/R.swift.Library"
 ############
 # Targets
 ############
@@ -69,7 +69,7 @@ targets:
       - package: FirebaseAnalytics
       - package: Kingfisher
       - package: SkeletonUI
-#      - package: Rswiftlibrary
+      - package: Rswiftlibrary
     scheme:
       testTargets:
         - RKTests
