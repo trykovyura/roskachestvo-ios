@@ -20,6 +20,19 @@ configs:
   Debug: debug
   Release: release
 
+packages:
+  Swinject:
+    url: https://github.com/Swinject/Swinject
+    from: 2.5.0
+  FirebaseAnalytics:
+    url: https://github.com/firebase/firebase-ios-sdk
+    branch: 6.34-spm-beta
+  Kingfisher:
+    url: https://github.com/onevcat/Kingfisher
+  SkeletonUI:
+    url: https://github.com/CSolanaM/SkeletonUI
+#  RSwiftLibrary:
+#    url: "https://github.com/mac-cain13/R.swift.Library"
 ############
 # Targets
 ############
@@ -51,6 +64,12 @@ targets:
       - path: RK
         excludes:
           - SupportingFiles/Info.plist
+    dependencies:
+      - package: Swinject
+      - package: FirebaseAnalytics
+      - package: Kingfisher
+      - package: SkeletonUI
+#      - package: Rswiftlibrary
     scheme:
       testTargets:
         - RKTests
@@ -59,8 +78,8 @@ targets:
       - script: "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --strict\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n"
         name: Swiftlint
       - script: "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/RK/Resources/Rswift/R.generated.swift\"\n"
-        inputFiles: ["$TEMP_DIR/rswift-lastrun"]
-        outputFiles: ["$SRCROOT/RK/Resources/Rswift/R.generated.swift"]
+        inputFiles: [ "$TEMP_DIR/rswift-lastrun" ]
+        outputFiles: [ "$SRCROOT/RK/Resources/Rswift/R.generated.swift" ]
         name: R.swift
     info:
       path: RK/SupportingFiles/Info.plist
@@ -68,12 +87,12 @@ targets:
         CFBundleDisplayName: "Роскачество+"
         CFBundleShortVersionString: "1.0.0"
         CFBundleVersion: "1"
-        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UISupportedInterfaceOrientations: [ UIInterfaceOrientationPortrait ]
         UILaunchStoryboardName: LaunchScreen
         UIUserInterfaceStyle: Light
         NSCameraUsageDescription: Приложение сможет отсканировать бар код для поиска продуктов
         UIStatusBarStyle: UIStatusBarStyleLightContent
-        UIAppFonts: [ProximaNovaBold.otf, Backpack-Bold.otf, Backpack-Light.otf, Backpack-Regular.otf]
+        UIAppFonts: [ ProximaNovaBold.otf, Backpack-Bold.otf, Backpack-Light.otf, Backpack-Regular.otf ]
         LSRequiresIPhoneOS: true
         ITSAppUsesNonExemptEncryption: false
         UIApplicationSceneManifest:
