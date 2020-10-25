@@ -3,5 +3,6 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
   - RKTests
   - RK/Resources/Rswift
+  - build
 identifier_name:
   min_length: 2
