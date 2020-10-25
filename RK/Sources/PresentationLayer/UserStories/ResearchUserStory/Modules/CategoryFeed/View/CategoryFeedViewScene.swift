@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Combine
-import struct Kingfisher.KFImage
+import KingfisherSwiftUI
 import SkeletonUI
 
 struct CategoryFeedViewScene: ConnectedView {

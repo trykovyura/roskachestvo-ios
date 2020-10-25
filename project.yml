@@ -27,12 +27,16 @@ packages:
   FirebaseAnalytics:
     url: https://github.com/firebase/firebase-ios-sdk
     branch: 6.34-spm-beta
-  Kingfisher:
+  KingfisherSwiftUI:
     url: https://github.com/onevcat/Kingfisher
+    from: 5.15.0
   SkeletonUI:
     url: https://github.com/CSolanaM/SkeletonUI
-  RSwiftLibrary:
-    url: "https://github.com/mac-cain13/R.swift.Library"
+    from: 1.0.4
+  Rswift:
+    url: https://github.com/mac-cain13/R.swift.Library
+    from: 5.2.0
+
 ############
 # Targets
 ############
@@ -64,20 +68,22 @@ targets:
       - path: RK
         excludes:
           - SupportingFiles/Info.plist
+          - SupportingFiles/Rswift
+          - SupportingFiles/SwiftLint
     dependencies:
       - package: Swinject
       - package: FirebaseAnalytics
-      - package: Kingfisher
+      - package: KingfisherSwiftUI
       - package: SkeletonUI
-      - package: Rswiftlibrary
+      - package: Rswift
     scheme:
       testTargets:
         - RKTests
       gatherCoverageData: true
     preBuildScripts:
-      - script: "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --strict\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n"
+      - script: "if which \"swiftlint\" >/dev/null; then\n\"swiftlint\" --strict\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n"
         name: Swiftlint
-      - script: "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/RK/Resources/Rswift/R.generated.swift\"\n"
+      - script: "\"rswift\" generate \"$SRCROOT/RK/Resources/Rswift/R.generated.swift\"\n"
         inputFiles: [ "$TEMP_DIR/rswift-lastrun" ]
         outputFiles: [ "$SRCROOT/RK/Resources/Rswift/R.generated.swift" ]
         name: R.swift

@@ -4,7 +4,7 @@
 
 import SwiftUI
 import SkeletonUI
-import struct Kingfisher.KFImage
+import KingfisherSwiftUI
 
 struct ResearchFeedView: ConnectedView {
     let categoryId: Int

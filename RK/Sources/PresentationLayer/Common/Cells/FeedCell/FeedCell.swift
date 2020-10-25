@@ -4,7 +4,7 @@
 
 import SwiftUI
 import SkeletonUI
-import struct Kingfisher.KFImage
+import KingfisherSwiftUI
 
 struct FeedCellView: View {
     let viewModel: FeedCellViewModel
