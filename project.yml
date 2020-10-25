@@ -10,7 +10,7 @@ options:
   generateEmptyDirectories: true
   xcodeVersion: 11.0
   deploymentTarget:
-    iOS: "13.0"
+    iOS: "14.0"
 
 ############
 # Configs
@@ -29,12 +29,11 @@ targets:
     type: application
     platform: iOS
     deploymentTarget:
-      iOS: 13.0
+      iOS: "14.0"
     settings:
       base:
         SWIFT_VERSION: 5.0
         TARGETED_DEVICE_FAMILY: 1
-        IPHONEOS_DEPLOYMENT_TARGET: 13.0
         PRODUCT_BUNDLE_IDENTIFIER: "ru.trykov.roskachestvo"
         CODE_SIGN_STYLE: "Manual"
         ENABLE_BITCODE: false
@@ -43,15 +42,19 @@ targets:
         VERSIONING_SYSTEM: "apple-generic"
       configs:
         debug:
-          CODE_SIGN_IDENTITY: "Apple Development: Iurii Trykov (ZR4UPZM377)"
+          CODE_SIGN_IDENTITY: "Apple Development: Created via API (744W5CQ5P7)"
           PROVISIONING_PROFILE_SPECIFIER: "match Development ru.trykov.roskachestvo"
         release:
-          CODE_SIGN_IDENTITY: "Apple Distribution: Юрий Трыков (7ZU2JEECEY)"
+          CODE_SIGN_IDENTITY: "iPhone Distribution: Юрий Трыков (7ZU2JEECEY)"
           PROVISIONING_PROFILE_SPECIFIER: "match AppStore ru.trykov.roskachestvo"
     sources:
       - path: RK
         excludes:
           - SupportingFiles/Info.plist
+    scheme:
+      testTargets:
+        - RKTests
+      gatherCoverageData: true
     preBuildScripts:
       - script: "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n\"${PODS_ROOT}/SwiftLint/swiftlint\" --strict\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n"
         name: Swiftlint
@@ -87,7 +90,7 @@ targets:
       base:
         SWIFT_VERSION: 5.0
         DEVELOPMENT_TEAM: 7ZU2JEECEY
-        TEST_HOST: ""
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/RK.app/RK
         TARGETED_DEVICE_FAMILY: 1
     dependencies:
       - target: RK

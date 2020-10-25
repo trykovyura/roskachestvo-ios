@@ -5,5 +5,5 @@
 import Foundation
 
 struct Constants {
-    static let imagePrefix = "https://rskrf.ru"
+    static let imageHost = "https://rskrf.ru"
 }

@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.9.1)
+  - Alamofire (5.1.0)
   - Firebase/Analytics (6.24.0):
     - Firebase/Core
   - Firebase/Core (6.24.0):
@@ -62,20 +62,13 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.6.0):
     - GoogleUtilities/Logger
-  - IGListDiffKit (4.0.0)
-  - IGListKit (4.0.0):
-    - IGListDiffKit (= 4.0.0)
-  - Kingfisher (5.13.1):
-    - Kingfisher/Core (= 5.13.1)
-  - Kingfisher/Core (5.13.1)
-  - Kingfisher/SwiftUI (5.13.1):
+  - Kingfisher/Core (5.13.4)
+  - Kingfisher/SwiftUI (5.13.4):
     - Kingfisher/Core
-  - Moya/Core (12.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.0)
-  - Moya/RxSwift (12.0.1):
-    - Moya/Core
-    - RxSwift (~> 4.0)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
@@ -85,30 +78,20 @@ PODS:
   - R.swift (5.1.0):
     - R.swift.Library (~> 5.1.0)
   - R.swift.Library (5.1.0)
-  - Result (4.1.0)
-  - Reveal-SDK (18)
-  - RxSwift (4.5.0)
   - SkeletonUI (1.0.4)
-  - SkeletonView (1.4.2)
   - SnapKit (5.0.1)
   - SwiftLint (0.30.1)
   - Swinject (2.5.0)
-  - ViperMcFlurry (1.5.2)
 
 DEPENDENCIES:
   - Firebase/Analytics
-  - IGListKit
-  - Kingfisher
   - Kingfisher/SwiftUI
-  - Moya/RxSwift
+  - Moya
   - R.swift
-  - Reveal-SDK (~> 18)
   - SkeletonUI
-  - SkeletonView (~> 1.4.1)
   - SnapKit
   - SwiftLint (~> 0.30.1)
   - Swinject (~> 2.5.0)
-  - ViperMcFlurry (~> 1.5.2)
 
 SPEC REPOS:
   trunk:
@@ -123,26 +106,19 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
-    - IGListDiffKit
-    - IGListKit
     - Kingfisher
     - Moya
     - nanopb
     - PromisesObjC
     - R.swift
     - R.swift.Library
-    - Result
-    - Reveal-SDK
-    - RxSwift
     - SkeletonUI
-    - SkeletonView
     - SnapKit
     - SwiftLint
     - Swinject
-    - ViperMcFlurry
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
   Firebase: b28e55c60efd98963cd9011fe2fac5a10c2ba124
   FirebaseAnalytics: 7386fc2176e3f93ad8ef34b5b1f2b33a891e4962
   FirebaseCore: e610482f64097b0e9f056cd97bc6b33dfabcbb6a
@@ -153,24 +129,17 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 9a8a16f79feffc7f42096743de2a7c4815e84020
   GoogleDataTransportCCTSupport: d70a561f7d236af529fee598835caad5e25f6d3d
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
-  IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
-  IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
-  Kingfisher: f33a848445e33c543620812158dc5d47f6bf90df
-  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
+  Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
   R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
-  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
-  Reveal-SDK: cce79388da3fd0bbb6ae19d769b906cfc3a33a89
-  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SkeletonUI: 988ca03dce53050e7194830031d645807a8e1a38
-  SkeletonView: c2523c3c8c6510e273e49a3bf364a434744c3914
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
   Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
-  ViperMcFlurry: 701bc3ad8d188b1f1e157ec0ddf4e77184de88b5
 
-PODFILE CHECKSUM: d6cb2aad6511806e00841268fc4174f7d77d4ef4
+PODFILE CHECKSUM: 850690e1d5a5c62ecffed50bf0d09850711ddfb5
 
 COCOAPODS: 1.9.1

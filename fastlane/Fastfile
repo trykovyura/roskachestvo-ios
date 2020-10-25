@@ -45,9 +45,10 @@ platform :ios do
 
   desc "Renew certificates for production scheme"
   lane :renew_production_certificates do
-    match(type: "development", force_for_new_devices: true)
-    match(type: "adhoc", force: true)
-    match(type: "appstore", force: true)
+    api_key = app_store_connect_api_key()
+    match(api_key: api_key, type: "development", force: true)
+    match(api_key: api_key, type: "adhoc", force: true)
+    match(api_key: api_key, type: "appstore", force: true)
   end
 
   desc "Increment build number on the iOS project and commit it"

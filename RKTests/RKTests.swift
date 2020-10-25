@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import roskachestvo_ios
+@testable import RK
 
 class roskachestvo_iosTests: XCTestCase {
 

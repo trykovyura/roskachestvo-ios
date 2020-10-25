@@ -22,7 +22,8 @@ class MoyaNetworkClient: NetworkClient {
     init() {
         var plugins = [PluginType]()
         #if DEBUG
-        plugins.append(NetworkLoggerPlugin(verbose: true))
+        let configuration = NetworkLoggerPlugin.Configuration(logOptions: .verbose)
+        plugins.append(NetworkLoggerPlugin(configuration: configuration))
         #endif
 
         self.provider = MoyaProvider<MultiTarget>(endpointClosure: { (target: MultiTarget) -> Endpoint in
