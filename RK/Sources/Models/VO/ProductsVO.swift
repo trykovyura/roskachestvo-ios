@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct ProductsVO: Equatable, Identifiable {
+struct ProductsVO: Hashable, Identifiable {
     let id: Int
     let name: String
     let status: ProductType

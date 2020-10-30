@@ -12,6 +12,7 @@ struct ProductFeedView: ConnectedView {
     struct Props {
         let research: ResearchVO?
         let appearTrigger: () -> Void
+        let columns: [GridItem]
     }
 
     func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
@@ -19,17 +20,33 @@ struct ProductFeedView: ConnectedView {
         let appearTrigger = {
             dispatch(Actions.ResearchFeedAction.start(researchId: self.researchId))
         }
-        return Props(research: research, appearTrigger: appearTrigger)
+        let columns = [
+            GridItem(.flexible()),
+            GridItem(.flexible())
+        ]
+        return Props(research: research, appearTrigger: appearTrigger, columns: columns)
     }
 
     static func body(props: Props) -> some View {
-        SkeletonList(with: props.research?.products ?? [], quantity: 6) { (loading: Bool, product: ProductsVO?) in
-            FeedCellView(viewModel: FeedCellViewModel(vo: product, loading: loading),
-                    destination: AnyView(ProductDetailsView(productId: product?.id)))
-                    .navigationBarTitle(R.string.localizable.productsTitle())
-                    .font(.largeTitle)
-                    .cornerRadius(4)
-                    .shadow(radius: 4)
-        }.onAppear(perform: props.appearTrigger)
+        ScrollView {
+            LazyVGrid(columns: props.columns, spacing: 20) {
+                ForEach(props.research?.products ?? [], id: \.self) { product in
+                    let destination = AnyView(ProductDetailsView(productId: product.id))
+                    NavigationLink(destination: destination) {
+                        FeedCellView(viewModel: FeedCellViewModel(vo: product, loading: false),
+                                destination: AnyView(EmptyView()))
+                                .navigationBarTitle(R.string.localizable.productsTitle())
+                                .font(.largeTitle)
+                                .cornerRadius(4)
+                                .frame(height: 164)
+                                .frame(maxWidth: .infinity)
+                                .shadow(radius: 4)
+                    }
+
+                }
+            }
+            .padding(.horizontal)
+        }
+        .onAppear(perform: props.appearTrigger)
     }
 }

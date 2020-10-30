@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum Producer: Codable, Equatable {
+enum Producer: Codable, Hashable {
     case bool(Bool)
     case string(String)
 

@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct ImageVO: Equatable {
+struct ImageVO: Hashable {
     let src: String?
     let width: Int?
     let height: Int?
