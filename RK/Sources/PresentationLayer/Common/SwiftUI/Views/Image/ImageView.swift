@@ -14,7 +14,7 @@ struct ImageView: View {
         } else if let url = url {
             return AnyView(ImageCacheView(imageURL: url))
         } else {
-            return AnyView(R.image.octocat.image)
+            return AnyView(R.image.octocat.image.frame(height: 95))
         }
     }
 }

@@ -21,8 +21,8 @@ struct ProductFeedView: ConnectedView {
             dispatch(Actions.ResearchFeedAction.start(researchId: self.researchId))
         }
         let columns = [
-            GridItem(.flexible()),
-            GridItem(.flexible())
+            GridItem(.flexible(), spacing: 20),
+            GridItem(.flexible(), spacing: 20)
         ]
         return Props(research: research, appearTrigger: appearTrigger, columns: columns)
     }
@@ -33,11 +33,10 @@ struct ProductFeedView: ConnectedView {
                 ForEach(props.research?.products ?? [], id: \.self) { product in
                     let destination = AnyView(ProductDetailsView(productId: product.id))
                     NavigationLink(destination: destination) {
-                        FeedCellView(viewModel: FeedCellViewModel(vo: product, loading: false),
-                                destination: AnyView(EmptyView()))
+                        FeedCellView(viewModel: FeedCellViewModel(vo: product, loading: false))
                                 .navigationBarTitle(R.string.localizable.productsTitle())
                                 .font(.largeTitle)
-                                .cornerRadius(4)
+                                .cornerRadius(10)
                                 .frame(height: 164)
                                 .frame(maxWidth: .infinity)
                                 .shadow(radius: 4)

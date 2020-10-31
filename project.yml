@@ -27,9 +27,9 @@ packages:
   FirebaseAnalytics:
     url: https://github.com/firebase/firebase-ios-sdk
     branch: 6.34-spm-beta
-  KingfisherSwiftUI:
-    url: https://github.com/onevcat/Kingfisher
-    from: 5.15.0
+  URLImage:
+    url: https://github.com/dmytro-anokhin/url-image
+    from: 2.1.1
   SkeletonUI:
     url: https://github.com/CSolanaM/SkeletonUI
     from: 1.0.4
@@ -74,7 +74,7 @@ targets:
     dependencies:
       - package: Swinject
       - package: FirebaseAnalytics
-      - package: KingfisherSwiftUI
+      - package: URLImage
       - package: SkeletonUI
       - package: Rswift
     scheme:
