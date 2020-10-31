@@ -16,5 +16,7 @@ struct TextView: View {
                 .multiline(lines: 3, scales: [1: 0.5, 2: 0.25])
                 .appearance(type: .gradient())
                 .animation(type: .linear())
+                .multilineTextAlignment(.center)
+                .foregroundColor(.black)
     }
 }

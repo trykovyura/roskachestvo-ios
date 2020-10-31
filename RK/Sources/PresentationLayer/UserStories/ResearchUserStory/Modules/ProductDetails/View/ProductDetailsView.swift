@@ -55,7 +55,7 @@ struct ProductDetailsView: ConnectedView {
                     VStack(alignment: .leading) {
                         HStack {
                             ImageView(image: nil, url: props.product?.image?.src?.imageURL(), loading: false)
-                            Text(props.product?.name ?? "")
+                            Text(props.product?.name?.stringByDecodingHTMLEntities ?? "")
                                 .font(.system(size: 22, weight: .medium))
                                 .foregroundColor(Color.black)
                         }

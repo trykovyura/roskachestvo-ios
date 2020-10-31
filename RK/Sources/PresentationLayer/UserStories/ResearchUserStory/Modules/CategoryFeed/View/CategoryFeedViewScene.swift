@@ -20,7 +20,6 @@ struct CategoryFeedViewScene: ConnectedView {
         let categories = state.categories
         let appearTrigger = {
             dispatch(Actions.CategoryAction.start)
-            UITableView.appearance().separatorStyle = .none
         }
         return Props(categories: categories, appearTrigger: appearTrigger)
     }
@@ -28,21 +27,19 @@ struct CategoryFeedViewScene: ConnectedView {
     static func body(props: Props) -> some View {
         NavigationView {
             ScrollView {
-                LazyVStack {
+                LazyVStack(spacing: 20) {
                     ForEach(props.categories, id: \.self) { category in
                         let destination = AnyView(ResearchFeedView(categoryId: category.id ?? 0))
                         NavigationLink(destination: destination) {
-                            FeedCellView(viewModel: FeedCellViewModel(vo: category, loading: false),
-                                    destination: AnyView(ResearchFeedView(categoryId: category.id ?? 0)))
+                            FeedCellView(viewModel: FeedCellViewModel(vo: category, loading: false))
                                     .navigationBarTitle(R.string.localizable.categoryTitle())
                                     .font(.largeTitle)
-                                    .cornerRadius(4)
+                                    .cornerRadius(10)
                                     .shadow(radius: 4)
-                                    .padding(.leading, 20)
-                                    .padding(.trailing, 20)
                         }
                     }
                 }
+                        .padding(.horizontal)
             }
             .onAppear(perform: props.appearTrigger)
         }

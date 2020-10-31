@@ -8,7 +8,7 @@ struct ProductVO {
     let id: Int
     let name: String?
     let status: ProductType?
-    let producer: String?
+    let producer: Producer?
     let trademark: String?
     let url: String?
     let researchResults: String?

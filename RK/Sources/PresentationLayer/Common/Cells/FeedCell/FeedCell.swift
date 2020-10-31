@@ -7,17 +7,16 @@ import SkeletonUI
 
 struct FeedCellView: View {
     let viewModel: FeedCellViewModel
-    let destination: AnyView
     var body: some View {
         HStack {
             VStack {
                 ImageView(image: viewModel.image, url: viewModel.imageURL, loading: viewModel.loading)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 95)
                 TextView(name: viewModel.name, loading: viewModel.loading)
-                NavigationLink(destination: destination) {
-                    EmptyView()
-                }
+                        .frame(maxWidth: .infinity)
+                        .padding(10)
             }
-            Spacer()
         }
                 .background(Color.white)
                 .frame(height: 135)

@@ -3,14 +3,16 @@
 //
 
 import SwiftUI
-import KingfisherSwiftUI
+import URLImage
 
 struct ImageCacheView: View {
     let imageURL: URL
     var body: some View {
-        R.image.octocat.image
-                .resizable()
-                .frame(height: 95)
-                .scaledToFit()
+        URLImage(url: imageURL) { image in
+            image.resizable()
+                    .frame(height: 95)
+                    .aspectRatio(contentMode: .fit)
+        }
+
     }
 }
