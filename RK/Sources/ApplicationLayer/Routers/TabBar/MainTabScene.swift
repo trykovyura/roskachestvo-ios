@@ -21,7 +21,7 @@ struct MainTabScene: ConnectedView {
 
     static func body(props: Props) -> some View {
         TabView(selection: props.selectedItem) {
-                CategoryFeedViewScene()
+                CategoryFeedView()
                     .tabItem {
                         R.image.mainTab.image
                         R.string.localizable.tabMain.text
@@ -32,7 +32,7 @@ struct MainTabScene: ConnectedView {
                         R.image.scanTab.image
                         R.string.localizable.tabScan.text
                     }.tag(3)
-            AboutViewScene()
+            AboutView()
                     .padding(0.0)
                     .tabItem {
                         R.image.aboutTab.image

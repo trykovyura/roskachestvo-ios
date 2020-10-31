@@ -44,3 +44,6 @@
 "github.link" = "https://github.com/trykovyura/roskachestvo-ios";
 "rk.link" = "https://rskrf.ru";
 "rk.api.link" = "https://rskrf.ru/about/dev/";
+
+// Product Details
+"product.details.description" = "Описание";
