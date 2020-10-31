@@ -3,7 +3,7 @@
 // Copyright (c) 2019 trykov. All rights reserved.
 //
 
-import Moya
+import Foundation
 
 enum RoskachestvoAPI {
     case searchProduct(code: String)
@@ -15,14 +15,14 @@ enum RoskachestvoAPI {
     case categoriesWithResearches
 }
 
-extension RoskachestvoAPI: TargetType {
+extension RoskachestvoAPI: APIRequest {
 
     var headers: [String: String]? {
-        return nil
+        nil
     }
 
     var baseURL: URL {
-        return URL(string: "https://rskrf.ru/api")!
+        URL(string: "https://rskrf.ru/api")!
     }
 
     /// The path to be appended to `baseURL` to form the full `URL`.
@@ -47,22 +47,7 @@ extension RoskachestvoAPI: TargetType {
     }
 
     /// The HTTP method used in the request.
-    var method: Moya.Method {
-        return .get
-    }
-
-    /// Provides stub data for use in testing.
-    var sampleData: Data {
-        return Data()
-    }
-
-    /// The type of HTTP task to be performed.
-    var task: Task {
-        return .requestPlain
-    }
-
-    /// Whether or not to perform Alamofire validation. Defaults to `false`.
-    var validate: Bool {
-        return false
+    var method: HTTPMethod {
+        .get
     }
 }

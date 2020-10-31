@@ -20,7 +20,6 @@ platform :ios do
     sh("mkdir -p ../RK/Resources/Rswift/")
     sh("touch ../RK/Resources/Rswift/R.generated.swift")
     xcodegen
-    cocoapods(try_repo_update_on_error: true)
   end
 
   desc "Register new devices"
@@ -63,10 +62,6 @@ platform :ios do
 
   desc "Build scheme in debug mode and upload to Crashlytics"
   lane :build_feature do |values|
-    xcodegen
-    cocoapods(try_repo_update_on_error: true)
-    increment
-    unlock_keychain_ci
     build_app(
               export_method: 'ad-hoc',
               export_xcargs: "-allowProvisioningUpdates",
@@ -116,10 +111,6 @@ platform :ios do
   desc "This will **not** send an email to all testers, it will only be uploaded to the new TestFlight. "
   desc "CI build set build number with TC, on local build increment by latest at Test Flight"
   lane :build_release do |values|
-      xcodegen
-      cocoapods(try_repo_update_on_error: true)
-      increment
-      unlock_keychain_ci
       build_app(export_method: "app-store")
   end
   desc "Разблокировать связку ключей macOs"

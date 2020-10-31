@@ -9,7 +9,7 @@ class NetworkAssembly: Assembly {
 
     func assemble(container: Container) {
         container.register(NetworkClient.self) { _ in
-            return MoyaNetworkClient()
+            return URLSessionNetworkClient()
         }.inObjectScope(.container)
     }
 }

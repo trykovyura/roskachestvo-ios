@@ -21,9 +21,10 @@
 ## Requirements
 * [homebrew](https://brew.sh/index_ru) - optional
 
-* [cocoapods](https://cocoapods.org/)
-
+* [R.swift](https://github.com/mac-cain13/R.swift)
+  * `brew install rswift`
 * [swiftlint](https://github.com/realm/SwiftLint)
+  * `brew install swiftlint`
 
 * [fastlane](https://github.com/fastlane/fastlane)
 

@@ -18,5 +18,6 @@ class AppConfigurator {
         UINavigationBar.appearance().isTranslucent = true
         UITableView.appearance().separatorStyle = .none
         UITableView.appearance().backgroundColor = R.color.background()
+        UITableView.appearance().tableFooterView = UIView()
     }
 }

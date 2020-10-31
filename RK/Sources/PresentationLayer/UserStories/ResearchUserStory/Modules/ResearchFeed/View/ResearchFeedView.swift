@@ -4,7 +4,7 @@
 
 import SwiftUI
 import SkeletonUI
-import struct Kingfisher.KFImage
+import KingfisherSwiftUI
 
 struct ResearchFeedView: ConnectedView {
     let categoryId: Int
@@ -20,13 +20,23 @@ struct ResearchFeedView: ConnectedView {
     }
 
     static func body(props: Props) -> some View {
-        List(props.researches) { (researches: ResearchesVO) in
-            FeedCellView(viewModel: FeedCellViewModel(vo: researches, loading: false),
-                    destination: AnyView(ProductFeedView(researchId: researches.id.description)))
-                    .navigationBarTitle(R.string.localizable.researchTitle())
-                    .font(.largeTitle)
-                    .cornerRadius(4)
-                    .shadow(radius: 4)
+        // LazyVStack instead of List because of separators
+        ScrollView {
+            LazyVStack {
+                ForEach(props.researches, id: \.self) { researches in
+                    let destination = AnyView(ProductFeedView(researchId: researches.id.description))
+                    NavigationLink(destination: destination) {
+                            FeedCellView(viewModel: FeedCellViewModel(vo: researches, loading: false),
+                                    destination: AnyView(ProductFeedView(researchId: researches.id.description)))
+                                    .navigationBarTitle(R.string.localizable.researchTitle())
+                                    .font(.largeTitle)
+                                    .cornerRadius(4)
+                                    .shadow(radius: 4)
+                                    .padding(.leading, 20)
+                                    .padding(.trailing, 20)
+                    }
+                }
+            }
         }
     }
 }

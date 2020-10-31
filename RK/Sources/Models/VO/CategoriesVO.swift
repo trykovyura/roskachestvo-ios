@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct CategoriesVO: Equatable, Identifiable {
+struct CategoriesVO: Hashable, Identifiable {
     let id: Int
     let type: CategoryType
     let name: String

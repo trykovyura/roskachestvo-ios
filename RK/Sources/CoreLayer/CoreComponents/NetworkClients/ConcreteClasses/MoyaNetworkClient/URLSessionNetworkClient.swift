@@ -3,41 +3,17 @@
 // Copyright (c) 2019 trykov. All rights reserved.
 //
 
-import Moya
 import Combine
-import Alamofire
 import Foundation
 
-class MoyaNetworkClient: NetworkClient {
-
-    private let provider: MoyaProvider<MultiTarget>
-
-    /// Сетевой клиент на основе Moya
-    /// Добавляется отладка через DEBUG
-    /// Заголовки http запросов
-    /// Кастомный менеджер Alamofire
-    ///
-    /// - Parameters:
-    /// - Returns: observable progress
-    init() {
-        var plugins = [PluginType]()
-        #if DEBUG
-        let configuration = NetworkLoggerPlugin.Configuration(logOptions: .verbose)
-        plugins.append(NetworkLoggerPlugin(configuration: configuration))
-        #endif
-
-        self.provider = MoyaProvider<MultiTarget>(endpointClosure: { (target: MultiTarget) -> Endpoint in
-            let defaultEndpoint = MoyaProvider.defaultEndpointMapping(for: target)
-            return defaultEndpoint
-        }, plugins: plugins)
-    }
+class URLSessionNetworkClient: NetworkClient {
 
     // Выполнение сетевого запроса
     // Пропускаем только успешные запросы 200-299
-    func request(_ token: MultiTarget) -> AnyPublisher<Data, URLError> {
-        guard let urlRequest = try? provider.endpoint(token).urlRequest() else {
+    func request<T: APIRequest>(_ token: T) -> AnyPublisher<Data, URLError> {
+        guard let urlRequest = try? buildURLRequest(for: token) else {
             return Fail(error: URLError(.badURL))
-                .eraseToAnyPublisher()
+                    .eraseToAnyPublisher()
         }
         return URLSession.shared.dataTaskPublisher(for: urlRequest)
                 .print()
@@ -56,5 +32,17 @@ class MoyaNetworkClient: NetworkClient {
                     return error
                 }
                 .eraseToAnyPublisher()
+    }
+
+    func buildURLRequest<T: APIRequest>(for request: T) throws -> URLRequest {
+        var urlRequest = URLRequest(url: request.baseURL.appendingPathComponent(request.path),
+                cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
+                timeoutInterval: 100)
+        urlRequest.httpMethod = request.method.rawValue
+
+        request.headers?.forEach {
+            urlRequest.addValue($0.value, forHTTPHeaderField: $0.key)
+        }
+        return urlRequest
     }
 }

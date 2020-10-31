@@ -6,7 +6,6 @@ import Foundation
 import AVFoundation
 import UIKit
 import Combine
-import SnapKit
 
 protocol ScannerViewControllerDelegate: class {
     func barCode(_ value: String)
@@ -20,6 +19,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.image = R.image.temp_image_overlay()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     lazy var preview: UIView = UIView()
@@ -28,6 +28,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         label.font = R.font.backpackBold(size: 15)
         label.textColor = .white
         label.text = R.string.localizable.scannerTitle()
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     lazy var permissionLabel: UILabel = {
@@ -36,12 +37,14 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         label.textColor = R.color.gray()
         label.text = R.string.localizable.scannerPermissionCameraMessage()
         label.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     lazy var closeButton: UIButton = { [unowned self] in
         let button = UIButton()
         button.setImage(R.image.close(), for: .normal)
         button.addTarget(self, action: #selector(closeButtonTrigger), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
@@ -70,23 +73,30 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         view.addSubview(titleLabel)
         view.addSubview(closeButton)
         view.addSubview(permissionLabel)
-        imageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        preview.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(45)
-            make.centerX.equalToSuperview()
-        }
-        permissionLabel.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-        }
-        closeButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-45)
-            make.centerX.equalToSuperview()
-        }
+        NSLayoutConstraint.activate([
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            imageView.topAnchor.constraint(equalTo: view.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        NSLayoutConstraint.activate([
+            preview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            preview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            preview.topAnchor.constraint(equalTo: view.topAnchor),
+            preview.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 45),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        NSLayoutConstraint.activate([
+            permissionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            permissionLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        NSLayoutConstraint.activate([
+            closeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -45),
+            closeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
         view.backgroundColor = UIColor.black
     }
     func askPermission() {

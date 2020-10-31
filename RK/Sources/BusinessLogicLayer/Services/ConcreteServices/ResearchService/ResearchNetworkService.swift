@@ -4,7 +4,7 @@
 //
 
 import Combine
-import Moya
+import Foundation
 
 protocol ResearchNetworkServiceType: class {
     func searchProduct(code: String) -> AnyPublisher<[SearchProductDTO], Error>
@@ -27,49 +27,49 @@ class ResearchNetworkService: ResearchNetworkServiceType {
     }
 
     func searchProduct(code: String) -> AnyPublisher<[SearchProductDTO], Error> {
-        return networkClient.request(MultiTarget(RoskachestvoAPI.searchProduct(code: code)))
+        return networkClient.request(RoskachestvoAPI.searchProduct(code: code))
                 .decode(type: [SearchProductDTO].self, decoder: JSONDecoder())
                 .print()
                 .eraseToAnyPublisher()
     }
 
     func product(id: Int) -> AnyPublisher<ProductDTO, Error> {
-        return networkClient.request(MultiTarget(RoskachestvoAPI.product(id: id)))
+        return networkClient.request(RoskachestvoAPI.product(id: id))
                 .decode(type: ProductDTO.self, decoder: JSONDecoder())
                 .print()
                 .eraseToAnyPublisher()
     }
 
     func products() -> AnyPublisher<[ProductsDTO], Error> {
-        return networkClient.request(MultiTarget(RoskachestvoAPI.products))
+        return networkClient.request(RoskachestvoAPI.products)
                 .decode(type: [ProductsDTO].self, decoder: JSONDecoder())
                 .print()
                 .eraseToAnyPublisher()
     }
 
     func categories() -> AnyPublisher<[CategoryDTO], Error> {
-        return networkClient.request(MultiTarget(RoskachestvoAPI.categories))
+        return networkClient.request(RoskachestvoAPI.categories)
                 .decode(type: [CategoryDTO].self, decoder: JSONDecoder())
                 .print()
                 .eraseToAnyPublisher()
     }
 
     func categoriesWithResearches() -> AnyPublisher<[CategoriesDTO], Error> {
-        return networkClient.request(MultiTarget(RoskachestvoAPI.categoriesWithResearches))
+        return networkClient.request(RoskachestvoAPI.categoriesWithResearches)
                 .decode(type: [CategoriesDTO].self, decoder: JSONDecoder())
                 .print()
                 .eraseToAnyPublisher()
     }
 
     func researches() -> AnyPublisher<[ResearchesDTO], Error> {
-        return networkClient.request(MultiTarget(RoskachestvoAPI.researches))
+        return networkClient.request(RoskachestvoAPI.researches)
                 .decode(type: [ResearchesDTO].self, decoder: JSONDecoder())
                 .print()
                 .eraseToAnyPublisher()
     }
 
     func research(id: String) -> AnyPublisher<ResearchDTO, Error> {
-        return networkClient.request(MultiTarget(RoskachestvoAPI.research(id: id)))
+        return networkClient.request(RoskachestvoAPI.research(id: id))
                 .decode(type: ResearchDTO.self, decoder: JSONDecoder())
                 .print()
                 .eraseToAnyPublisher()
