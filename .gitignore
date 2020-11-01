@@ -85,3 +85,6 @@ fastlane/test_output
 *.ipa
 *.zip
 /RK/SupportingFiles/Info.plist
+
+### SPM ###
+.build
