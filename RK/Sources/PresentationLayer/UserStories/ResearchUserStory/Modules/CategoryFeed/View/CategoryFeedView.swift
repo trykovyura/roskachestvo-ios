@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Combine
-import SkeletonUI
 
 struct CategoryFeedView: ConnectedView {
     struct Props {

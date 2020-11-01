@@ -24,15 +24,9 @@ packages:
   Swinject:
     url: https://github.com/Swinject/Swinject
     from: 2.5.0
-  FirebaseAnalytics:
-    url: https://github.com/firebase/firebase-ios-sdk
-    branch: 6.34-spm-beta
   URLImage:
     url: https://github.com/dmytro-anokhin/url-image
     from: 2.1.1
-  SkeletonUI:
-    url: https://github.com/CSolanaM/SkeletonUI
-    from: 1.0.4
   Rswift:
     url: https://github.com/mac-cain13/R.swift.Library
     from: 5.2.0
@@ -57,7 +51,6 @@ targets:
         DEVELOPMENT_TEAM: 7ZU2JEECEY
         CURRENT_PROJECT_VERSION: 1
         VERSIONING_SYSTEM: "apple-generic"
-        EXCLUDED_ARCHS: "arm64"
       configs:
         debug:
           CODE_SIGN_IDENTITY: "Apple Development: Created via API (744W5CQ5P7)"
@@ -67,10 +60,6 @@ targets:
           PROVISIONING_PROFILE_SPECIFIER: "match AppStore ru.trykov.roskachestvo"
     sources:
       - path: RK
-        excludes:
-          - SupportingFiles/Info.plist
-          - SupportingFiles/Rswift
-          - SupportingFiles/SwiftLint
     dependencies:
       - package: Swinject
       - package: FirebaseAnalytics
