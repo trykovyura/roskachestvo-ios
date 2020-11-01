@@ -43,9 +43,3 @@ struct MainTabScene: ConnectedView {
                 .font(.headline)
     }
 }
-
-struct MainTabScenePreviews: PreviewProvider {
-    static var previews: some View {
-        MainTabScene()
-    }
-}
