@@ -62,9 +62,7 @@ targets:
       - path: RK
     dependencies:
       - package: Swinject
-      - package: FirebaseAnalytics
       - package: URLImage
-      - package: SkeletonUI
       - package: Rswift
     scheme:
       testTargets:
