@@ -3,7 +3,6 @@
 //
 
 import SwiftUI
-import SkeletonUI
 
 struct FeedCellView: View {
     let viewModel: FeedCellViewModel

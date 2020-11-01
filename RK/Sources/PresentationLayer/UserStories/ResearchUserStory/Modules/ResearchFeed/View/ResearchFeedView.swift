@@ -3,7 +3,6 @@
 //
 
 import SwiftUI
-import SkeletonUI
 
 struct ResearchFeedView: ConnectedView {
     let categoryId: Int
