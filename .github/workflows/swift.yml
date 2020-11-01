@@ -28,6 +28,7 @@ jobs:
         env:
           FIREBASE_APP: ${{ secrets.FIREBASE_APP }}
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FASTLANE_XCODEBUILD_SETTINGS_RETRIES: ${{ secrets.FASTLANE_XCODEBUILD_SETTINGS_RETRIES }}
         run: |
           bundle exec fastlane prepare
           bundle exec fastlane increment

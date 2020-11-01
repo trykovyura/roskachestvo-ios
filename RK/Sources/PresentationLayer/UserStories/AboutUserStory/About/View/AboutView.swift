@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct AboutViewScene: ConnectedView {
+struct AboutView: ConnectedView {
     struct Props {
     }
 

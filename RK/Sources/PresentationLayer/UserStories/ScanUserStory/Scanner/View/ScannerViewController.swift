@@ -13,7 +13,7 @@ protocol ScannerViewControllerDelegate: class {
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
-    let permissionService = MainAssembler.sharedInstance.resolve(PermissionServiceType.self)
+    let permissionService = MainAssembler.shared.resolve(PermissionServiceType.self)
     weak var delegate: ScannerViewControllerDelegate?
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -25,7 +25,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     lazy var preview: UIView = UIView()
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = R.font.backpackBold(size: 15)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         label.textColor = .white
         label.text = R.string.localizable.scannerTitle()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +33,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }()
     lazy var permissionLabel: UILabel = {
         let label = UILabel()
-        label.font = R.font.backpackBold(size: 15)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         label.textColor = R.color.gray()
         label.text = R.string.localizable.scannerPermissionCameraMessage()
         label.isHidden = true

@@ -10,7 +10,7 @@ class MainAssembler {
 
     // MARK: - Singleton
 
-    static let sharedInstance = MainAssembler()
+    static let shared = MainAssembler()
 
     // MARK: - Variables
 

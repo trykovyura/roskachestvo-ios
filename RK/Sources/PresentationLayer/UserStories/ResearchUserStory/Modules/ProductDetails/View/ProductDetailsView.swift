@@ -3,7 +3,6 @@
 //
 
 import SwiftUI
-import SkeletonUI
 
 struct ProductDetailsView: ConnectedView {
 
@@ -59,7 +58,7 @@ struct ProductDetailsView: ConnectedView {
                                 .font(.system(size: 22, weight: .medium))
                                 .foregroundColor(Color.black)
                         }
-                        Text("Описание")
+                        Text(R.string.localizable.productDetailsDescription())
                             .font(.system(size: 18, weight: .semibold))
                             .frame(alignment: .leading)
                             .foregroundColor(R.color.doveGray.color)

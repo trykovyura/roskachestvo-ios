@@ -10,10 +10,6 @@ struct ImageDataView: View {
     var body: some View {
         image
                 .resizable()
-                .skeleton(with: loading)
-                .shape(type: .rectangle)
-                .appearance(type: .gradient())
-                .animation(type: .none)
                 .frame(height: 95)
                 .frame(minWidth: 0, maxWidth: .infinity)
     }

@@ -7,10 +7,8 @@
 
 import SwiftUI
 import Combine
-import KingfisherSwiftUI
-import SkeletonUI
 
-struct CategoryFeedViewScene: ConnectedView {
+struct CategoryFeedView: ConnectedView {
     struct Props {
         let categories: [CategoriesVO]
         let appearTrigger: () -> Void

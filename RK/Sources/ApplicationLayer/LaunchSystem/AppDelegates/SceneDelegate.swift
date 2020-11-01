@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         let initialState = AppState(selectedTab: 1, categories: [],
                 showingDetailScanner: false, research: nil, product: nil)
-        let researchNetworkService = MainAssembler.sharedInstance.resolve(ResearchNetworkServiceType.self)
+        let researchNetworkService = MainAssembler.shared.resolve(ResearchNetworkServiceType.self)
         let store = Store(
                 initialState: initialState,
                 reducer: Reduce.state,
