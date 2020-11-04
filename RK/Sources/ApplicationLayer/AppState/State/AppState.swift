@@ -8,6 +8,7 @@ struct AppState: Reducable {
     let showingDetailScanner: Bool
     let research: ResearchVO?
     let product: ProductVO?
+    let productId: Int?
 }
 extension Reduce {
 
@@ -16,7 +17,8 @@ extension Reduce {
                 categories: Reduce.categories(state.categories, action),
                 showingDetailScanner: Reduce.showingDetailScanner(state.showingDetailScanner, action),
                 research: Reduce.research(state.research, action),
-                product: Reduce.product(state.product, action))
+                product: Reduce.product(state.product, action),
+                productId: Reduce.productId(state.productId, action))
     }
     static let selectedTab = AppState.reduce.selectedTab.withRules { match in
         match.on(Actions.ToggleTabSelect.self) { _, action in
@@ -64,6 +66,16 @@ extension Reduce {
             switch action {
             case Actions.ScannerAction.toggleScannerDetails(let value):
                 return value
+            }
+        }
+    }
+
+    static let productId = AppState.reduce.productId.withRules { match in
+        match.on(Actions.BarCodeAction.self) { state, action in
+            switch action {
+            case Actions.BarCodeAction.success(let productId):
+                return productId
+            default: return state
             }
         }
     }
