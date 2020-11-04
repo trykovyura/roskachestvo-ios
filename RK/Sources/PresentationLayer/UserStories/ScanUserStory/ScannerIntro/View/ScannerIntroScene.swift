@@ -9,6 +9,7 @@ struct ScannerIntroScene: ConnectedView {
     struct Props {
         let showingDetail: Binding<Bool>
         let action: () -> Void
+        let barCodeAction: (String) -> Void
     }
 
     func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
@@ -17,7 +18,10 @@ struct ScannerIntroScene: ConnectedView {
                 set: { value in dispatch(Actions.ScannerAction.toggleScannerDetails(value))}
         )
         let action = { showingDetail.wrappedValue.toggle() }
-        return Props(showingDetail: showingDetail, action: action)
+        let barCodeAction = { barCode in
+            dispatch(Actions.BarCodeAction.barCodeScannerDetails(barCode: barCode))
+        }
+        return Props(showingDetail: showingDetail, action: action, barCodeAction: barCodeAction)
     }
 
     static func body(props: Props) -> some View {
@@ -47,7 +51,7 @@ struct ScannerIntroScene: ConnectedView {
                         .padding(.bottom, 40)
                         .sheet(isPresented: props.showingDetail) { () -> ScannerViewScene in
                             ScannerViewScene { barCode in
-                                print(barCode)
+                                props.barCodeAction(barCode)
                             }
                         }
             }

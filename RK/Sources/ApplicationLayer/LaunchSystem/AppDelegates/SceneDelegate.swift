@@ -24,7 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 reducer: Reduce.state,
                 middlewares: [middlewareCreator.categoryMiddleware(api: researchNetworkService),
                 middlewareCreator.researchDetailsMiddleware(api: researchNetworkService),
-                middlewareCreator.productMiddleware(api: researchNetworkService)]
+                middlewareCreator.productMiddleware(api: researchNetworkService),
+                middlewareCreator.producBarCodeMiddleware(api: researchNetworkService)]
         )
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

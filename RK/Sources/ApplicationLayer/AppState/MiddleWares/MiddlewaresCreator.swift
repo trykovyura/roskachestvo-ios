@@ -9,6 +9,7 @@ class MiddlewaresCreator {
     var categoriesWithResearches: AnyCancellable?
     var research: AnyCancellable?
     var product: AnyCancellable?
+    var barCode: AnyCancellable?
 
     func categoryMiddleware(api: ResearchNetworkServiceType) -> Store<AppState>.Middleware<AppState> {
         return { [unowned self] state, action, dispatch in
@@ -71,6 +72,27 @@ class MiddlewaresCreator {
                 break
             }
         }
-
+    }
+    func producBarCodeMiddleware(api: ResearchNetworkServiceType) -> Store<AppState>.Middleware<AppState> {
+        return { [unowned self] state, action, dispatch in
+            switch action {
+            case Actions.BarCodeAction.barCodeScannerDetails(let barCode):
+                self.barCode = api.searchProduct(code: barCode)
+                        .compactMap { $0.first?.id }
+                        .compactMap { $0.map(Int.init) }
+                        .compactMap { $0 }
+                        .receive(on: DispatchQueue.main)
+                        .sink(receiveCompletion: { completion in
+                            switch completion {
+                            case .finished:()
+                            case .failure(let error): dispatch(Actions.BarCodeAction.error(error))
+                            }
+                        }, receiveValue: { productId in
+                            dispatch(Actions.BarCodeAction.success(productId: productId))
+                        })
+            default:
+                break
+            }
+        }
     }
 }

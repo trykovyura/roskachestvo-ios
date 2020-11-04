@@ -8,4 +8,9 @@ extension Actions {
     enum ScannerAction: Action {
         case toggleScannerDetails(Bool)
     }
+    enum BarCodeAction: Action {
+        case barCodeScannerDetails(barCode: String)
+        case error(Error)
+        case success(productId: Int)
+    }
 }
