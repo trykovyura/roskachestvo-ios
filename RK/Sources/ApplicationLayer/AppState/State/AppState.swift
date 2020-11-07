@@ -9,6 +9,8 @@ struct AppState: Reducable {
     let research: ResearchVO?
     let product: ProductVO?
     let productId: Int?
+    let barCode: String?
+    let scannerError: Error?
 }
 extension Reduce {
 
@@ -18,7 +20,9 @@ extension Reduce {
                 showingDetailScanner: Reduce.showingDetailScanner(state.showingDetailScanner, action),
                 research: Reduce.research(state.research, action),
                 product: Reduce.product(state.product, action),
-                productId: Reduce.productId(state.productId, action))
+                productId: Reduce.productId(state.productId, action),
+                barCode: Reduce.barCode(state.barCode, action),
+                scannerError: Reduce.scannerError(state.scannerError, action))
     }
     static let selectedTab = AppState.reduce.selectedTab.withRules { match in
         match.on(Actions.ToggleTabSelect.self) { _, action in
@@ -56,7 +60,7 @@ extension Reduce {
                 return product
             case Actions.ProductDetailsAction.error(let error):
                 return state
-            default:()
+            default:
                 return state
             }
         }
@@ -75,6 +79,34 @@ extension Reduce {
             switch action {
             case Actions.BarCodeAction.success(let productId):
                 return productId
+            default: return state
+            }
+        }
+        match.on(Actions.ProductDetailsAction.self) { state, action in
+            switch action {
+            case Actions.ProductDetailsAction.success:
+                return nil
+            default: return state
+            }
+        }
+    }
+    static let barCode = AppState.reduce.barCode.withRules { match in
+        match.on(Actions.BarCodeAction.self) { state, action in
+            switch action {
+            case Actions.BarCodeAction.barCodeScannerDetails(let barCode):
+                return barCode
+            case Actions.BarCodeAction.error:
+                return nil
+            case Actions.BarCodeAction.success:
+                return state
+            }
+        }
+    }
+    static let scannerError = AppState.reduce.scannerError.withRules { match in
+        match.on(Actions.BarCodeAction.self) { state, action in
+            switch action {
+            case Actions.BarCodeAction.error(let error):
+                return error
             default: return state
             }
         }

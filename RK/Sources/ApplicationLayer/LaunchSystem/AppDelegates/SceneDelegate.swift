@@ -17,7 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
         let initialState = AppState(selectedTab: 1, categories: [],
-                showingDetailScanner: false, research: nil, product: nil, productId: nil)
+                showingDetailScanner: false, research: nil, product: nil,
+                productId: nil, barCode: nil, scannerError: nil)
         let researchNetworkService = MainAssembler.shared.resolve(ResearchNetworkServiceType.self)
         let store = Store(
                 initialState: initialState,

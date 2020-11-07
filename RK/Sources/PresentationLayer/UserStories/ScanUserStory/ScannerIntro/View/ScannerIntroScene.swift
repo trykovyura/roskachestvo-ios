@@ -12,6 +12,7 @@ struct ScannerIntroScene: ConnectedView {
         let barCodeAction: (String) -> Void
         let showProductDetails: Binding<Bool>
         let error: Binding<Bool>
+        let productId: Int?
     }
 
     func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
@@ -20,7 +21,9 @@ struct ScannerIntroScene: ConnectedView {
                 set: { value in dispatch(Actions.ScannerAction.toggleScannerDetails(value))}
         )
         let showProductDetails: Binding<Bool> = Binding<Bool>(
-                get: { state.productId != nil },
+                get: {
+                    return state.barCode != nil && state.productId != nil
+                },
                 set: { value in print(value) }
         )
         let action = { showingDetail.wrappedValue.toggle() }
@@ -28,18 +31,20 @@ struct ScannerIntroScene: ConnectedView {
             dispatch(Actions.BarCodeAction.barCodeScannerDetails(barCode: barCode))
         }
         let error: Binding<Bool> = Binding<Bool>(
-                get: { state.productId == nil },
+                get: { state.scannerError != nil },
                 set: { value in print(value) }
         )
+        let productId = state.productId
         return Props(showingDetail: showingDetail, action: action,
-                barCodeAction: barCodeAction, showProductDetails: showProductDetails, error: error)
+                barCodeAction: barCodeAction, showProductDetails: showProductDetails,
+                error: error, productId: productId)
     }
 
     static func body(props: Props) -> some View {
         NavigationView {
             VStack(spacing: 16) {
                 VStack(spacing: 16) {
-                    NavigationLink(destination: ProductDetailsView(productId: nil),
+                    NavigationLink(destination: ProductDetailsView(productId: props.productId),
                             isActive: props.showProductDetails) {
                         EmptyView()
                     }
@@ -70,9 +75,9 @@ struct ScannerIntroScene: ConnectedView {
                             }
                         }
             }.alert(isPresented: props.error) {
-                Alert(title: Text("Important message"),
-                        message: Text("Wear sunscreen"),
-                        dismissButton: .default(Text("Got it!")))
+                Alert(title: R.string.localizable.scannerMessage.text,
+                        message: R.string.localizable.scannerNoProduct.text,
+                        dismissButton: .default(R.string.localizable.ok.text))
             }
         }
     }
