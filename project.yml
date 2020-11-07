@@ -30,9 +30,6 @@ packages:
   Rswift:
     url: https://github.com/mac-cain13/R.swift.Library
     from: 5.2.0
-#  FirebaseAnalytics:
-#    url: https://github.com/firebase/firebase-ios-sdk
-#    branch: 7.0-spm-beta
 
 ############
 # Targets
@@ -54,7 +51,6 @@ targets:
         DEVELOPMENT_TEAM: 7ZU2JEECEY
         CURRENT_PROJECT_VERSION: 1
         VERSIONING_SYSTEM: "apple-generic"
-#        OTHER_LDFLAGS: "-ObjC"
       configs:
         debug:
           CODE_SIGN_IDENTITY: "Apple Development: Created via API (744W5CQ5P7)"
@@ -68,7 +64,6 @@ targets:
       - package: Swinject
       - package: URLImage
       - package: Rswift
-#      - package: FirebaseAnalytics
     scheme:
       testTargets:
         - RKTests
@@ -80,13 +75,6 @@ targets:
         inputFiles: [ "$TEMP_DIR/rswift-lastrun" ]
         outputFiles: [ "$SRCROOT/RK/Resources/Rswift/R.generated.swift" ]
         name: R.swift
-#    postBuildScripts:
-#      - script: |
-#          echo "App path ${TARGET_BUILD_DIR}/${WRAPPER_NAME}"
-#          rm -rf "${TARGET_BUILD_DIR}/${WRAPPER_NAME}/Frameworks/FirebaseAnalytics.framework"
-#          rm -rf "${TARGET_BUILD_DIR}/${WRAPPER_NAME}/Frameworks/GoogleAppMeasurement.framework"
-#          rm -rf "${TARGET_BUILD_DIR}/${WRAPPER_NAME}/Frameworks/FIRAnalyticsConnector.framework"
-#        name: Strip embended static lib in Firebase
     info:
       path: RK/SupportingFiles/Info.plist
       properties:
