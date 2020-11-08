@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/xcode
 
+*.xcodeproj
+*.xcworkspace
+
 ### OSX ###
 *.DS_Store
 .AppleDouble
@@ -32,7 +35,7 @@ Temporary Items
 ## Build generated
 build/
 DerivedData/
-youvote-ios.xcworkspace
+SupportingFiles/Info.plist
 
 ## Various settings
 *.pbxuser
@@ -50,9 +53,12 @@ xcuserdata/
 *.xccheckout
 *.xcscmblueprint
 
+### R.swift ###
+*.generated.swift
+
 ### CocoaPods ###
 /Pods
-Podfile.lock
+/Carthage
 
 ### AppCode ###
 .idea
@@ -78,3 +84,7 @@ fastlane/test_output
 *.mobileprovision
 *.ipa
 *.zip
+/RK/SupportingFiles/Info.plist
+
+### SPM ###
+.build

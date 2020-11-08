@@ -1,0 +1,6 @@
+# Документация - https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners
+# У владельцев автоматически запросят review(если PR не draft)
+# Синтаксис аналогичен .gitignore
+
+# Глобально
+* @trykovyura @bondarchukss

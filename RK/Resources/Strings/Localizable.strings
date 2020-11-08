@@ -1,0 +1,51 @@
+/* 
+  Localizable.strings
+  roskachestvo-ios
+
+  Created by Юрий Трыков on 2019-03-09.
+    Copyright © 2019 trykov. All rights reserved.
+*/
+// Common
+"ok" = "OK";
+"cancel" = "Отмена";
+
+"category.title"="Категории";
+"research.title"="Исследования";
+"products.title"="Продукты";
+"product.title"="Продукт";
+
+// TabBar
+"tab.main" = "Главная";
+"tab.search" = "Поиск";
+"tab.scan" = "Сканировать";
+"tab.history" = "История";
+"tab.about" = "О нас";
+
+// Scanner
+"scanner.intro.title" = "Сканировать штрих-код";
+"scanner.intro.description" = "Выполните поиск товара по его штрих-коду.";
+"scanner.intro.scan" = "Сканировать";
+"scanner.title" = "Сканирование штрихкода";
+"scanner.error.title" = "Scanning not supported";
+"scanner.error.description" = "Your device does not support scanning a code from an item. Please use a device with a camera.";
+"scanner.permission.allow" = "Разрешить";
+"scanner.permission.decline" = "Разрешить";
+"scanner.permission.camera.title" = "Нет доступа к камере";
+"scanner.permission.camera.message" = "Требуется разрешение для камеры";
+"scanner.noProduct" = "Товар не найден";
+"scanner.message" = "Сообщение";
+
+// About
+"about.section.1.text" = "Спасибо за интерес к проекту и качественным продуктам :). Мы считаем, что это полезная инициатива и максимальных эффект будет в удобном приложение.";
+"about.section.2.prefix" = "Приложение с открытым исходным кодом на ";
+"about.section.2.link" = "github.";
+"about.section.2.suffix" = " Замечания, пожелания, доработки приветствуются.";
+"about.section.3.prefix" = "Все материалы предоставлены ";
+"about.section.3.link" = "Роскачеством.";
+"about.section.3.suffix" = " Доступ к материалам осуществляется через публичное API.";
+"github.link" = "https://github.com/trykovyura/roskachestvo-ios";
+"rk.link" = "https://rskrf.ru";
+"rk.api.link" = "https://rskrf.ru/about/dev/";
+
+// Product Details
+"product.details.description" = "Описание";

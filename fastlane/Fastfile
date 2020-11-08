@@ -1,0 +1,127 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+
+default_platform(:ios)
+
+platform :ios do
+
+  before_all do
+    xcode_select("/Applications/Xcode.app")
+  end
+
+  desc "Generate project and install pods"
+  lane :prepare do
+    sh("echo $PWD")
+    sh("mkdir -p ../RK/Resources/Rswift/")
+    sh("touch ../RK/Resources/Rswift/R.generated.swift")
+    xcodegen
+  end
+
+  desc "Register new devices"
+  lane :register_new_devices do
+    register_devices(devices_file: "./fastlane/devices.txt")
+    register_new_devices_production
+    register_new_devices_beta
+  end
+
+  lane :register_new_devices_production do
+    match(type: "development", force_for_new_devices: true)
+    match(type: "adhoc", force_for_new_devices: true)
+    match(type: "appstore", force_for_new_devices: true)
+  end
+
+  desc "Download certificates"
+  lane :certificates do
+    match(type: "development", readonly: true)
+    match(type: "adhoc", readonly: true)
+    match(type: "appstore", readonly: true)
+  end
+
+  desc "Renew certificates for production scheme"
+  lane :renew_production_certificates do
+    api_key = app_store_connect_api_key()
+    match(api_key: api_key, type: "development", force: true)
+    match(api_key: api_key, type: "adhoc", force: true)
+    match(api_key: api_key, type: "appstore", force: true)
+  end
+
+  desc "Increment build number on the iOS project and commit it"
+  lane :increment do
+      if is_ci
+          buildNumber = ENV['GITHUB_RUN_ID']
+          UI.message"build number is here: #{buildNumber}"
+          increment_build_number(xcodeproj: 'RK.xcodeproj',
+                                 build_number: buildNumber)
+      end
+  end
+
+  desc "Build scheme in debug mode and upload to Crashlytics"
+  lane :build_feature do |values|
+    build_app(
+              export_method: 'ad-hoc',
+              export_xcargs: "-allowProvisioningUpdates",
+              export_options: {
+                    iCloudContainerEnvironment: 'Development',
+                    compileBitcode: false,
+                    provisioningProfiles: {
+                                          "ru.trykov.roskachestvo" => "match AdHoc ru.trykov.roskachestvo"
+                                        }
+              }
+            )
+  end
+
+  desc "Upload to Firebase beta"
+  desc "Requires firebase cli https://firebase.google.com/docs/cli"
+  desc "Download an install 'curl -sL firebase.tools | bash'"
+  desc "Login local machine 'firebase login' or ci 'firebase login:ci'"
+  desc "If CI machine - use FIREBASE_TOKEN for firebase_cli_token params"
+  lane :upload_firebase do |values|
+    firebase_app_distribution(
+                  app: ENV["FIREBASE_APP"],
+                  groups: 'qa-heal',
+                  firebase_cli_token: ENV["FIREBASE_TOKEN"],
+                  release_notes: default_changelog
+                  )
+  end
+
+  desc "Upload to TestFlight"
+  desc "APP_STORE_CONNECT_API_KEY - контент ключа"
+  desc "APP_STORE_CONNECT_API_KEY_ID - идентификатор ключа"
+  desc "APP_STORE_CONNECT_API_ISSUER_ID - идентификатор выпустившего ключ"
+  lane :upload_testflight do
+      api_key = app_store_connect_api_key()
+      pilot(api_key: api_key, skip_waiting_for_build_processing: true, ipa: "build/artifacts/RK.ipa")
+  end
+
+  desc "Returns a default changelog."
+  lane :default_changelog do
+    changelog = changelog_from_git_commits(
+        commits_count: 5,
+        pretty: "- %s"
+    )
+    Actions.lane_context[SharedValues::FL_CHANGELOG] = changelog
+    puts changelog
+    UI.message"#{changelog}"
+    changelog
+  end
+
+  desc "Build, sign and upload a new beta build to Apple TestFlight"
+  desc "This will **not** send an email to all testers, it will only be uploaded to the new TestFlight. "
+  desc "CI build set build number with TC, on local build increment by latest at Test Flight"
+  lane :build_release do |values|
+      build_app(export_method: "app-store")
+  end
+  desc "Разблокировать связку ключей macOs"
+  desc "Единообразный пароль должен быть для разных устойств"
+  lane :unlock_keychain_ci do |values|
+      unlock_keychain(
+          path: "login.keychain",
+          password: ENV["LOGIN_KEYCHAIN_PASSWORD"]
+      )
+  end
+end

@@ -1,0 +1,108 @@
+name: RK
+
+############
+# Options
+############
+
+options:
+  minimumXcodeGenVersion: 2.10
+  groupSortPosition: top
+  generateEmptyDirectories: true
+  xcodeVersion: 11.0
+  deploymentTarget:
+    iOS: "14.0"
+
+############
+# Configs
+############
+
+configs:
+  Debug: debug
+  Release: release
+
+packages:
+  Swinject:
+    url: https://github.com/Swinject/Swinject
+    from: 2.5.0
+  URLImage:
+    url: https://github.com/dmytro-anokhin/url-image
+    from: 2.1.1
+  Rswift:
+    url: https://github.com/mac-cain13/R.swift.Library
+    from: 5.2.0
+
+############
+# Targets
+############
+
+targets:
+  RK:
+    type: application
+    platform: iOS
+    deploymentTarget:
+      iOS: "14.0"
+    settings:
+      base:
+        SWIFT_VERSION: 5.0
+        TARGETED_DEVICE_FAMILY: 1
+        PRODUCT_BUNDLE_IDENTIFIER: "ru.trykov.roskachestvo"
+        CODE_SIGN_STYLE: "Manual"
+        ENABLE_BITCODE: false
+        DEVELOPMENT_TEAM: 7ZU2JEECEY
+        CURRENT_PROJECT_VERSION: 1
+        VERSIONING_SYSTEM: "apple-generic"
+      configs:
+        debug:
+          CODE_SIGN_IDENTITY: "Apple Development: Created via API (744W5CQ5P7)"
+          PROVISIONING_PROFILE_SPECIFIER: "match Development ru.trykov.roskachestvo"
+        release:
+          CODE_SIGN_IDENTITY: "iPhone Distribution: Юрий Трыков (7ZU2JEECEY)"
+          PROVISIONING_PROFILE_SPECIFIER: "match AppStore ru.trykov.roskachestvo"
+    sources:
+      - path: RK
+    dependencies:
+      - package: Swinject
+      - package: URLImage
+      - package: Rswift
+    scheme:
+      testTargets:
+        - RKTests
+      gatherCoverageData: true
+    preBuildScripts:
+      - script: "if which \"swiftlint\" >/dev/null; then\n\"swiftlint\" --strict\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n"
+        name: Swiftlint
+      - script: "\"rswift\" generate \"$SRCROOT/RK/Resources/Rswift/R.generated.swift\"\n"
+        inputFiles: [ "$TEMP_DIR/rswift-lastrun" ]
+        outputFiles: [ "$SRCROOT/RK/Resources/Rswift/R.generated.swift" ]
+        name: R.swift
+    info:
+      path: RK/SupportingFiles/Info.plist
+      properties:
+        CFBundleDisplayName: "Роскачество+"
+        CFBundleShortVersionString: "1.0.0"
+        CFBundleVersion: "1"
+        UISupportedInterfaceOrientations: [ UIInterfaceOrientationPortrait ]
+        UILaunchStoryboardName: LaunchScreen
+        UIUserInterfaceStyle: Light
+        NSCameraUsageDescription: Приложение сможет отсканировать бар код для поиска продуктов
+        UIStatusBarStyle: UIStatusBarStyleLightContent
+        LSRequiresIPhoneOS: true
+        ITSAppUsesNonExemptEncryption: false
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneConfigurationName: Default Configuration
+                UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
+  RKTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: RKTests
+    settings:
+      base:
+        SWIFT_VERSION: 5.0
+        DEVELOPMENT_TEAM: 7ZU2JEECEY
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/RK.app/RK
+        TARGETED_DEVICE_FAMILY: 1
+    dependencies:
+      - target: RK

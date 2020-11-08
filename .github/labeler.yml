@@ -1,0 +1,4 @@
+# Add 'CI' label to any github or fastlane file changes
+CI:
+  - '.github/**'
+  - 'fastlane/**'

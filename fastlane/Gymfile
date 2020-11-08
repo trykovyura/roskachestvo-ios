@@ -1,0 +1,7 @@
+scheme("RK")
+clean(true)
+output_directory("build/artifacts/")
+build_path("build/")
+archive_path("build/archive/")
+derived_data_path("build/derived/")
+buildlog_path("build/logs/")

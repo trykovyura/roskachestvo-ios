@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches: [ release/* ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prepare
+        run: bundle install
+      - name: Certificates
+        env:
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          LOGIN_KEYCHAIN_PASSWORD: ${{ secrets.LOGIN_KEYCHAIN_PASSWORD }}
+        run: |
+          bundle exec fastlane unlock_keychain_ci
+          bundle exec fastlane certificates
+      - name: Prepare
+        run: bundle exec fastlane prepare
+      - name: Increment
+        run: bundle exec fastlane increment
+      - name: Build
+        env:
+          FASTLANE_XCODEBUILD_SETTINGS_RETRIES: ${{ secrets.FASTLANE_XCODEBUILD_SETTINGS_RETRIES }}
+        run: bundle exec fastlane build_release
+      - name: Deploy
+        env:
+          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
+        run: bundle exec fastlane upload_testflight
