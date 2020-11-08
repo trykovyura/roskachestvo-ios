@@ -27,7 +27,7 @@ struct CategoryFeedView: ConnectedView {
             ScrollView {
                 LazyVStack(spacing: 20) {
                     ForEach(props.categories, id: \.self) { category in
-                        let destination = AnyView(ResearchFeedView(categoryId: category.id ?? 0))
+                        let destination = AnyView(ResearchFeedView(categoryId: category.id ))
                         NavigationLink(destination: destination) {
                             FeedCellView(viewModel: FeedCellViewModel(vo: category, loading: false))
                                     .navigationBarTitle(R.string.localizable.categoryTitle())

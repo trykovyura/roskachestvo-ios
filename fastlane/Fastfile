@@ -73,7 +73,6 @@ platform :ios do
                                         }
               }
             )
-    upload_firebase
   end
 
   desc "Upload to Firebase beta"
@@ -91,14 +90,18 @@ platform :ios do
   end
 
   desc "Upload to TestFlight"
+  desc "APP_STORE_CONNECT_API_KEY - контент ключа"
+  desc "APP_STORE_CONNECT_API_KEY_ID - идентификатор ключа"
+  desc "APP_STORE_CONNECT_API_ISSUER_ID - идентификатор выпустившего ключ"
   lane :upload_testflight do
-      pilot(skip_waiting_for_build_processing: true)
+      api_key = app_store_connect_api_key()
+      pilot(api_key: api_key, skip_waiting_for_build_processing: true, ipa: "build/artifacts/RK.ipa")
   end
 
   desc "Returns a default changelog."
   lane :default_changelog do
     changelog = changelog_from_git_commits(
-        between: [ENV['GIT_PREVIOUS_SUCCESSFUL_COMMIT'] || "HEAD^^^^^", "HEAD"],
+        commits_count: 5,
         pretty: "- %s"
     )
     Actions.lane_context[SharedValues::FL_CHANGELOG] = changelog
