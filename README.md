@@ -3,7 +3,10 @@
 
 ![Develop](https://github.com/trykovyura/roskachestvo-ios/workflows/Develop/badge.svg?branch=develop)
 
-![[AppStore](https://apps.apple.com/ru/app/%D0%BA%D0%B0%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%BE%D0%B2/id1537294159)](Images/App_Store_Badge_US.svg)
+[![AppStore][1]][2]
+
+[1]:  Images/App_Store_Badge_US.svg
+[2]:  https://apps.apple.com/ru/app/%D0%BA%D0%B0%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%BE%D0%B2/id1537294159
 ## Стек технологий
 * iOS 14
 * SwiftUI
