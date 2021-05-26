@@ -23,7 +23,7 @@ struct ReducableWrapper<State> {
     }
 
     var withConstant: Reducer<State> {
-        return { state, action in state }
+        return { state, _ in state }
     }
 
     func withRules(mathes: @escaping (inout Reduce.Match<State>) -> Void) -> Reducer<State> {

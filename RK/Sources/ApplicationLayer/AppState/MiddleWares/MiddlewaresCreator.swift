@@ -12,7 +12,7 @@ class MiddlewaresCreator {
     var barCode: AnyCancellable?
 
     func categoryMiddleware(api: ResearchNetworkServiceType) -> Store<AppState>.Middleware<AppState> {
-        return { [unowned self] state, action, dispatch in
+        return { [unowned self] _, action, dispatch in
             switch action {
             case Actions.CategoryAction.start:
                 self.categoriesWithResearches = api.categoriesWithResearches()
@@ -33,7 +33,7 @@ class MiddlewaresCreator {
     }
 
     func researchDetailsMiddleware(api: ResearchNetworkServiceType) -> Store<AppState>.Middleware<AppState> {
-        return { [unowned self] state, action, dispatch in
+        return { [unowned self] _, action, dispatch in
             switch action {
             case Actions.ResearchFeedAction.start(let researchId):
                 self.research = api.research(id: researchId)
@@ -54,7 +54,7 @@ class MiddlewaresCreator {
     }
 
     func productMiddleware(api: ResearchNetworkServiceType) -> Store<AppState>.Middleware<AppState> {
-        return { [unowned self] state, action, dispatch in
+        return { [unowned self] _, action, dispatch in
             switch action {
             case Actions.ProductDetailsAction.start(let productId):
                 self.product = api.product(id: productId)
@@ -74,7 +74,7 @@ class MiddlewaresCreator {
         }
     }
     func producBarCodeMiddleware(api: ResearchNetworkServiceType) -> Store<AppState>.Middleware<AppState> {
-        return { [unowned self] state, action, dispatch in
+        return { [unowned self] _, action, dispatch in
             switch action {
             case Actions.BarCodeAction.barCodeScannerDetails(let barCode):
                 self.barCode = api.searchProduct(code: barCode)

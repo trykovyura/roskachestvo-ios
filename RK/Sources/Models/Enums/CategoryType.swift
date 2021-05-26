@@ -20,7 +20,7 @@ enum CategoryType: Int {
 }
 
 extension CategoryType: Equatable {
-    //swiftlint:disable cyclomatic_complexity
+    // swiftlint:disable cyclomatic_complexity
     init(rawValue: Int) {
         switch rawValue {
         case 358: self = .technics

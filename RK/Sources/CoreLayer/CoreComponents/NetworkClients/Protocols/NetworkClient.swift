@@ -10,7 +10,7 @@ protocol NetworkClient {
     func request<T: APIRequest>(_ token: T) -> AnyPublisher<Data, URLError>
 }
 
-//This is the `APIRequest` protocol you may implement other classes can conform
+// This is the `APIRequest` protocol you may implement other classes can conform
 protocol APIRequest {
     var baseURL: URL { get }
     var path: String { get }
@@ -18,7 +18,7 @@ protocol APIRequest {
     var headers: [String: String]? { get }
 }
 
-//This defines the type of HTTP method used to perform the request
+// This defines the type of HTTP method used to perform the request
 enum HTTPMethod: String {
     case post = "POST"
     case put = "PUT"
