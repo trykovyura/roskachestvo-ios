@@ -69,9 +69,9 @@ targets:
         - RKTests
       gatherCoverageData: true
     preBuildScripts:
-      - script: "if which \"swiftlint\" >/dev/null; then\n\"swiftlint\" --strict\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n"
+      - script: "export PATH=\"$PATH:/opt/homebrew/bin\" \n if which \"swiftlint\" > /dev/null; then\n\"swiftlint\" --strict\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n"
         name: Swiftlint
-      - script: "\"rswift\" generate \"$SRCROOT/RK/Resources/Rswift/R.generated.swift\"\n"
+      - script: "export PATH=\"$PATH:/opt/homebrew/bin\" \n \"rswift\" generate \"$SRCROOT/RK/Resources/Rswift/R.generated.swift\"\n"
         inputFiles: [ "$TEMP_DIR/rswift-lastrun" ]
         outputFiles: [ "$SRCROOT/RK/Resources/Rswift/R.generated.swift" ]
         name: R.swift
