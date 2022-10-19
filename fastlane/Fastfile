@@ -10,10 +10,6 @@ default_platform(:ios)
 
 platform :ios do
 
-  before_all do
-    xcode_select("/Applications/Xcode.app")
-  end
-
   desc "Generate project and install pods"
   lane :prepare do
     sh("echo $PWD")
