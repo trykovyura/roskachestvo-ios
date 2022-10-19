@@ -20,7 +20,7 @@ class MiddlewaresCreator {
                         .receive(on: DispatchQueue.main)
                         .sink(receiveCompletion: { completion in
                             switch completion {
-                            case .finished:()
+                            case .finished: ()
                             case .failure(let error): dispatch(Actions.CategoryAction.error(error))
                             }
                         }, receiveValue: { response in
@@ -41,7 +41,7 @@ class MiddlewaresCreator {
                         .receive(on: DispatchQueue.main)
                         .sink(receiveCompletion: { completion in
                             switch completion {
-                            case .finished:()
+                            case .finished: ()
                             case .failure(let error): dispatch(Actions.ResearchFeedAction.error(error))
                             }
                         }, receiveValue: { response in
@@ -62,7 +62,7 @@ class MiddlewaresCreator {
                         .receive(on: DispatchQueue.main)
                         .sink(receiveCompletion: { completion in
                             switch completion {
-                            case .finished:()
+                            case .finished: ()
                             case .failure(let error): dispatch(Actions.ProductDetailsAction.error(error))
                             }
                         }, receiveValue: { product in
@@ -84,7 +84,7 @@ class MiddlewaresCreator {
                         .receive(on: DispatchQueue.main)
                         .sink(receiveCompletion: { completion in
                             switch completion {
-                            case .finished:()
+                            case .finished: ()
                             case .failure(let error): dispatch(Actions.BarCodeAction.error(error))
                             }
                         }, receiveValue: { productId in

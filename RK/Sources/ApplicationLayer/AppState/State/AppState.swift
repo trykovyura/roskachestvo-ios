@@ -36,7 +36,7 @@ extension Reduce {
                 return categories
             case Actions.CategoryAction.error(let error):
                 return state
-            default:()
+            default: ()
                 return state
             }
         }
@@ -48,7 +48,7 @@ extension Reduce {
                 return research
             case Actions.ResearchFeedAction.error(let error):
                 return state
-            default:()
+            default: ()
                 return state
             }
         }
