@@ -10,10 +10,6 @@ default_platform(:ios)
 
 platform :ios do
 
-  before_all do
-    xcode_select("/Applications/Xcode.app")
-  end
-
   desc "Generate project and install pods"
   lane :prepare do
     sh("echo $PWD")
@@ -83,6 +79,7 @@ platform :ios do
   lane :upload_firebase do |values|
     firebase_app_distribution(
                   app: ENV["FIREBASE_APP"],
+                  ipa_path: "build/artifacts/RK.ipa",
                   groups: 'qa-heal',
                   firebase_cli_token: ENV["FIREBASE_TOKEN"],
                   release_notes: default_changelog
