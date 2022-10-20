@@ -15,6 +15,12 @@ jobs:
         fetch-depth: 0
       - name: Bundle
         run: bundle install
+      # Шаг запускает ssh-agent и загружает в него приватный ключ ssh
+      # Тем самым carthage может клонировать приватные репозитории через ssh
+      - name: webfactory/ssh-agent
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Certificates
         env:
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
