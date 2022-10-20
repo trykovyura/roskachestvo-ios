@@ -12,6 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        fetch-depth: 0
       - name: Bundle
         run: bundle install
       - name: Certificates
