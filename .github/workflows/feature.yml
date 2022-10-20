@@ -1,4 +1,18 @@
 name: Feature
+env:
+  MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+  MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+  FIREBASEAPPDISTRO_APP: ${{ secrets.FIREBASEAPPDISTRO_APP }}
+  FIREBASEAPPDISTRO_IPA_PATH: ${{ secrets.FIREBASEAPPDISTRO_IPA_PATH }}
+  FIREBASEAPPDISTRO_GROUPS: ${{ secrets.FIREBASEAPPDISTRO_GROUPS }}
+  FIREBASEAPPDISTRO_TOKEN: ${{ secrets.FIREBASEAPPDISTRO_TOKEN }}
+  FL_JIRA_SITE: ${{ secrets.FL_JIRA_SITE }}
+  FL_JIRA_USERNAME: ${{ secrets.FL_JIRA_USERNAME }}
+  FL_JIRA_PASSWORD: ${{ secrets.FL_JIRA_PASSWORD }}
+  FL_JIRA_BUILD_NUMBER_FIELD: ${{ secrets.FL_JIRA_BUILD_NUMBER_FIELD }}
+  LC_ALL: en_US.UTF-8
+  LANG: en_US.UTF-8
+  LANGUAGE: en_US.UTF-8
 
 on:
   push:
@@ -9,7 +23,12 @@ jobs:
 
     runs-on: macos-11
     timeout-minutes: 15
-
+    env:
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
+      LANGUAGE: en_US.UTF-8
+      KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
+      KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
     steps:
       - uses: actions/checkout@v3
         with:
