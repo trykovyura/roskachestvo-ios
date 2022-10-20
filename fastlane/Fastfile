@@ -9,6 +9,18 @@
 default_platform(:ios)
 
 platform :ios do
+    #
+    # Before -------------------
+    #
+    before_all do |lane|
+        # Выставляем нужный Xcode только на CI
+        # https://github.com/actions/runner-images/blob/main/images/macos/macos-11-Readme.md
+        xcode_select("/Applications/Xcode_13.2.1.app") if is_ci
+        lanes_with_keychain = [:certificates, :renew_production_certificates]
+        if lanes_with_keychain.include?(lane)
+            keychain_prepare
+        end
+    end
 
   desc "Generate project and install pods"
   lane :prepare do
@@ -113,12 +125,48 @@ platform :ios do
   lane :build_release do |values|
       build_app(export_method: "app-store")
   end
+
+  desc "Подготовка хранилища ключей для локальной работы и CI"
+  desc "Создание локального хранилища и разблокировка"
+  lane :keychain_prepare do |values|
+      # В случае с новой машиной - на ней нет еще keychain
+      begin
+          delete_keychain_ci
+      rescue
+          create_keychain_ci
+      end
+      create_keychain_ci
+      unlock_keychain_ci
+  end
+
   desc "Разблокировать связку ключей macOs"
   desc "Единообразный пароль должен быть для разных устойств"
+  desc "FL_UNLOCK_KEYCHAIN_PASSWORD - перемнная окружения для пароля"
+  desc "FL_UNLOCK_KEYCHAIN_PATH - переменная окружения для пути к хранилищу"
   lane :unlock_keychain_ci do |values|
-      unlock_keychain(
-          path: "login.keychain",
-          password: ENV["LOGIN_KEYCHAIN_PASSWORD"]
-      )
+       unlock_keychain(
+           path: ENV["KEYCHAIN_NAME"],
+           password: ENV["KEYCHAIN_PASSWORD"]
+       )
+  end
+
+  desc "Создание связки ключей"
+  desc "default_keychain - должно быть false, чтобы не заменить системный login.keychain"
+  desc "FL_UNLOCK_KEYCHAIN_PATH - переменная окружения для пути к хранилищу"
+  lane :create_keychain_ci do |values|
+       create_keychain(
+           name: ENV["KEYCHAIN_NAME"],
+           password: ENV["KEYCHAIN_PASSWORD"],
+           default_keychain: false,
+           unlock: true,
+           timeout: 0,
+           lock_when_sleeps: false,
+           require_create: false
+       )
+  end
+
+  desc "Удаление связки ключей"
+  lane :delete_keychain_ci do
+      delete_keychain(name: ENV["KEYCHAIN_NAME"])
   end
 end
