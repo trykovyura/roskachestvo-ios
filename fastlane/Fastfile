@@ -38,24 +38,33 @@ platform :ios do
   end
 
   lane :register_new_devices_production do
-    match(type: "development", force_for_new_devices: true)
-    match(type: "adhoc", force_for_new_devices: true)
-    match(type: "appstore", force_for_new_devices: true)
+    match(type: "development", force_for_new_devices: true,
+          keychain_name: ENV["KEYCHAIN_NAME"], keychain_password: ENV["KEYCHAIN_PASSWORD"])
+    match(type: "adhoc", force_for_new_devices: true,
+          keychain_name: ENV["KEYCHAIN_NAME"], keychain_password: ENV["KEYCHAIN_PASSWORD"])
+    match(type: "appstore", force_for_new_devices: true,
+          keychain_name: ENV["KEYCHAIN_NAME"], keychain_password: ENV["KEYCHAIN_PASSWORD"])
   end
 
   desc "Download certificates"
   lane :certificates do
-    match(type: "development", readonly: true)
-    match(type: "adhoc", readonly: true)
-    match(type: "appstore", readonly: true)
+    match(type: "development", readonly: true,
+          keychain_name: ENV["KEYCHAIN_NAME"], keychain_password: ENV["KEYCHAIN_PASSWORD"])
+    match(type: "adhoc", readonly: true,
+          keychain_name: ENV["KEYCHAIN_NAME"], keychain_password: ENV["KEYCHAIN_PASSWORD"])
+    match(type: "appstore", readonly: true,
+          keychain_name: ENV["KEYCHAIN_NAME"], keychain_password: ENV["KEYCHAIN_PASSWORD"])
   end
 
   desc "Renew certificates for production scheme"
   lane :renew_production_certificates do
     api_key = app_store_connect_api_key()
-    match(api_key: api_key, type: "development", force: true)
-    match(api_key: api_key, type: "adhoc", force: true)
-    match(api_key: api_key, type: "appstore", force: true)
+    match(api_key: api_key, type: "development", force: true,
+          keychain_name: ENV["KEYCHAIN_NAME"], keychain_password: ENV["KEYCHAIN_PASSWORD"])
+    match(api_key: api_key, type: "adhoc", force: true,
+          keychain_name: ENV["KEYCHAIN_NAME"], keychain_password: ENV["KEYCHAIN_PASSWORD"])
+    match(api_key: api_key, type: "appstore", force: true,
+          keychain_name: ENV["KEYCHAIN_NAME"], keychain_password: ENV["KEYCHAIN_PASSWORD"])
   end
 
   desc "Increment build number on the iOS project and commit it"
