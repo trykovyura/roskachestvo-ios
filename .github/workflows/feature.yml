@@ -16,6 +16,8 @@ jobs:
           fetch-depth: 0
       - name: Bundle
         run: bundle install
+      - name: Brew
+        run: brew install rswift
       # Шаг запускает ssh-agent и загружает в него приватный ключ ssh
       # Тем самым carthage может клонировать приватные репозитории через ssh
       - name: webfactory/ssh-agent
