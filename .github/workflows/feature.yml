@@ -3,7 +3,8 @@ name: Feature
 on:
   push:
     branches: [ feature/* ]
-
+  # Trigger manually
+  workflow_dispatch:
 jobs:
   build:
 
