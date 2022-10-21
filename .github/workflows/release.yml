@@ -3,36 +3,44 @@ name: Release
 on:
   push:
     branches: [ release/* ]
-
+  # Trigger manually
+  workflow_dispatch:
 jobs:
   build:
 
-    runs-on: self-hosted
+    runs-on: macos-11
     timeout-minutes: 30
-
+    env:
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
+      LANGUAGE: en_US.UTF-8
+      KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
+      KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+      MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+      MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+      FASTLANE_XCODEBUILD_SETTINGS_RETRIES: ${{ secrets.FASTLANE_XCODEBUILD_SETTINGS_RETRIES }}
+      APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+      APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+      APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Prepare
         run: bundle install
+      - name: Brew
+        run: brew install rswift
+      # Шаг запускает ssh-agent и загружает в него приватный ключ ssh
+      # Тем самым carthage может клонировать приватные репозитории через ssh
+      - name: webfactory/ssh-agent
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Certificates
-        env:
-          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          LOGIN_KEYCHAIN_PASSWORD: ${{ secrets.LOGIN_KEYCHAIN_PASSWORD }}
-        run: |
-          bundle exec fastlane unlock_keychain_ci
-          bundle exec fastlane certificates
+        run: bundle exec fastlane certificates
       - name: Prepare
         run: bundle exec fastlane prepare
       - name: Increment
         run: bundle exec fastlane increment
       - name: Build
-        env:
-          FASTLANE_XCODEBUILD_SETTINGS_RETRIES: ${{ secrets.FASTLANE_XCODEBUILD_SETTINGS_RETRIES }}
         run: bundle exec fastlane build_release
       - name: Deploy
-        env:
-          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
-          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
-          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
         run: bundle exec fastlane upload_testflight
